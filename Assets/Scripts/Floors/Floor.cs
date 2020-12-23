@@ -116,6 +116,8 @@ public class Floor : MonoBehaviour
         _spawnedRows.RemoveAt(0);
         
         yield return new WaitForSeconds(moveAndSpawnDelay);
+        
+        EventManager.TriggerEvent(Events.FLOOR_MOVE_STARTED);
 
         _currentMoveRowsDelay = moveRowsDelay;
         foreach (FloorRow row in _spawnedRows)
