@@ -13,22 +13,22 @@ namespace pixelook
 
         void Start()
         {
-            EventManager.AddListener(Events.CAMERA_SHAKE_BIG, OnCameraShakeBig);
-            EventManager.AddListener(Events.CAMERA_SHAKE_SMALL, OnCameraShakeSmall);
+            EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
+            EventManager.AddListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);
         }
 
         private void OnDestroy()
         {
-            EventManager.RemoveListener(Events.CAMERA_SHAKE_BIG, OnCameraShakeBig);
-            EventManager.RemoveListener(Events.CAMERA_SHAKE_SMALL, OnCameraShakeSmall);
+            EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
+            EventManager.RemoveListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);
         }
 
-        void OnCameraShakeBig()
+        private void OnPlayerDied()
         {
             _animator.SetTrigger("ShakeBig");
         }
 
-        void OnCameraShakeSmall()
+        private void OnFloorFallStarted()
         {
             _animator.SetTrigger("ShakeSmall");
         }
