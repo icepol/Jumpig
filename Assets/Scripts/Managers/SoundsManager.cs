@@ -17,21 +17,13 @@ namespace pixelook
             _cameraTransform = Camera.main.transform;
 
             EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
-            EventManager.AddListener(Events.ENEMY_DIED, OnEnemyDied);
         }
 
         private void OnDestroy()
         {
             EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
-            EventManager.RemoveListener(Events.ENEMY_DIED, OnEnemyDied);
         }
-
-        public void OnEnemyDied()
-        {
-            if (enemyDie && Settings.IsSfxEnabled)
-                AudioSource.PlayClipAtPoint(enemyDie, _cameraTransform.position);
-        }
-
+        
         public void OnPlayerDied()
         {
             if (playerDie && Settings.IsSfxEnabled)

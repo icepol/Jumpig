@@ -26,5 +26,9 @@ public class FloorElement : MonoBehaviour
         _boxCollider.enabled = false;
         _rigidbody.isKinematic = false;
         _rigidbody.AddForce(Vector3.down * Random.Range(100f, 150f));
+
+        Player player = GetComponentInChildren<Player>();
+        if (player)
+            EventManager.TriggerEvent(Events.PLAYER_DIED);
     }
 }

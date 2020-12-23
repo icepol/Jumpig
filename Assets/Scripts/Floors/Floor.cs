@@ -27,7 +27,8 @@ public class Floor : MonoBehaviour
         _floorSpawner = GetComponent<IFloorSpawner>();
         
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
-        EventManager.AddListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
+        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
+        EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
     private void Start()
@@ -48,17 +49,22 @@ public class Floor : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
+        EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
+        EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
+    }
+
+    private void OnPlayerDied()
+    {
+        StopMoveCoroutine();
     }
 
     private void OnPlayerJumpStarted()
     {
-        if (_waitMoveAndSpawnCoroutine != null)
-            StopCoroutine(_waitMoveAndSpawnCoroutine);
+        StopMoveCoroutine();
     }
 
-    private void OnPlayerJumpFinished()
+    private void OnPlayerMovementFinished()
     {
         StartCoroutine(MoveAndSpawn());
     }
@@ -136,5 +142,11 @@ public class Floor : MonoBehaviour
         }
 
         return spawnedRows.Length;
+    }
+    
+    private void StopMoveCoroutine()
+    {
+        if (_waitMoveAndSpawnCoroutine != null)
+            StopCoroutine(_waitMoveAndSpawnCoroutine);
     }
 }
