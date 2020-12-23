@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
             if (!isGameRunning) return;
             
             GameState.Score += 5;
+            EventManager.TriggerEvent(Events.SCORE_CHANGED);
+            
             EventManager.TriggerEvent(Events.PLAYER_MOVEMENT_FINISHED);
         }
         else

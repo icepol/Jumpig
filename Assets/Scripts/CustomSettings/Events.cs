@@ -2,7 +2,6 @@
 {
     public static class Events
     {
-        
         public const string FLOOR_MOVE_FINISHED = "FloorMoveFinished";
         public const string FLOOR_FALL_STARTED = "FloorFallStarted";
         public const string INIT_FLOOR_FINISHED = "InitFloorFinished";
@@ -12,6 +11,7 @@
 
         // level progression events
         public const string LEVEL_START = "LevelStart";
+        public const string SCORE_CHANGED = "ScoreChanged";
 
         public const string PLAYER_JUMP_FINISHED = "PlayerJumpFinished";
         public const string PLAYER_JUMP_STARTED = "PlayerJumpStarted";
