@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 5999976295226104360}
   - component: {fileID: 2758113341508711096}
   - component: {fileID: 1162915242951422388}
+  - component: {fileID: 731030224831188391}
   m_Layer: 0
-  m_Name: FloorRow3Space1
+  m_Name: 3Space1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveTime: 0.25
-  Size: 1
 --- !u!114 &1162915242951422388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +66,21 @@ MonoBehaviour:
   - {fileID: 8757619367447042076}
   - {fileID: 2672213583701262774}
   spaces: 1
+--- !u!114 &731030224831188391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999976295226104363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8b07bdbe179474cbbdb11d32d0c2af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectiblePrefabs:
+  - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
+  collectibleRatio: 0.2
 --- !u!1001 &324770935875059147
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,11 +2,22 @@
 {
     public static class GameState
     {
-        public static int Score = 0;
-        
+        private static int _score;
+
+        public static int Score
+        {
+            get => _score;
+            
+            set
+            {
+                _score = value;
+                EventManager.TriggerEvent(Events.SCORE_CHANGED);
+            }
+        }
+
         public static void Reset()
         {
-            Score = 0;
+            _score = 0;
         }
     }
 }

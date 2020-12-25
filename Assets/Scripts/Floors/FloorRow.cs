@@ -6,18 +6,27 @@ public class FloorRow : MonoBehaviour, IFloorGroup
     
     private int size = 1;
 
-    private FloorElement[] _floorElements;
+    private CollectibleSpawner _collectibleSpawner;
+
     private bool _isMovingForward;
-    
     private Vector3 _oldPosition;
     private Vector3 _newPosition;
     private float _currentTime;
 
+    public FloorElement[] FloorElements { get; private set; }
+
     public void Awake()
     {
-        _floorElements = GetComponentsInChildren<FloorElement>();
+        FloorElements = GetComponentsInChildren<FloorElement>();
+        _collectibleSpawner = GetComponent<CollectibleSpawner>();
     }
 
+    public void Start()
+    {
+        if (_collectibleSpawner != null)
+            _collectibleSpawner.Spawn(this);
+    }
+    
     public void Update()
     {
         if (!_isMovingForward) return;
@@ -32,7 +41,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
     public void StartShaking()
     {
-        foreach (var floorElement in _floorElements)
+        foreach (var floorElement in FloorElements)
         {
             floorElement.StartShaking();
         }
@@ -40,7 +49,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
     public void StartFalling()
     {
-        foreach (var floorElement in _floorElements)
+        foreach (var floorElement in FloorElements)
         {
             floorElement.StartFalling();
         }
