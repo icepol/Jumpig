@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     void Start()
     {
+        GameState.SpawnedRowsCount = 0;
+        
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 

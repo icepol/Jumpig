@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using pixelook;
 using UnityEngine;
 
 public class FloorSpawner : MonoBehaviour, IFloorSpawner
 {
     [SerializeField] private float startSpawningPosition = 1;
-    [SerializeField] private GameObject[] floorGroups;
+    [SerializeField] private List<GameObject> floorGroups;
 
     private float _nextPosition;
     private IFloorGroup _lastGroup;
@@ -45,9 +46,14 @@ public class FloorSpawner : MonoBehaviour, IFloorSpawner
 
     IFloorGroup NextToSpawn()
     {
+        List<GameObject> availableFloorGroups =
+            floorGroups.Where(item => item.GetComponent<IFloorGroup>().SpawnSetup.IsAvailable).ToList();
+        
         while (true)
         {
-            IFloorGroup floorGroup = floorGroups[Random.Range(0, floorGroups.Length)].GetComponent<IFloorGroup>();
+            IFloorGroup floorGroup = availableFloorGroups[Random.Range(0, availableFloorGroups.Count)]
+                .GetComponent<IFloorGroup>();
+            
             if (_lastGroup == floorGroup) continue;
             
             _lastGroup = floorGroup;

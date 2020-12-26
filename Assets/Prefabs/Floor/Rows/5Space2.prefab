@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f84cfae6010425f8663b5fb650c2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnSetup: {fileID: 11400000, guid: 1c7249e108687492f92687b5007d2d0b, type: 2}
   moveTime: 0.25
 --- !u!114 &1162915242951422388
 MonoBehaviour:

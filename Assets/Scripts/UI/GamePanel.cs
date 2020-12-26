@@ -16,6 +16,8 @@ namespace pixelook
         void Update()
         {
             UpdateScore();
+
+            HandleKeyboard();
             CheckTimeout();
         }
 
@@ -56,6 +58,12 @@ namespace pixelook
             OnTap();
 
             _position = new Vector3(+_tapCount, 0, 1);
+        }
+        
+        private void HandleKeyboard()
+        {
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) OnButtonLeftClick();
+            if (Input.GetKeyDown(KeyCode.RightArrow)) OnButtonRightClick();
         }
     }
 }

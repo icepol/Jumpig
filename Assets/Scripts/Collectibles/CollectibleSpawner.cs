@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
-    [SerializeField] private Collectible[] collectiblePrefabs;
+    [SerializeField] private List<Collectible> collectiblePrefabs;
     [SerializeField, Range(0, 1)] private float collectibleRatio = 0;
 
     public void Spawn(FloorRow row)
@@ -10,9 +12,14 @@ public class CollectibleSpawner : MonoBehaviour
         if (collectibleRatio <= 0 || Random.Range(0f, 1f) > collectibleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Length)];
+
+        List<Collectible> availableCollectiblePrefabs =
+            collectiblePrefabs.Where(item => item.SpawnSetup.IsAvailable).ToList();
         
+        if (availableCollectiblePrefabs.Count == 0) return;
+
         Instantiate(
-            collectiblePrefabs[Random.Range(0, collectiblePrefabs.Length)], 
+            availableCollectiblePrefabs[Random.Range(0, availableCollectiblePrefabs.Count)], 
             parentElement.transform.position,
             Quaternion.identity,
             parentElement.transform);

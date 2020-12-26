@@ -1,7 +1,9 @@
+using pixelook;
 using UnityEngine;
 
 public class FloorRow : MonoBehaviour, IFloorGroup
 {
+    [SerializeField] private SpawnSetup spawnSetup;
     [SerializeField] private float moveTime = 0.5f;
     
     private int size = 1;
@@ -14,6 +16,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
     private float _currentTime;
 
     public FloorElement[] FloorElements { get; private set; }
+    public SpawnSetup SpawnSetup => spawnSetup;
 
     public void Awake()
     {
@@ -23,6 +26,9 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
     public void Start()
     {
+        GameState.SpawnedRowsCount += 1;
+        print($"Spawned count: {GameState.SpawnedRowsCount}");
+        
         if (_collectibleSpawner != null)
             _collectibleSpawner.Spawn(this);
     }

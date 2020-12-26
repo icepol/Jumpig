@@ -14,6 +14,8 @@
                 EventManager.TriggerEvent(Events.SCORE_CHANGED);
             }
         }
+        
+        public static int SpawnedRowsCount { get; set; }
 
         public static void Reset()
         {

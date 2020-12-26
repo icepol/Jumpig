@@ -203,5 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 727efc3ed397c4baabb3056de6169533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnSetup: {fileID: 11400000, guid: f86692bfb72d94f47a324bc336332ef6, type: 2}
   scorePoints: 10
   collectedEffect: {fileID: 306484354556389829, guid: b6efac14fed5b4ea6bc8e899449ad9a0, type: 3}
