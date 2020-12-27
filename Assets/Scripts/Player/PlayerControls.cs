@@ -1,4 +1,3 @@
-using System;
 using pixelook;
 using UnityEngine;
 
@@ -6,7 +5,8 @@ public class PlayerControls : MonoBehaviour
 {
     private IPlayerMovement _playerMovement;
 
-    private bool isEnabled;
+    private bool _isEnabled;
+    private bool _isPlayerDead;
     
     private void Awake()
     {
@@ -18,6 +18,7 @@ public class PlayerControls : MonoBehaviour
         EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
         EventManager.AddListener(Events.SINGLE_TAP, OnSingleTap);
         EventManager.AddListener(Events.DOUBLE_TAP, OnDoubleTap);
+        EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
     private void Start()
@@ -33,8 +34,16 @@ public class PlayerControls : MonoBehaviour
         EventManager.RemoveListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
         EventManager.RemoveListener(Events.SINGLE_TAP, OnSingleTap);
         EventManager.RemoveListener(Events.DOUBLE_TAP, OnDoubleTap);
+        EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
     }
-    
+
+    private void OnPlayerDied()
+    {
+        _isPlayerDead = true;
+        
+        DisableController();
+    }
+
     private void OnFloorMoveFinished()
     {
         EnableController();
@@ -57,27 +66,29 @@ public class PlayerControls : MonoBehaviour
 
     private void OnDoubleTap(Vector3 position)
     {
-        if (isEnabled)
+        if (_isEnabled)
             _playerMovement.MoveTo(position);
     }
 
     private void OnSingleTap(Vector3 position)
     {
-        if (isEnabled)
+        if (_isEnabled)
             _playerMovement.MoveTo(position);
     }
     
     void EnableController()
     {
+        if (_isPlayerDead) return;
+        
         // TODO: change animation
         
-        isEnabled = true;
+        _isEnabled = true;
     }
 
     void DisableController()
     {
         // TODO: change animation
         
-        isEnabled = false;
+        _isEnabled = false;
     }
 }
