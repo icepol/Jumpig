@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefabs:
   - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
+  - {fileID: 6681012494745517332, guid: e646b106d20ca457989bc14eef3b87f0, type: 3}
   collectibleRatio: 0.2
 --- !u!1001 &324770935875059147
 PrefabInstance:

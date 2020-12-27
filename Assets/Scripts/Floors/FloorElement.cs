@@ -7,6 +7,8 @@ public class FloorElement : MonoBehaviour
     private Rigidbody _rigidbody;
     private BoxCollider _boxCollider;
 
+    private bool _isFalling;
+
     private void Awake()
     {
         _delayAnimation = GetComponent<DelayAnimation>();
@@ -23,6 +25,10 @@ public class FloorElement : MonoBehaviour
 
     public void StartFalling()
     {
+        if (_isFalling) return;
+
+        _isFalling = true;
+        
         _boxCollider.enabled = false;
         _rigidbody.isKinematic = false;
         _rigidbody.AddForce(Vector3.down * Random.Range(100f, 150f));

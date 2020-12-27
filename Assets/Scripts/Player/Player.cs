@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     private Rigidbody _rigidbody;
     
     private int _floorLayerMask;
-    private bool isGameRunning;
+    private bool _isGameRunning;
 
     private void Awake()
     {
@@ -30,9 +30,9 @@ public class Player : MonoBehaviour
 
     private void OnPlayerJumpStarted()
     {
-        if (!isGameRunning)
+        if (!_isGameRunning)
         {
-            isGameRunning = true;
+            _isGameRunning = true;
             GameState.Reset();
         }
         
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         {
             transform.parent = hit.transform;
 
-            if (!isGameRunning) return;
+            if (!_isGameRunning) return;
             
             GameState.Score += 5;
 
