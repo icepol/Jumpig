@@ -34,6 +34,8 @@ public class Floor : MonoBehaviour
     private void Start()
     {
         AddSpawnedRows(GetComponentsInChildren<FloorRow>());
+        
+        EventManager.TriggerEvent(Events.INIT_FLOOR_STARTED);
         InitializeFloor();
     }
 
@@ -120,7 +122,9 @@ public class Floor : MonoBehaviour
         {
             row.StartMovingForward();
 
-            _currentMoveRowsDelay = 0.8f * _currentMoveRowsDelay;
+            if (!(moveRowsDelay > 0)) continue;
+            
+            _currentMoveRowsDelay = 0.6f * _currentMoveRowsDelay;
             yield return new WaitForSeconds(_currentMoveRowsDelay);
         }
         

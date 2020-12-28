@@ -4,32 +4,28 @@ using UnityEngine;
 public class MovingLight : MonoBehaviour
 {
     private Animator _animator;
-    private bool _isFloorInitialized;
-    
+
     void Awake()
     {
         _animator = GetComponent<Animator>();
         
-        EventManager.AddListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
+        EventManager.AddListener(Events.INIT_FLOOR_STARTED, OnInitFloorStarted);
         EventManager.AddListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
     }
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
+        EventManager.RemoveListener(Events.INIT_FLOOR_STARTED, OnInitFloorStarted);
         EventManager.RemoveListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
     }
 
-    private void OnInitFloorFinished()
+    private void OnInitFloorStarted()
     {
-        _isFloorInitialized = true;
+        _animator.SetTrigger("Move");
     }
 
     private void OnFloorMoveStarted()
     {
-        if (!_isFloorInitialized)
-            return;
-        
         _animator.SetTrigger("Move");
     }
 }

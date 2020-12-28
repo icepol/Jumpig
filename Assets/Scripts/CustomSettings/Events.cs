@@ -5,6 +5,7 @@
         public const string FLOOR_MOVE_FINISHED = "FloorMoveFinished";
         public const string FLOOR_MOVE_STARTED = "FloorMoveStarted";
         public const string FLOOR_FALL_STARTED = "FloorFallStarted";
+        public const string INIT_FLOOR_STARTED = "InitFloorStarted";
         public const string INIT_FLOOR_FINISHED = "InitFloorFinished";
         
         public const string SINGLE_TAP = "SingleTap";
