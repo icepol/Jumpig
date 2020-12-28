@@ -12,6 +12,10 @@ public class ObstacleSpawner : MonoBehaviour
         if (obstacleRatio <= 0 || Random.Range(0f, 1f) > obstacleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Count)];
+        
+        if (!parentElement.IsFreeForAddon) return;
+
+        parentElement.IsFreeForAddon = false;
 
         List<Obstacle> availableCollectiblePrefabs =
             obstaclePrefabs.Where(item => item.SpawnSetup.IsAvailable).ToList();

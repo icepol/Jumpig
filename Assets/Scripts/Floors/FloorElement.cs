@@ -8,6 +8,8 @@ public class FloorElement : MonoBehaviour
     private BoxCollider _boxCollider;
 
     private bool _isFalling;
+    
+    public bool IsFreeForAddon { get; set; }
 
     private void Awake()
     {
@@ -16,6 +18,8 @@ public class FloorElement : MonoBehaviour
         _boxCollider = GetComponent<BoxCollider>();
         
         _delayAnimation.enabled = false;
+
+        IsFreeForAddon = true;
     }
 
     public void StartShaking()

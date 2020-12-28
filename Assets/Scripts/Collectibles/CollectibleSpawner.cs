@@ -12,6 +12,10 @@ public class CollectibleSpawner : MonoBehaviour
         if (collectibleRatio <= 0 || Random.Range(0f, 1f) > collectibleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Count)];
+        
+        if (!parentElement.IsFreeForAddon) return;
+
+        parentElement.IsFreeForAddon = false;
 
         List<Collectible> availableCollectiblePrefabs =
             collectiblePrefabs.Where(item => item.SpawnSetup.IsAvailable).ToList();
