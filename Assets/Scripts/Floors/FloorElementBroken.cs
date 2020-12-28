@@ -6,6 +6,7 @@ public class FloorElementBroken : MonoBehaviour
 {
     [SerializeField] float timeForJump = 1;
 
+    private DelayAnimation _delayAnimation;
     private FloorElement _floorElement;
     
     void Awake()
@@ -15,6 +16,9 @@ public class FloorElementBroken : MonoBehaviour
 
     private void Start()
     {
+        _delayAnimation = GetComponent<DelayAnimation>();
+        _delayAnimation.enabled = true;
+        
         _floorElement = GetComponent<FloorElement>();
     }
 

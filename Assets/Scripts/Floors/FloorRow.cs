@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using pixelook;
 using UnityEngine;
 
@@ -9,28 +11,33 @@ public class FloorRow : MonoBehaviour, IFloorGroup
     private int size = 1;
 
     private CollectibleSpawner _collectibleSpawner;
+    private ObstacleSpawner _obstacleSpawner;
 
     private bool _isMovingForward;
     private Vector3 _oldPosition;
     private Vector3 _newPosition;
     private float _currentTime;
 
-    public FloorElement[] FloorElements { get; private set; }
+    public List<FloorElement> FloorElements { get; private set; }
     public SpawnSetup SpawnSetup => spawnSetup;
 
     public void Awake()
     {
-        FloorElements = GetComponentsInChildren<FloorElement>();
+        FloorElements = GetComponentsInChildren<FloorElement>().ToList();
+        
         _collectibleSpawner = GetComponent<CollectibleSpawner>();
+        _obstacleSpawner = GetComponent<ObstacleSpawner>();
     }
 
     public void Start()
     {
         GameState.SpawnedRowsCount += 1;
-        print($"Spawned count: {GameState.SpawnedRowsCount}");
-        
+
         if (_collectibleSpawner != null)
             _collectibleSpawner.Spawn(this);
+        
+        if (_obstacleSpawner != null)
+            _obstacleSpawner.Spawn(this);
     }
     
     public void Update()

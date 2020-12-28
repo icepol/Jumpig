@@ -33,11 +33,7 @@ public class Floor : MonoBehaviour
 
     private void Start()
     {
-        foreach (FloorRowGroup floorGroup in GetComponentsInChildren<FloorRowGroup>())
-        {
-            AddSpawnedRows(floorGroup.Rows());
-        }
-
+        AddSpawnedRows(GetComponentsInChildren<FloorRow>());
         InitializeFloor();
     }
 

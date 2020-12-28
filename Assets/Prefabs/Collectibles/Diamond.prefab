@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSetup: {fileID: 11400000, guid: 567cc5093b1de443681926e20ecabca9, type: 2}
-  scorePoints: 15
+  scorePoints: 50
   collectedEffect: {fileID: 306484354556389829, guid: b6efac14fed5b4ea6bc8e899449ad9a0, type: 3}
 --- !u!1 &8153126885149296948
 GameObject:

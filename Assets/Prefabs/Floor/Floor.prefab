@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1921a417ce19c4027bfe4f0c561e6dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpawningPosition: 3
+  startSpawningPosition: 4
   floorGroups:
   - {fileID: 5999976295226104363, guid: 9d294046ff38d45d6bc3c64b70d67346, type: 3}
   - {fileID: 5999976295226104363, guid: 8a5fbe2def1af4f41ae0b4ac187df515, type: 3}
@@ -72,6 +72,8 @@ MonoBehaviour:
   - {fileID: 5999976295226104363, guid: 95ae346d8e0f14e5da2f458c90617d88, type: 3}
   - {fileID: 5999976295226104363, guid: 430131cd2830e408683cf33480d7a95e, type: 3}
   - {fileID: 5999976295226104363, guid: 78d3d327281564efabf7955cddd274f5, type: 3}
+  - {fileID: 5999976295226104363, guid: 78dcfa2e7f60d4794af175cb568ab9fa, type: 3}
+  - {fileID: 5999976295226104363, guid: 5d1b7bcaa6f9248c2904489c101b4f42, type: 3}
 --- !u!1001 &2781124830313127222
 PrefabInstance:
   m_ObjectHideFlags: 0
