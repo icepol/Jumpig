@@ -1,3 +1,4 @@
+using System;
 using pixelook;
 using UnityEngine;
 
@@ -5,11 +6,18 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
 {
     [SerializeField] private float movementDuration = 1;
 
+    private Animator _animator;
+    
     private float _currentMovementDuration;
     private Vector3 _oldPosition;
     private Vector3 _newPosition;
     private bool _isMoving;
-    
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         MoveStep();
@@ -37,5 +45,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
         _newPosition = _oldPosition + position;
         _currentMovementDuration = 0;
         _isMoving = true;
+        
+        _animator.SetTrigger("Jump");
     }
 }
