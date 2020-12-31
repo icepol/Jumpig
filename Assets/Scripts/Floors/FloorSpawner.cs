@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using pixelook;
 using UnityEngine;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 public class FloorSpawner : MonoBehaviour, IFloorSpawner
 {
@@ -11,10 +14,13 @@ public class FloorSpawner : MonoBehaviour, IFloorSpawner
     private float _nextPosition;
     private IFloorGroup _lastGroup;
 
-    private void Start()
+    private void Awake()
     {
         _nextPosition = startSpawningPosition;
-        
+    }
+
+    private void Start()
+    {
         EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
     }
 

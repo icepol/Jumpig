@@ -20,6 +20,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
     public List<FloorElement> FloorElements { get; private set; }
     public SpawnSetup SpawnSetup => spawnSetup;
+    public bool IsLast { get; set; }
 
     public void Awake()
     {
@@ -48,8 +49,12 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
         _currentTime += Time.deltaTime;
 
-        if (transform.position == _newPosition)
-            _isMovingForward = false;
+        if (transform.position != _newPosition) return;
+        
+        _isMovingForward = false;
+        
+        if (IsLast)
+            EventManager.TriggerEvent(Events.FLOOR_MOVE_FINISHED);
     }
 
     public void StartShaking()

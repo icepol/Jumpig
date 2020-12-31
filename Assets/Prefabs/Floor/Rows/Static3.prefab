@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnSetup: {fileID: 11400000, guid: 567cc5093b1de443681926e20ecabca9, type: 2}
-  moveTime: 0.25
+  moveTime: 0.1
 --- !u!114 &-7370360231098817542
 MonoBehaviour:
   m_ObjectHideFlags: 0

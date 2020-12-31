@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using pixelook;
 using UnityEngine;
 
@@ -18,6 +17,7 @@ public class Floor : MonoBehaviour
     private List<FloorRow> _spawnedRows = new List<FloorRow>();
     private Coroutine _waitMoveAndSpawnCoroutine;
     private bool _isInitialized;
+    private bool _isPlayerDead;
 
     private float _currentSpawnDelay;
     private float _currentMoveRowsDelay;
@@ -29,6 +29,7 @@ public class Floor : MonoBehaviour
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
+        EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
     }
 
     private void Start()
@@ -50,6 +51,13 @@ public class Floor : MonoBehaviour
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
+        EventManager.RemoveListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
+    }
+    
+    private void OnFloorMoveFinished()
+    {
+        if (!_isPlayerDead)
+            _waitMoveAndSpawnCoroutine = StartCoroutine(WaitMoveAndSpawn());
     }
 
     private void OnPlayerDied()
@@ -120,6 +128,7 @@ public class Floor : MonoBehaviour
         _currentMoveRowsDelay = moveRowsDelay;
         foreach (FloorRow row in _spawnedRows)
         {
+            row.IsLast = false;
             row.StartMovingForward();
 
             if (!(moveRowsDelay > 0)) continue;
@@ -127,13 +136,10 @@ public class Floor : MonoBehaviour
             _currentMoveRowsDelay = 0.6f * _currentMoveRowsDelay;
             yield return new WaitForSeconds(_currentMoveRowsDelay);
         }
+
+        _spawnedRows[_spawnedRows.Count - 1].IsLast = true;
         
         Destroy(firstRow.gameObject);
-
-        EventManager.TriggerEvent(Events.FLOOR_MOVE_FINISHED);
-
-        // start again
-        _waitMoveAndSpawnCoroutine = StartCoroutine(WaitMoveAndSpawn());
     }
 
     private int AddSpawnedRows(FloorRow[] spawnedRows)
