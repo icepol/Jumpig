@@ -4,7 +4,7 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour, ICollisionHandler
 {
     [SerializeField] private SpawnSetup spawnSetup;
-    [SerializeField] private ParticleSystem dieEffect;
+    [SerializeField] private ParticleSystem onCollisionParticle;
     
     public SpawnSetup SpawnSetup => spawnSetup;
     
@@ -12,9 +12,10 @@ public class Obstacle : MonoBehaviour, ICollisionHandler
     {
         if (other.GetComponentInParent<Player>() == null) return;
         
-        if (dieEffect != null)
-            Instantiate(dieEffect, transform.position, Quaternion.identity);
+        if (onCollisionParticle != null)
+            Instantiate(onCollisionParticle, transform.position, Quaternion.identity);
 
         EventManager.TriggerEvent(Events.PLAYER_DIED);
+        EventManager.TriggerEvent(Events.PLAYER_COLLIDED_OBSTACLE);
     }
 }

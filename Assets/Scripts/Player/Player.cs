@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem onPlayerCollidedObstacleParticle;
+    
     private Rigidbody _rigidbody;
     
     private int _floorLayerMask;
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
         EventManager.AddListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.AddListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
+        EventManager.AddListener(Events.PLAYER_COLLIDED_OBSTACLE, OnPlayerCollidedObstacle);
     }
 
     private void OnDestroy()
@@ -26,6 +29,15 @@ public class Player : MonoBehaviour
         EventManager.RemoveListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.RemoveListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
+        EventManager.RemoveListener(Events.PLAYER_COLLIDED_OBSTACLE, OnPlayerCollidedObstacle);
+    }
+
+    private void OnPlayerCollidedObstacle()
+    {
+        if (onPlayerCollidedObstacleParticle != null)
+            Instantiate(onPlayerCollidedObstacleParticle, transform.position, Quaternion.identity);
+        
+        Destroy(gameObject);
     }
 
     private void OnPlayerJumpStarted()

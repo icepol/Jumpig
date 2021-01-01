@@ -12,10 +12,13 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     private Vector3 _oldPosition;
     private Vector3 _newPosition;
     private bool _isMoving;
+    private bool _isPlayerDead;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        
+        EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
     private void Update()
@@ -23,9 +26,19 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
         MoveStep();
     }
 
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
+    }
+
+    private void OnPlayerDied()
+    {
+        _isPlayerDead = true;
+    }
+
     public void MoveStep()
     {
-        if (!_isMoving) return;
+        if (!_isMoving || _isPlayerDead) return;
         
         _currentMovementDuration += Time.deltaTime;
         transform.position = Vector3.Lerp(_oldPosition, _newPosition, _currentMovementDuration / movementDuration);
