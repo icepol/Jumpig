@@ -47,10 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAndSpawnDelay: 0.2
   initSpawnCount: 30
-  initSpawnDelay: 0.01
+  initSpawnDelay: 0
   shakeDelay: 2
   removePlatformsDelay: 1
-  moveRowsDelay: 0.02
+  moveRowsDelay: 0
 --- !u!114 &6428541654489674548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1921a417ce19c4027bfe4f0c561e6dc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSpawningPosition: 4
+  startSpawningPosition: 3
   floorGroups:
   - {fileID: 5999976295226104363, guid: 9d294046ff38d45d6bc3c64b70d67346, type: 3}
   - {fileID: 5999976295226104363, guid: 8a5fbe2def1af4f41ae0b4ac187df515, type: 3}
