@@ -287,9 +287,22 @@ namespace GameAnalyticsSDK.Wrapper
             return "";
         }
 
-        private static void subscribeMoPubImpressions()
+        private static string getABTestingId()
         {
-            Debug.Log("subscribeMoPubImpressions()");
+            if (GameAnalytics.SettingsGA.InfoLogEditor)
+            {
+                Debug.Log("getABTestingId()");
+            }
+            return "";
+        }
+
+        private static string getABTestingVariantId()
+        {
+            if (GameAnalytics.SettingsGA.InfoLogEditor)
+            {
+                Debug.Log("getABTestingVariantId()");
+            }
+            return "";
         }
 
         private static void startTimer(string key)
@@ -311,6 +324,21 @@ namespace GameAnalyticsSDK.Wrapper
         {
             Debug.Log("stopTimer(" + key + ")");
             return 0;
+        }
+
+        private static void subscribeMoPubImpressions()
+        {
+            Debug.Log("subscribeMoPubImpressions()");
+        }
+
+        private static void subscribeFyberImpressions()
+        {
+            Debug.Log("subscribeFyberImpressions()");
+        }
+
+        private static void subscribeIronSourceImpressions()
+        {
+            Debug.Log("subscribeIronSourceImpressions()");
         }
 
 #endif
@@ -606,6 +634,16 @@ namespace GameAnalyticsSDK.Wrapper
             return getRemoteConfigsContentAsString();
         }
 
+        public static string GetABTestingId()
+        {
+            return getABTestingId();
+        }
+
+        public static string GetABTestingVariantId()
+        {
+            return getABTestingVariantId();
+        }
+
         private static string DictionaryToJsonString(IDictionary<string, object> dict)
         {
             Hashtable table = new Hashtable();
@@ -617,15 +655,6 @@ namespace GameAnalyticsSDK.Wrapper
                 }
             }
             return GA_MiniJSON.Serialize(table);
-        }
-
-        public static void SubscribeMoPubImpressions()
-        {
-#if UNITY_EDITOR
-            subscribeMoPubImpressions();
-#elif UNITY_IOS || UNITY_ANDROID
-            subscribeMoPubImpressions();
-#endif
         }
 
         // TIMER FUNCTIONS
@@ -664,6 +693,33 @@ namespace GameAnalyticsSDK.Wrapper
             return stopTimer(key);
 #else
             return 0;
+#endif
+        }
+
+        public static void SubscribeMoPubImpressions()
+        {
+#if UNITY_EDITOR
+            subscribeMoPubImpressions();
+#elif UNITY_IOS || UNITY_ANDROID
+            subscribeMoPubImpressions();
+#endif
+        }
+
+        public static void SubscribeFyberImpressions()
+        {
+#if UNITY_EDITOR
+            subscribeFyberImpressions();
+#elif UNITY_IOS || UNITY_ANDROID
+            subscribeFyberImpressions();
+#endif
+        }
+
+        public static void SubscribeIronSourceImpressions()
+        {
+#if UNITY_EDITOR
+            subscribeIronSourceImpressions();
+#elif UNITY_IOS || UNITY_ANDROID
+            subscribeIronSourceImpressions();
 #endif
         }
     }

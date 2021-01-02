@@ -14,6 +14,9 @@ namespace GameAnalyticsSDK.Wrapper
         private static readonly AndroidJavaClass GA = new AndroidJavaClass("com.gameanalytics.sdk.GameAnalytics");
         private static readonly AndroidJavaClass UNITY_GA = new AndroidJavaClass("com.gameanalytics.sdk.unity.UnityGameAnalytics");
         private static readonly AndroidJavaClass GA_IMEI = new AndroidJavaClass("com.gameanalytics.sdk.imei.GAImei");
+#if gameanalytics_mopub_enabled
+        private static readonly AndroidJavaClass MoPubClass = new AndroidJavaClass("com.mopub.unity.MoPubUnityPlugin");
+#endif
 
         private static void configureAvailableCustomDimensions01(string list)
         {
@@ -234,14 +237,14 @@ namespace GameAnalyticsSDK.Wrapper
             return GA.CallStatic<string>("getRemoteConfigsContentAsString");
         }
 
-        private static void subscribeMoPubImpressions()
+        private static string getABTestingId()
         {
-            GAMopubIntegration.ListenForImpressions(ImpressionHandler);
+            return GA.CallStatic<string>("getABTestingId");
         }
 
-        private static void ImpressionHandler(string json)
+        private static string getABTestingVariantId()
         {
-            GA.CallStatic("addImpressionMoPubEvent", json);
+            return GA.CallStatic<string>("getABTestingVariantId");
         }
 
         private static void startTimer(string key)
@@ -262,6 +265,51 @@ namespace GameAnalyticsSDK.Wrapper
         private static long stopTimer(string key)
         {
             return GA.CallStatic<long>("stopTimer", key);
+        }
+
+        private static void subscribeMoPubImpressions()
+        {
+            GAMopubIntegration.ListenForImpressions(MopubImpressionHandler);
+        }
+
+        private static void MopubImpressionHandler(string json)
+        {
+#if gameanalytics_mopub_enabled
+            GA.CallStatic("addImpressionMoPubEvent", MoPubClass.CallStatic<string>("getSDKVersion"), json);
+#endif
+        }
+
+        private static void subscribeFyberImpressions()
+        {
+            GAFyberIntegration.ListenForImpressions(FyberImpressionHandler);
+        }
+
+        private static void FyberImpressionHandler(string json)
+        {
+#if gameanalytics_fyber_enabled
+            GA.CallStatic("addImpressionFyberEvent", Fyber.FairBid.Version, json);
+#endif
+        }
+
+        private static void subscribeIronSourceImpressions()
+        {
+            GAIronSourceIntegration.ListenForImpressions(IronSourceImpressionHandler);
+        }
+
+        private static void IronSourceImpressionHandler(string json)
+        {
+#if gameanalytics_ironsource_enabled
+
+            // Remove potential label/tag from version number
+            string v = IronSource.pluginVersion();
+            int index = v.IndexOf("-");
+            if(index >= 0)
+            {
+                v = v.Substring(0, index);
+            }
+
+            GA.CallStatic("addImpressionIronSourceEvent", v, json);
+#endif
         }
 #endif
     }

@@ -25,32 +25,79 @@ MonoBehaviour:
   UserMessagesSubmitted: 0
   UserMessagesFailed: 0
   CustomArea: 
-  gameKey: []
-  secretKey: []
-  Build: []
-  SelectedPlatformOrganization: []
-  SelectedPlatformStudio: []
-  SelectedPlatformGame: []
-  SelectedPlatformGameID: 
-  SelectedOrganization: 
-  SelectedStudio: 
-  SelectedGame: 
-  NewVersion: 6.3.0
-  Changes: '6.3.0
+  gameKey:
+  - 7b3f982922ab47ac3dcbb765fb8c3540
+  - 83ba06c75df4c10b9f5c73723065fe0c
+  - bb7acdc141df67e1b3ed6b7d39a87051
+  secretKey:
+  - 065a36389da10f29bd4ed47dc4459c8514279290
+  - c6d270e8dab1265bdc221f6464d26ec1cf8b8b2a
+  - 625c9749aef393ea87352f7db86987b3351ac4ba
+  Build:
+  - 0.1
+  - 0.1
+  - 0.1
+  SelectedPlatformOrganization:
+  - pixelook
+  - pixelook
+  - 
+  SelectedPlatformStudio:
+  - pixelook
+  - pixelook
+  - 
+  SelectedPlatformGame:
+  - Jumpig
+  - Jumpig Android
+  - 
+  SelectedPlatformGameID: ccee0100cbee0100ffffffff
+  SelectedOrganization: 010000000100000001000000
+  SelectedStudio: 010000000100000001000000
+  SelectedGame: 010000000200000000000000
+  NewVersion: 6.3.5
+  Changes: '6.3.5
 
-    - updated user identifier flow to prepare for iOS 14 IDFA
-    changes (ios)
+    - fixed user log in function in editor for unity 2017
+
+
+    6.3.4
+
+    -
+    fixed null exception happening some times on desktop platforms (mac, linux, windows)
+
+
+    6.3.3
+
+    -
+    updated impression events
+
+
+    6.3.2
+
+    - fixed www build errors on unity
+    2017
+
+
+    6.3.1
+
+    - improved user identifer flow for ios (ios)
+
+
+    6.3.0
+
+    -
+    updated user identifier flow to prepare for iOS 14 IDFA changes (ios)
 
 
     6.2.4
 
-    - fixed progression events with scores (android)
+    -
+    fixed progression events with scores (android)
 
 
     6.2.3
 
-    -
-    editor ui error fix
+    - editor ui error
+    fix
 
 
     6.2.2
@@ -60,8 +107,8 @@ MonoBehaviour:
 
     6.2.1
 
-    - added
-    better error messages for API calls potentially being removed in the future
+    - added better error
+    messages for API calls potentially being removed in the future
 
 
     6.2.0
@@ -70,7 +117,7 @@ MonoBehaviour:
     exposed functions to get AB testing id and variant id'
   SignUpOpen: 0
   StudioName: PiXELOOK
-  GameName: MrClock
+  GameName: Jumpig
   OrganizationName: 
   OrganizationIdentifier: 
   EmailGA: pavel.koci@icepol.net
@@ -87,8 +134,8 @@ MonoBehaviour:
   CustomDimensions03: []
   ResourceItemTypes: []
   ResourceCurrencies: []
-  LastCreatedGamePlatform: 5
-  Platforms: 
+  LastCreatedGamePlatform: 1
+  Platforms: 080000000b00000011000000
   CurrentInspectorState: 1
   ClosedHints: 
   DisplayHints: 0
@@ -115,7 +162,7 @@ MonoBehaviour:
   IncludeGooglePlay: 1
   FpsCriticalThreshold: 20
   FpsCirticalSubmitInterval: 1
-  PlatformFoldOut: 
+  PlatformFoldOut: 010101
   CustomDimensions01FoldOut: 0
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0

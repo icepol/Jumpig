@@ -106,7 +106,7 @@ namespace GameAnalyticsSDK
 
         void OnApplicationQuit()
         {
-#if (!UNITY_EDITOR && !UNITY_IOS && !UNITY_ANDROID && !UNITY_TVOS && !UNITY_WEBGL && !UNITY_TIZEN)
+#if (!UNITY_EDITOR && !UNITY_IOS && !UNITY_ANDROID && !UNITY_TVOS && !UNITY_WEBGL && !UNITY_TIZEN && !UNITY_SWITCH && !UNITY_PS4 && !UNITY_XBOXONE)
 #if (UNITY_WSA)
             onQuit();
 #else
@@ -661,10 +661,15 @@ namespace GameAnalyticsSDK
             return GA_Wrapper.GetRemoteConfigsContentAsString();
         }
 
-        // ----------------------- MOPUB AD IMPRESSIONS ---------------------- //
-        public static void SubscribeMoPubImpressions()
+        // ----------------------- A/B TESTING ---------------------- //
+        public static string GetABTestingId()
         {
-            GA_Wrapper.SubscribeMoPubImpressions();
+            return GA_Wrapper.GetABTestingId();
+        }
+
+        public static string GetABTestingVariantId()
+        {
+            return GA_Wrapper.GetABTestingVariantId();
         }
 
         public static void StartTimer(string key)
@@ -685,6 +690,24 @@ namespace GameAnalyticsSDK
         public static long StopTimer(string key)
         {
             return GA_Wrapper.StopTimer(key);
+        }
+
+        // ----------------------- MOPUB AD IMPRESSIONS ---------------------- //
+        public static void SubscribeMoPubImpressions()
+        {
+            GA_Wrapper.SubscribeMoPubImpressions();
+        }
+
+        // ----------------------- FYBER AD IMPRESSIONS ---------------------- //
+        public static void SubscribeFyberImpressions()
+        {
+            GA_Wrapper.SubscribeFyberImpressions();
+        }
+
+        // ----------------------- IRON SOURCE AD IMPRESSIONS ---------------------- //
+        public static void SubscribeIronSourceImpressions()
+        {
+            GA_Wrapper.SubscribeIronSourceImpressions();
         }
 
         private static string GetUnityVersion()

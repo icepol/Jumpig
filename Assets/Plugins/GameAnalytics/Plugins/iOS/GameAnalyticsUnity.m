@@ -278,11 +278,12 @@ void addAdEvent(int adAction, int adType, const char *adSdkName, const char *adP
                             adPlacement:adPlacementString];
 }
 
-void addImpressionEvent(const char* adNetworkName, const char *json) {
+void addImpressionEvent(const char* adNetworkName, const char* adNetworkVersion, const char *json) {
     NSString *jsonString = json != NULL ? [NSString stringWithUTF8String:json] : nil;
     NSString *adNetworkNameString = adNetworkName != NULL ? [NSString stringWithUTF8String:adNetworkName] : nil;
+    NSString *adNetworkVersionString = adNetworkVersion != NULL ? [NSString stringWithUTF8String:adNetworkVersion] : nil;
 
-    if(jsonString != nil && adNetworkNameString != nil) {
+    if(jsonString != nil && adNetworkNameString != nil && adNetworkVersionString != nil) {
         NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
         NSError *error;
 
@@ -291,7 +292,7 @@ void addImpressionEvent(const char* adNetworkName, const char *json) {
             return;
         }
 
-        [GameAnalytics addImpressionEventWithAdNetworkName:adNetworkNameString impressionData:impressionData];
+        [GameAnalytics addImpressionEventWithAdNetworkName:adNetworkNameString adNetworkVersion:adNetworkVersionString impressionData:impressionData];
     }
 }
 
@@ -363,6 +364,16 @@ BOOL isRemoteConfigsReady() {
 
 char* getRemoteConfigsContentAsString() {
     NSString *result = [GameAnalytics getRemoteConfigsContentAsString];
+    return cStringCopy([result UTF8String]);
+}
+
+char* getABTestingId() {
+    NSString *result = [GameAnalytics getABTestingId];
+    return cStringCopy([result UTF8String]);
+}
+
+char* getABTestingVariantId() {
+    NSString *result = [GameAnalytics getABTestingVariantId];
     return cStringCopy([result UTF8String]);
 }
 

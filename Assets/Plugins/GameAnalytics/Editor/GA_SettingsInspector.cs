@@ -12,7 +12,7 @@ using System;
 using GameAnalyticsSDK.Utilities;
 using GameAnalyticsSDK.Setup;
 using System.Text.RegularExpressions;
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
 using UnityEngine.Networking;
 #endif
 
@@ -720,7 +720,7 @@ namespace GameAnalyticsSDK.Editor
 
                         if (ga.PlatformFoldOut[i])
                         {
-                            if (ga.Organizations != null && ga.Organizations.Count > 0)
+                            if (ga.Organizations != null && ga.Organizations.Count > 0 && i < ga.SelectedOrganization.Count)
                             {
                                 EditorGUILayout.Space();
                                 //Splitter(new Color(0.35f, 0.35f, 0.35f));
@@ -729,7 +729,7 @@ namespace GameAnalyticsSDK.Editor
                                 //GUILayout.Label("", GUILayout.Width(7));
                                 GUILayout.Label(_organizationsLabel, GUILayout.Width(50));
                                 string[] organizationNames = Organization.GetOrganizationNames(ga.Organizations);
-                                if (i >= ga.SelectedOrganization.Count && ga.SelectedOrganization[i] >= organizationNames.Length)
+                                if (ga.SelectedOrganization[i] >= organizationNames.Length)
                                 {
                                     ga.SelectedOrganization[i] = 0;
                                 }
@@ -892,8 +892,6 @@ namespace GameAnalyticsSDK.Editor
                                     GUILayout.EndHorizontal();
 
                                     EditorGUILayout.Space();
-                                    break;
-                                default:
                                     break;
                             }
 
@@ -1569,7 +1567,7 @@ namespace GameAnalyticsSDK.Editor
 
             byte[] data = System.Text.Encoding.UTF8.GetBytes(GA_MiniJSON.Serialize(jsonTable));
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = new UnityWebRequest(_gaUrl + "user", UnityWebRequest.kHttpVerbPOST);
             UploadHandlerRaw uH = new UploadHandlerRaw(data)
             {
@@ -1589,13 +1587,13 @@ namespace GameAnalyticsSDK.Editor
             GA_ContinuationManager.StartCoroutine(SignupUserFrontend(www, ga, signup), () => www.isDone);
         }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
         private static IEnumerator SignupUserFrontend(UnityWebRequest www, GameAnalyticsSDK.Setup.Settings ga, GA_SignUp signup)
 #else
         private static IEnumerator<WWW> SignupUserFrontend(WWW www, Settings ga, GA_SignUp signup)
 #endif
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             yield return www.SendWebRequest();
             while (!www.isDone)
                 yield return null;
@@ -1607,7 +1605,7 @@ namespace GameAnalyticsSDK.Editor
             {
                 IDictionary<string, object> returnParam = null;
                 string error = "";
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 string text = www.downloadHandler.text;
 #else
                 string text = www.text;
@@ -1629,7 +1627,9 @@ namespace GameAnalyticsSDK.Editor
                     }
                 }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
+                if (!(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError))
+#elif UNITY_2017_1_OR_NEWER
                 if (!(www.isNetworkError || www.isHttpError))
 #else
                 if (string.IsNullOrEmpty(www.error))
@@ -1659,6 +1659,14 @@ namespace GameAnalyticsSDK.Editor
                         signup.SignUpComplete();
                     }
                 }
+#if UNITY_5_4_OR_NEWER
+                else if(www.responseCode == 301 || www.responseCode == 404 || www.responseCode == 410)
+                {
+                    Debug.LogError("Failed to sign up. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version: " + www.error + " " + error);
+                    SetLoginStatus("Failed to sign up. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version.", ga);
+                    signup.SignUpFailed();
+                }
+#endif
                 else
                 {
                     Debug.LogError("Failed to sign up: " + www.error + " " + error);
@@ -1682,7 +1690,7 @@ namespace GameAnalyticsSDK.Editor
 
             byte[] data = System.Text.Encoding.UTF8.GetBytes(GA_MiniJSON.Serialize(jsonTable));
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = new UnityWebRequest(_gaUrl + "token", UnityWebRequest.kHttpVerbPOST);
             UploadHandlerRaw uH = new UploadHandlerRaw(data)
             {
@@ -1702,13 +1710,13 @@ namespace GameAnalyticsSDK.Editor
             GA_ContinuationManager.StartCoroutine(LoginUserFrontend(www, ga), () => www.isDone);
         }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
         private static IEnumerator LoginUserFrontend(UnityWebRequest www, GameAnalyticsSDK.Setup.Settings ga)
 #else
         private static IEnumerator<WWW> LoginUserFrontend(WWW www, Settings ga)
 #endif
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             yield return www.SendWebRequest();
             while (!www.isDone)
                 yield return null;
@@ -1720,7 +1728,7 @@ namespace GameAnalyticsSDK.Editor
             {
                 string error = "";
                 IDictionary<string, object> returnParam = null;
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 string text = www.downloadHandler.text;
 #else
                 string text = www.text;
@@ -1743,7 +1751,9 @@ namespace GameAnalyticsSDK.Editor
                     }
                 }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
+                if (!(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError))
+#elif UNITY_2017_1_OR_NEWER
                 if (!(www.isNetworkError || www.isHttpError))
 #else
                 if (string.IsNullOrEmpty(www.error))
@@ -1766,6 +1776,13 @@ namespace GameAnalyticsSDK.Editor
                         GetUserData(ga);
                     }
                 }
+#if UNITY_5_4_OR_NEWER
+                else if (www.responseCode == 301 || www.responseCode == 404 || www.responseCode == 410)
+                {
+                    Debug.LogError("Failed to login. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version: " + www.error + " " + error);
+                    SetLoginStatus("Failed to login. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version.", ga);
+                }
+#endif
                 else
                 {
                     Debug.LogError("Failed to login: " + www.error + " " + error);
@@ -1781,7 +1798,7 @@ namespace GameAnalyticsSDK.Editor
 
         private static void GetUserData(GameAnalyticsSDK.Setup.Settings ga)
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = UnityWebRequest.Get(_gaUrl + "user");
             Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
             foreach (KeyValuePair<string, string> entry in headers)
@@ -1794,13 +1811,13 @@ namespace GameAnalyticsSDK.Editor
             GA_ContinuationManager.StartCoroutine(GetUserDataFrontend(www, ga), () => www.isDone);
         }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
         private static IEnumerator GetUserDataFrontend(UnityWebRequest www, GameAnalyticsSDK.Setup.Settings ga)
 #else
         private static IEnumerator<WWW> GetUserDataFrontend(WWW www, Settings ga)
 #endif
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             yield return www.SendWebRequest();
             while (!www.isDone)
                 yield return null;
@@ -1812,7 +1829,7 @@ namespace GameAnalyticsSDK.Editor
             {
                 IDictionary<string, object> returnParam = null;
                 string error = "";
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 string text = www.downloadHandler.text;
 #else
                 string text = www.text;
@@ -1834,7 +1851,9 @@ namespace GameAnalyticsSDK.Editor
                     }
                 }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
+                if (!(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError))
+#elif UNITY_2017_1_OR_NEWER
                 if (!(www.isNetworkError || www.isHttpError))
 #else
                 if (string.IsNullOrEmpty(www.error))
@@ -1911,6 +1930,13 @@ namespace GameAnalyticsSDK.Editor
                         ga.CurrentInspectorState = GameAnalyticsSDK.Setup.Settings.InspectorStates.Basic;
                     }
                 }
+#if UNITY_5_4_OR_NEWER
+                else if (www.responseCode == 301 || www.responseCode == 404 || www.responseCode == 410)
+                {
+                    Debug.LogError("Failed to get data. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version: " + www.error + " " + error);
+                    SetLoginStatus("Failed to get data. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version.", ga);
+                }
+#endif
                 else
                 {
                     Debug.LogError("Failed to get user data: " + www.error + " " + error);
@@ -1946,7 +1972,7 @@ namespace GameAnalyticsSDK.Editor
             byte[] data = System.Text.Encoding.UTF8.GetBytes(GA_MiniJSON.Serialize(jsonTable));
 
             string url = _gaUrl + "studios/" + ga.Organizations[organizationIndex].Studios[studioIndex].ID + "/games";
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = new UnityWebRequest(url, UnityWebRequest.kHttpVerbPOST);
             UploadHandlerRaw uH = new UploadHandlerRaw(data)
             {
@@ -1965,13 +1991,13 @@ namespace GameAnalyticsSDK.Editor
             GA_ContinuationManager.StartCoroutine(CreateGameFrontend(www, ga, signup, platform, appFiguresGame), () => www.isDone);
         }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
         private static IEnumerator CreateGameFrontend(UnityWebRequest www, GameAnalyticsSDK.Setup.Settings ga, GA_SignUp signup, RuntimePlatform platform, AppFiguresGame appFiguresGame)
 #else
         private static IEnumerator<WWW> CreateGameFrontend(WWW www, Settings ga, GA_SignUp signup, RuntimePlatform platform, AppFiguresGame appFiguresGame)
 #endif
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             yield return www.SendWebRequest();
             while (!www.isDone)
                 yield return null;
@@ -1983,7 +2009,7 @@ namespace GameAnalyticsSDK.Editor
             {
                 IDictionary<string, object> returnParam = null;
                 string error = "";
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 string text = www.downloadHandler.text;
 #else
                 string text = www.text;
@@ -2005,7 +2031,9 @@ namespace GameAnalyticsSDK.Editor
                     }
                 }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
+                if (!(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError))
+#elif UNITY_2017_1_OR_NEWER
                 if (!(www.isNetworkError || www.isHttpError))
 #else
                 if (string.IsNullOrEmpty(www.error))
@@ -2024,6 +2052,13 @@ namespace GameAnalyticsSDK.Editor
                         signup.CreateGameComplete();
                     }
                 }
+#if UNITY_5_4_OR_NEWER
+                else if (www.responseCode == 301 || www.responseCode == 404 || www.responseCode == 410)
+                {
+                    Debug.LogError("Failed to create game. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version: " + www.error + " " + error);
+                    SetLoginStatus("Failed to create game. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version.", ga);
+                }
+#endif
                 else
                 {
                     Debug.LogError("Failed to create game: " + www.error + " " + error);
@@ -2041,7 +2076,7 @@ namespace GameAnalyticsSDK.Editor
 
         public static void GetAppFigures(GameAnalyticsSDK.Setup.Settings ga, GA_SignUp signup)
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = UnityWebRequest.Get(_gaUrl + "apps/search?query=" + UnityWebRequest.EscapeURL(ga.GameName));
             Dictionary<string, string> headers = GA_EditorUtilities.WWWHeadersWithAuthorization(ga.TokenGA);
             foreach (KeyValuePair<string, string> pair in headers)
@@ -2056,7 +2091,7 @@ namespace GameAnalyticsSDK.Editor
 
             if (ga.AmazonIcon == null)
             {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 UnityWebRequest wwwAmazon = UnityWebRequestTexture.GetTexture("http://public.gameanalytics.com/resources/images/sdk_doc/appstore_icons/amazon.png");
                 GA_ContinuationManager.StartCoroutine(signup.GetAppStoreIconTexture(wwwAmazon, "amazon_appstore", signup), () => wwwAmazon.isDone);
 #else
@@ -2067,7 +2102,7 @@ namespace GameAnalyticsSDK.Editor
 
             if (ga.GooglePlayIcon == null)
             {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 UnityWebRequest wwwGoogle = UnityWebRequestTexture.GetTexture("http://public.gameanalytics.com/resources/images/sdk_doc/appstore_icons/google_play.png");
                 GA_ContinuationManager.StartCoroutine(signup.GetAppStoreIconTexture(wwwGoogle, "google_play", signup), () => wwwGoogle.isDone);
 #else
@@ -2078,7 +2113,7 @@ namespace GameAnalyticsSDK.Editor
 
             if (ga.iosIcon == null)
             {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 UnityWebRequest wwwIos = UnityWebRequestTexture.GetTexture("http://public.gameanalytics.com/resources/images/sdk_doc/appstore_icons/ios.png");
                 GA_ContinuationManager.StartCoroutine(signup.GetAppStoreIconTexture(wwwIos, "apple:ios", signup), () => wwwIos.isDone);
 #else
@@ -2089,7 +2124,7 @@ namespace GameAnalyticsSDK.Editor
 
             if (ga.macIcon == null)
             {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 UnityWebRequest wwwMac = UnityWebRequestTexture.GetTexture("http://public.gameanalytics.com/resources/images/sdk_doc/appstore_icons/mac.png");
                 GA_ContinuationManager.StartCoroutine(signup.GetAppStoreIconTexture(wwwMac, "apple:mac", signup), () => wwwMac.isDone);
 #else
@@ -2100,7 +2135,7 @@ namespace GameAnalyticsSDK.Editor
 
             if (ga.windowsPhoneIcon == null)
             {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 UnityWebRequest wwwWindowsPhone = UnityWebRequestTexture.GetTexture("http://public.gameanalytics.com/resources/images/sdk_doc/appstore_icons/windows_phone.png");
                 GA_ContinuationManager.StartCoroutine(signup.GetAppStoreIconTexture(wwwWindowsPhone, "windows_phone", signup), () => wwwWindowsPhone.isDone);
 #else
@@ -2110,13 +2145,13 @@ namespace GameAnalyticsSDK.Editor
             }
         }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
         private static IEnumerator GetAppFiguresFrontend(UnityWebRequest www, GameAnalyticsSDK.Setup.Settings ga, GA_SignUp signup, string gameName)
 #else
         private static IEnumerator<WWW> GetAppFiguresFrontend(WWW www, Settings ga, GA_SignUp signup, string gameName)
 #endif
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             yield return www.SendWebRequest();
             while (!www.isDone)
                 yield return null;
@@ -2129,7 +2164,7 @@ namespace GameAnalyticsSDK.Editor
                 IDictionary<string, object> returnParam = null;
                 string error = "";
                 string text;
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                 text = www.downloadHandler.text;
 #else
                 text = www.text;
@@ -2151,7 +2186,9 @@ namespace GameAnalyticsSDK.Editor
                     }
                 }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
+                if (!(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError))
+#elif UNITY_2017_1_OR_NEWER
                 if (!(www.isNetworkError || www.isHttpError))
 #else
                 if (string.IsNullOrEmpty(www.error))
@@ -2189,7 +2226,7 @@ namespace GameAnalyticsSDK.Editor
                 else
                 {
                     // expired tokens / not signed in
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                     if (www.responseCode == 401)
 #else
                     if (www.responseHeaders["status"] != null && www.responseHeaders["status"].Contains("401"))
@@ -2201,6 +2238,13 @@ namespace GameAnalyticsSDK.Editor
                         SetLoginStatus(message, ga);
                         Debug.LogError(message);
                     }
+#if UNITY_5_4_OR_NEWER
+                    else if (www.responseCode == 301 || www.responseCode == 404 || www.responseCode == 410)
+                    {
+                        Debug.LogError("Failed to find app. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version: " + www.error + " " + error);
+                        SetLoginStatus("Failed to find app. GameAnalytics request not successful. API was changed. Please update your SDK to the latest version.", ga);
+                    }
+#endif
                     else
                     {
                         Debug.LogError("Failed to find app: " + www.error + " " + text);
@@ -2257,10 +2301,6 @@ namespace GameAnalyticsSDK.Editor
             else if (ga.IsGameKeyValid(platform, ga.Organizations[ga.SelectedOrganization[platform] - 1].Studios[ga.SelectedStudio[platform] - 1].Games[index - 1].GameKey) &&
                ga.IsSecretKeyValid(platform, ga.Organizations[ga.SelectedOrganization[platform] - 1].Studios[ga.SelectedStudio[platform] - 1].Games[index - 1].SecretKey))
             {
-                foreach(var o in ga.Organizations)
-                {
-                    Debug.Log(o.Name + ", " + o.ID);
-                }
                 ga.SelectedPlatformOrganization[platform] = ga.Organizations[ga.SelectedOrganization[platform] - 1].Name;
                 ga.SelectedPlatformStudio[platform] = ga.Organizations[ga.SelectedOrganization[platform] - 1].Studios[ga.SelectedStudio[platform] - 1].Name;
                 ga.SelectedPlatformGame[platform] = ga.Organizations[ga.SelectedOrganization[platform] - 1].Studios[ga.SelectedStudio[platform] - 1].Games[index - 1].Name;
@@ -2298,7 +2338,7 @@ namespace GameAnalyticsSDK.Editor
             }
 
             GameAnalyticsSDK.Setup.Settings.CheckingForUpdates = true;
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = UnityWebRequest.Get("https://s3.amazonaws.com/public.gameanalytics.com/sdk_status/current.json");
 #else
             WWW www = new WWW("https://s3.amazonaws.com/public.gameanalytics.com/sdk_status/current.json");
@@ -2308,7 +2348,7 @@ namespace GameAnalyticsSDK.Editor
 
         private static void GetChangeLogsAndShowUpdateWindow(string newVersion)
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             UnityWebRequest www = UnityWebRequest.Get("https://s3.amazonaws.com/public.gameanalytics.com/sdk_status/change_logs.json");
 #else
             WWW www = new WWW("https://s3.amazonaws.com/public.gameanalytics.com/sdk_status/change_logs.json");
@@ -2316,13 +2356,13 @@ namespace GameAnalyticsSDK.Editor
             GA_ContinuationManager.StartCoroutine(GetChangeLogsAndShowUpdateWindowCoroutine(www, newVersion), () => www.isDone);
         }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
         private static IEnumerator CheckForUpdatesCoroutine(UnityWebRequest www)
 #else
         private static IEnumerator CheckForUpdatesCoroutine(WWW www)
 #endif
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             yield return www.SendWebRequest();
             while (!www.isDone)
                 yield return null;
@@ -2332,14 +2372,16 @@ namespace GameAnalyticsSDK.Editor
 
             try
             {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
+                if (!(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError))
+#elif UNITY_2017_1_OR_NEWER
                 if (!(www.isNetworkError || www.isHttpError))
 #else
                 if (string.IsNullOrEmpty(www.error))
 #endif
                 {
                     string text;
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                     text = www.downloadHandler.text;
 #else
                     text = www.text;
@@ -2366,13 +2408,13 @@ namespace GameAnalyticsSDK.Editor
             }
         }
 
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
         private static IEnumerator GetChangeLogsAndShowUpdateWindowCoroutine(UnityWebRequest www, string newVersion)
 #else
         private static IEnumerator<WWW> GetChangeLogsAndShowUpdateWindowCoroutine(WWW www, string newVersion)
 #endif
         {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
             yield return www.SendWebRequest();
             while (!www.isDone)
                 yield return null;
@@ -2382,14 +2424,16 @@ namespace GameAnalyticsSDK.Editor
 
             try
             {
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2020_1_OR_NEWER
+                if (!(www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError))
+#elif UNITY_2017_1_OR_NEWER
                 if (!(www.isNetworkError || www.isHttpError))
 #else
                 if (string.IsNullOrEmpty(www.error))
 #endif
                 {
                     string text;
-#if UNITY_2018_3_OR_NEWER
+#if UNITY_2017_1_OR_NEWER
                     text = www.downloadHandler.text;
 #else
                     text = www.text;
