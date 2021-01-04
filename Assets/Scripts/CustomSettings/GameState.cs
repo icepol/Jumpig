@@ -15,11 +15,14 @@
             }
         }
         
+        public static int Distance { get; set; }
+
         public static int SpawnedRowsCount { get; set; }
 
         public static void Reset()
         {
             _score = 0;
+            Distance = 0;
         }
     }
 }

@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
             if (!_isGameRunning) return;
             
             GameState.Score += 5;
+            GameState.Distance++;
 
             EventManager.TriggerEvent(Events.PLAYER_MOVEMENT_FINISHED);
         }

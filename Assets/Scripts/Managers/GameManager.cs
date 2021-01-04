@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "World_1", GameState.Score);
         
         GameServices.ReportScore(Constants.TopScoreLeaderBoardId, GameState.Score);
+        GameServices.ReportScore(Constants.TopDistanceReachedId, GameState.Distance);
 
         StartCoroutine(WaitAndRestart());
     }
