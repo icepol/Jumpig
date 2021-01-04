@@ -1,0 +1,55 @@
+﻿namespace pixelook
+{
+    public class Constants
+    {
+        public static readonly string PrivacyPolicyURL = "http://www.kneego.org/privacy-policy/game-name";
+
+    #if UNITY_IPHONE
+        // ads
+        public static readonly bool IsGoogleAdEnabled = true;
+        public static readonly bool IsUnityAdEnabled = false;
+    
+        public static readonly string AdmobAppId = "";
+        public static readonly string GameOverSimpleId = "";
+        public static readonly string GameOverVideoId = "";
+    
+        // leaderboards
+        public static readonly string TopScoreLeaderBoardId = "top_score";
+        public static readonly string TopDistanceReachedId = "top_distance_reached";
+    
+        // app store link
+        public static readonly string AppStoreLink = "itms-apps:itunes.apple.com/app/game-name/id123456";
+        public static readonly string ShareLink = "https://itunes.apple.com/app/game-name/id123456";
+    #elif UNITY_ANDROID
+        // ads
+        public static readonly bool IsGoogleAdEnabled = true;
+        public static readonly bool IsUnityAdEnabled = false;
+    
+        public static readonly string AdmobAppId = "";
+        public static readonly string GameOverSimpleId = "";
+        public static readonly string GameOverVideoId = "";
+    
+        // leaderboards
+        public static readonly string TopScoreLeaderBoardId = GPGSIds.leaderboard_top_score;
+        public static readonly string TopDistanceReachedId = GPGSIds.leaderboard_top_distance;
+    
+        // app store link
+        public static readonly string AppStoreLink = "https://play.google.com/store/apps/details?id=io.pixelook.game_name";
+    #else
+        public static readonly bool IsGoogleAdEnabled = false;
+        public static readonly bool IsUnityAdEnabled = false;
+    
+        public static readonly string AdmobAppId = "";
+        public static readonly string GameOverSimpleId = "";
+        public static readonly string GameOverVideoId = "";
+    
+        // leaderboards
+        public static readonly string TopScoreLeaderBoardId = "top_players";
+        public static readonly string TopDistanceReachedId = "top_distance_reached";
+        
+        // app store link
+        public static readonly string AppStoreLink = "";
+        public static readonly string ShareLink = AppStoreLink;
+    #endif
+    }
+}

@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameAnalytics.Initialize();
+        GameServices.Initialize();
         
         GameState.SpawnedRowsCount = 0;
         
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
     {
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "World_1", GameState.Score);
         
+        GameServices.ReportScore(Constants.TopScoreLeaderBoardId, GameState.Score);
+
         StartCoroutine(WaitAndRestart());
     }
 

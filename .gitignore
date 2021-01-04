@@ -36,6 +36,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-/Assets/Scripts/Constants.cs
+/Assets/Scripts/CustomSettings/Constants.cs
 /Assets/Scripts/GPIds.cs
 /ProjectSettings/GooglePlayGameSettings.txt
