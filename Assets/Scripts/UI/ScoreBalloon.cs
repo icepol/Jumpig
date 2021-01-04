@@ -1,11 +1,15 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 namespace pixelook
 {
     public class ScoreBalloon : MonoBehaviour
     {
+        private void Start()
+        {
+            transform.position += Vector3.up * 1.4f;
+        }
+
         public void SetScore(int score)
         {
             foreach (TextMesh textMesh in GetComponentsInChildren<TextMesh>())
