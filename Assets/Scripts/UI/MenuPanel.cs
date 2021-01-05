@@ -14,6 +14,9 @@ public class MenuPanel : MonoBehaviour
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
 
         _animator = GetComponent<Animator>();
+        
+        UpdateButton(soundsButton, Settings.IsSfxEnabled);
+        UpdateButton(musicButton, Settings.IsMusicEnabled);
     }
 
     // Update is called once per frame
