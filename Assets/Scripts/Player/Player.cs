@@ -45,7 +45,6 @@ public class Player : MonoBehaviour
         if (!_isGameRunning)
         {
             _isGameRunning = true;
-            GameState.Reset();
         }
         
         transform.parent = null;

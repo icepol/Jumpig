@@ -5,13 +5,22 @@ namespace pixelook
     [RequireComponent(typeof(AudioSource))]
     public class MusicManager : MonoBehaviour
     {
+        [SerializeField] private float levelStartOffset;
+        [SerializeField] private float fadeOutDuration = 0.5f;
+
+        private float _volume;
+        private float _currentFadeOutDuration;
+        private bool _isFadingOut;
+            
         private AudioSource audioSource;
 
         private void Awake()
         {
             audioSource = GetComponent<AudioSource>();
+            _volume = audioSource.volume;
 
-            EventManager.AddListener(Events.LEVEL_START, OnLevelStart);
+            EventManager.AddListener(Events.LEVEL_STARTED, OnLevelStart);
+            EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
             EventManager.AddListener(Events.MUSIC_SETTINGS_CHANGED, OnMusicSettingsChanged);
         }
 
@@ -21,15 +30,36 @@ namespace pixelook
                 audioSource.Stop();
         }
 
+        private void Update()
+        {
+            if (_isFadingOut) FadeOut();
+        }
+
+        private void FadeOut()
+        {
+            audioSource.volume = Mathf.Lerp(_volume, 0, _currentFadeOutDuration / fadeOutDuration);
+
+            if (_currentFadeOutDuration >= fadeOutDuration)
+                _isFadingOut = false;
+
+            _currentFadeOutDuration += Time.deltaTime;
+        }
+
         private void OnDestroy()
         {
-            EventManager.RemoveListener(Events.LEVEL_START, OnLevelStart);
+            EventManager.RemoveListener(Events.LEVEL_STARTED, OnLevelStart);
+            EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
             EventManager.RemoveListener(Events.MUSIC_SETTINGS_CHANGED, OnMusicSettingsChanged);
+        }
+
+        private void OnPlayerDied()
+        {
+            _isFadingOut = true;
         }
 
         private void OnLevelStart()
         {
-            audioSource.time = 25f;
+            audioSource.time = levelStartOffset;
         }
 
         private void OnMusicSettingsChanged()

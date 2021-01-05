@@ -13,7 +13,7 @@
         public const string DOUBLE_TAP = "DoubleTap";
 
         // level progression events
-        public const string LEVEL_START = "LevelStart";
+        public const string LEVEL_STARTED = "LevelStarted";
         public const string SCORE_CHANGED = "ScoreChanged";
 
         public const string PLAYER_JUMP_FINISHED = "PlayerJumpFinished";

@@ -11,7 +11,7 @@ public class MenuPanel : MonoBehaviour
 
     void Start()
     {
-        EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
+        EventManager.AddListener(Events.LEVEL_STARTED, OnLevelStarted);
 
         _animator = GetComponent<Animator>();
         
@@ -22,10 +22,10 @@ public class MenuPanel : MonoBehaviour
     // Update is called once per frame
     private void OnDestroy()
     {
-        EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
+        EventManager.RemoveListener(Events.LEVEL_STARTED, OnLevelStarted);
     }
 
-    private void OnPlayerJumpStarted()
+    private void OnLevelStarted()
     {
         gameObject.SetActive(false);
     }
@@ -45,6 +45,8 @@ public class MenuPanel : MonoBehaviour
     {
         Settings.IsMusicEnabled = !Settings.IsMusicEnabled;
         UpdateButton(musicButton, Settings.IsMusicEnabled);
+        
+        EventManager.TriggerEvent(Events.MUSIC_SETTINGS_CHANGED);
     }
 
     public void OnLeaderboardButtonClick()

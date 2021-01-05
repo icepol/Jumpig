@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
         GameState.Reset();
 
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "World_1");
+        
+        EventManager.TriggerEvent(Events.LEVEL_STARTED);
     }
 
     private void OnPlayerDied()
