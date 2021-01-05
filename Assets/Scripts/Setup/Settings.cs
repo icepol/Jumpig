@@ -13,7 +13,7 @@
 
         public static bool IsSfxEnabled
         {
-            get { return _prefs.GetInt(SFX_ENABLED, 1) == 1; }
+            get => _prefs.GetInt(SFX_ENABLED, 1) == 1;
 
             set
             {
@@ -24,7 +24,7 @@
 
         public static bool IsMusicEnabled
         {
-            get { return _prefs.GetInt(MUSIC_ENABLED, 1) == 1; }
+            get => _prefs.GetInt(MUSIC_ENABLED, 1) == 1;
 
             set
             {

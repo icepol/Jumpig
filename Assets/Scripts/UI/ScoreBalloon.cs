@@ -1,13 +1,13 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace pixelook
 {
     public class ScoreBalloon : MonoBehaviour
     {
+        [SerializeField] private float positionOffset = 1;
         private void Start()
         {
-            transform.position += Vector3.up * 1.4f;
+            transform.position += Vector3.up * positionOffset;
         }
 
         public void SetScore(int score)
