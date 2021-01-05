@@ -88,5 +88,6 @@ public class Player : MonoBehaviour
         _rigidbody.isKinematic = false;
 
         EventManager.TriggerEvent(Events.PLAYER_DIED);
+        EventManager.TriggerEvent(Events.PLAYER_FALLEN);
     }
 }

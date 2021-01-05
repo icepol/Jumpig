@@ -21,6 +21,10 @@
         public const string PLAYER_MOVEMENT_FINISHED = "PlayerMovementFinished";
         public const string PLAYER_DIED = "PlayerDied";
         public const string PLAYER_COLLIDED_OBSTACLE = "PlayerCollidedObstacle";
+        public const string PLAYER_FALLEN = "PlayerFallen";
+        
+        public const string COIN_COLLECTED = "CoinColled";
+        public const string FOOD_COLLECTED = "FoodColled";
 
         // camera events
         public const string CAMERA_SHAKE_BIG = "CameraShakeBig";

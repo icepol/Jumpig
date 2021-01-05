@@ -81,6 +81,7 @@ MonoBehaviour:
   scorePoints: 50
   collectedEffect: {fileID: 306484354556389829, guid: b6efac14fed5b4ea6bc8e899449ad9a0, type: 3}
   scoreBalloon: {fileID: 2850586209554490029, guid: 39bac985d31424f899a90b2703ca1554, type: 3}
+  postCollectEvent: CoinCollected
 --- !u!1 &8153126885149296948
 GameObject:
   m_ObjectHideFlags: 0

@@ -289,3 +289,4 @@ MonoBehaviour:
   scorePoints: 25
   collectedEffect: {fileID: 306484354556389829, guid: b6efac14fed5b4ea6bc8e899449ad9a0, type: 3}
   scoreBalloon: {fileID: 2850586209554490029, guid: 39bac985d31424f899a90b2703ca1554, type: 3}
+  postCollectEvent: FoodColled

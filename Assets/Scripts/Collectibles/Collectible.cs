@@ -8,6 +8,7 @@ public class Collectible : MonoBehaviour, ICollisionHandler
     [SerializeField] private int scorePoints = 10;
     [SerializeField] private ParticleSystem collectedEffect;
     [SerializeField] private ScoreBalloon scoreBalloon;
+    [SerializeField] private string postCollectEvent;
     
     public SpawnSetup SpawnSetup => spawnSetup;
     
@@ -21,6 +22,9 @@ public class Collectible : MonoBehaviour, ICollisionHandler
         scoreBalloonInstance.SetScore(scorePoints);
 
         GameState.Score += scorePoints;
+        
+        if (postCollectEvent != null)
+            EventManager.TriggerEvent(postCollectEvent);
         
         Destroy(gameObject);
     }
