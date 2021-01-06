@@ -39,6 +39,9 @@ public class FloorElement : MonoBehaviour
 
         Player player = GetComponentInChildren<Player>();
         if (player)
+        {
             EventManager.TriggerEvent(Events.PLAYER_DIED);
+            EventManager.TriggerEvent(Events.PLAYER_FALLEN);
+        }
     }
 }
