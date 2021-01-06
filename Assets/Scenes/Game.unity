@@ -314,6 +314,24 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3917353016340477418, guid: 2f871f02dbc2d4cebabfb8b8f63f6419, type: 3}
   m_PrefabInstance: {fileID: 3917353016384525974}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &413925429 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5412402894033044172, guid: 1132d856016c945c38ec8f365da462f8, type: 3}
+  m_PrefabInstance: {fileID: 5412402894600125710}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &413925430
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413925429}
+  m_Enabled: 1
+--- !u!4 &413925435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5412402894033044170, guid: 1132d856016c945c38ec8f365da462f8, type: 3}
+  m_PrefabInstance: {fileID: 5412402894600125710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &692624698
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +433,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -1055,6 +1073,10 @@ PrefabInstance:
       propertyPath: levelFinished
       value: 
       objectReference: {fileID: 8300000, guid: 5cd8c146ed79c490281be5b9deafa5dd, type: 3}
+    - target: {fileID: 1673790591032152034, guid: e3e85d12baaa74f00895f25e833c671d, type: 3}
+      propertyPath: targetTransform
+      value: 
+      objectReference: {fileID: 413925435}
     - target: {fileID: 1673790591032152034, guid: e3e85d12baaa74f00895f25e833c671d, type: 3}
       propertyPath: playerObstacleContact
       value: 

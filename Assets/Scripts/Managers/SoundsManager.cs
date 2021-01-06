@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace pixelook
 {
     public class SoundsManager : MonoBehaviour
     {
+        [SerializeField] private Transform targetTransform;
+        
         [SerializeField] private AudioClip playerJump;
         [SerializeField] private AudioClip playerFall;
         [SerializeField] private AudioClip playerObstacleContact;
@@ -14,12 +14,8 @@ namespace pixelook
         [SerializeField] private AudioClip platformMove;
         [SerializeField] private AudioClip levelFinished;
 
-        private Transform _cameraTransform;
-
         private void Start()
         {
-            _cameraTransform = Camera.main.transform;
-
             EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
             EventManager.AddListener(Events.PLAYER_FALLEN, OnPlayerFallen);
             EventManager.AddListener(Events.PLAYER_COLLIDED_OBSTACLE, OnPlayerCollidedObstacle);
@@ -41,37 +37,37 @@ namespace pixelook
         private void OnPlayerJumpStarted()
         {
             if (playerJump && Settings.IsSfxEnabled)
-                AudioSource.PlayClipAtPoint(playerJump, _cameraTransform.position);
+                AudioSource.PlayClipAtPoint(playerJump, targetTransform.position);
         }
         
         private void OnPlayerFallen()
         {
             if (playerFall && Settings.IsSfxEnabled)
-                AudioSource.PlayClipAtPoint(playerFall, _cameraTransform.position);
+                AudioSource.PlayClipAtPoint(playerFall, targetTransform.position);
         }
         
         private void OnPlayerCollidedObstacle()
         {
             if (playerObstacleContact && Settings.IsSfxEnabled)
-                AudioSource.PlayClipAtPoint(playerObstacleContact, _cameraTransform.position);
+                AudioSource.PlayClipAtPoint(playerObstacleContact, targetTransform.position);
         }
         
         private void OnCoinCollected()
         {
             if (pickupCoin && Settings.IsSfxEnabled)
-                AudioSource.PlayClipAtPoint(pickupCoin, _cameraTransform.position);
+                AudioSource.PlayClipAtPoint(pickupCoin, targetTransform.position);
         }
         
         private void OnFoodCollected()
         {
             if (pickupFood && Settings.IsSfxEnabled)
-                AudioSource.PlayClipAtPoint(pickupFood, _cameraTransform.position);
+                AudioSource.PlayClipAtPoint(pickupFood, targetTransform.position);
         }
         
         private void OnFloorMoveStarted()
         {
             if (platformMove && Settings.IsSfxEnabled)
-                AudioSource.PlayClipAtPoint(platformMove, _cameraTransform.position);
+                AudioSource.PlayClipAtPoint(platformMove, targetTransform.position);
         }
     }
 }
