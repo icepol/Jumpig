@@ -693,6 +693,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7286974097958792589, guid: 5ba4fc94ea6f140d794141b1cacd8fdb, type: 3}
+      propertyPath: m_Volume
+      value: 0.075
+      objectReference: {fileID: 0}
     - target: {fileID: 7286974097958792591, guid: 5ba4fc94ea6f140d794141b1cacd8fdb, type: 3}
       propertyPath: m_Name
       value: MusicManager
