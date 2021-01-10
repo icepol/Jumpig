@@ -7,20 +7,21 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 {
     [SerializeField] private SpawnSetup spawnSetup;
     [SerializeField] private float moveTime = 0.5f;
+
+    public List<FloorElement> FloorElements { get; private set; }
+    public SpawnSetup SpawnSetup => spawnSetup;
+    public bool IsLast { get; set; }
     
-    private int size = 1;
+    private int _size = 1;
 
     private CollectibleSpawner _collectibleSpawner;
     private ObstacleSpawner _obstacleSpawner;
+    private FloorRowFinishLine _floorRowFinishLine;
 
     private bool _isMovingForward;
     private Vector3 _oldPosition;
     private Vector3 _newPosition;
     private float _currentTime;
-
-    public List<FloorElement> FloorElements { get; private set; }
-    public SpawnSetup SpawnSetup => spawnSetup;
-    public bool IsLast { get; set; }
 
     public void Awake()
     {
@@ -28,6 +29,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
         
         _collectibleSpawner = GetComponent<CollectibleSpawner>();
         _obstacleSpawner = GetComponent<ObstacleSpawner>();
+        _floorRowFinishLine = GetComponent<FloorRowFinishLine>();
     }
 
     public void Start()
@@ -39,6 +41,9 @@ public class FloorRow : MonoBehaviour, IFloorGroup
         
         if (_obstacleSpawner != null)
             _obstacleSpawner.Spawn(this);
+
+        if (_floorRowFinishLine != null)
+            _floorRowFinishLine.Spawn();
     }
     
     public void Update()
@@ -84,7 +89,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
     public int Size()
     {
-        return size;
+        return _size;
     }
 
     public FloorRow[] Rows()

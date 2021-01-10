@@ -13,16 +13,16 @@ public class HelpPanel : MonoBehaviour
 
     void Start()
     {
-        EventManager.AddListener(Events.LEVEL_STARTED, OnLevelStarted);
+        EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
     }
 
     // Update is called once per frame
     private void OnDestroy()
     {
-        EventManager.RemoveListener(Events.LEVEL_STARTED, OnLevelStarted);
+        EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
     }
 
-    private void OnLevelStarted()
+    private void OnGameStarted()
     {
         if (_isHidden) return;
         

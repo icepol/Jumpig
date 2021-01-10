@@ -19,7 +19,7 @@ namespace pixelook
             audioSource = GetComponent<AudioSource>();
             _volume = audioSource.volume;
 
-            EventManager.AddListener(Events.LEVEL_STARTED, OnLevelStart);
+            EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
             EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
             EventManager.AddListener(Events.MUSIC_SETTINGS_CHANGED, OnMusicSettingsChanged);
         }
@@ -47,7 +47,7 @@ namespace pixelook
 
         private void OnDestroy()
         {
-            EventManager.RemoveListener(Events.LEVEL_STARTED, OnLevelStart);
+            EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
             EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
             EventManager.RemoveListener(Events.MUSIC_SETTINGS_CHANGED, OnMusicSettingsChanged);
         }
@@ -57,7 +57,7 @@ namespace pixelook
             _isFadingOut = true;
         }
 
-        private void OnLevelStart()
+        private void OnGameStarted()
         {
             audioSource.time = levelStartOffset;
         }

@@ -3,6 +3,7 @@
     public static class GameState
     {
         private static int _score;
+        private static int _level;
 
         public static int Score
         {
@@ -19,10 +20,23 @@
 
         public static int SpawnedRowsCount { get; set; }
 
+        public static int Level
+        {
+            get => _score;
+
+            set
+            {
+                _level = value;
+
+                EventManager.TriggerEvent(Events.LEVEL_CHANGED);
+            }
+        }
+
         public static void Reset()
         {
             _score = 0;
             Distance = 0;
+            Level = 1;
         }
     }
 }

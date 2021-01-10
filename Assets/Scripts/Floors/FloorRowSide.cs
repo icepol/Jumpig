@@ -6,9 +6,6 @@ public class FloorRowSide : MonoBehaviour
     
     void Start()
     {
-        Vector3 position = transform.position;
-        position = new Vector3(Random.Range(-offset, offset), position.y, position.z);
-        
-        transform.position = position;
+        transform.localPosition += Vector3.right * Random.Range(-offset, offset);
     }
 }

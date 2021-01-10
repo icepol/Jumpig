@@ -2,7 +2,6 @@
 {
     public static class Events
     {
-        
         public const string FLOOR_MOVE_FINISHED = "FloorMoveFinished";
         public const string FLOOR_MOVE_STARTED = "FloorMoveStarted";
         public const string FLOOR_FALL_STARTED = "FloorFallStarted";
@@ -13,7 +12,8 @@
         public const string DOUBLE_TAP = "DoubleTap";
 
         // level progression events
-        public const string LEVEL_STARTED = "LevelStarted";
+        public const string GAME_STARTED = "GameStarted";
+        public const string LEVEL_CHANGED = "LevelChanged";
         public const string SCORE_CHANGED = "ScoreChanged";
 
         public const string PLAYER_JUMP_FINISHED = "PlayerJumpFinished";

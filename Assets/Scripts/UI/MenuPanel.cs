@@ -11,7 +11,7 @@ public class MenuPanel : MonoBehaviour
 
     void Start()
     {
-        EventManager.AddListener(Events.LEVEL_STARTED, OnLevelStarted);
+        EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
 
         _animator = GetComponent<Animator>();
         
@@ -22,10 +22,10 @@ public class MenuPanel : MonoBehaviour
     // Update is called once per frame
     private void OnDestroy()
     {
-        EventManager.RemoveListener(Events.LEVEL_STARTED, OnLevelStarted);
+        EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
     }
 
-    private void OnLevelStarted()
+    private void OnGameStarted()
     {
         gameObject.SetActive(false);
     }

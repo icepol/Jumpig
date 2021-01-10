@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
         GameState.SpawnedRowsCount = 0;
         
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
+        EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
+        EventManager.AddListener(Events.LEVEL_CHANGED, OnLevelChanged);
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
     void OnDestroy()
     {
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
+        EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
+        EventManager.RemoveListener(Events.LEVEL_CHANGED, OnLevelChanged);
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
@@ -36,16 +40,37 @@ public class GameManager : MonoBehaviour
         if (_isGameRunning) return;
         
         _isGameRunning = true;
-        GameState.Reset();
-
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "World_1");
         
-        EventManager.TriggerEvent(Events.LEVEL_STARTED);
+        EventManager.TriggerEvent(Events.GAME_STARTED);
+    }
+
+    private void OnGameStarted()
+    {
+        GameState.Reset();
+    }
+
+    private void OnLevelChanged()
+    {
+        if (GameState.Level > 1)
+            // we completed the previous level
+            GameAnalytics.NewProgressionEvent(
+                GAProgressionStatus.Complete, 
+                "World_1", 
+                $"Level_{GameState.Level - 1}");
+        
+        GameAnalytics.NewProgressionEvent(
+            GAProgressionStatus.Start, 
+            "World_1", 
+            $"Level_{GameState.Level}");
     }
 
     private void OnPlayerDied()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "World_1", GameState.Score);
+        GameAnalytics.NewProgressionEvent(
+            GAProgressionStatus.Fail, 
+            "World_1", 
+            $"Level_{GameState.Level}",
+            GameState.Score);
         
         GameServices.ReportScore(Constants.TopScoreLeaderBoardId, GameState.Score);
         GameServices.ReportScore(Constants.TopDistanceReachedId, GameState.Distance);
