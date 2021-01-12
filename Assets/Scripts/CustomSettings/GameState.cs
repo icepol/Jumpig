@@ -3,7 +3,7 @@
     public static class GameState
     {
         private static int _score;
-        private static int _level;
+        private static int _level = 1;
 
         public static int Score
         {
@@ -22,12 +22,11 @@
 
         public static int Level
         {
-            get => _score;
+            get => _level;
 
             set
             {
                 _level = value;
-
                 EventManager.TriggerEvent(Events.LEVEL_CHANGED);
             }
         }

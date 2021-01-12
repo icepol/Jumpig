@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 731030224831188391}
   - component: {fileID: 142178563461897521}
   - component: {fileID: -1302785332333854154}
-  - component: {fileID: 2998548254003619844}
   - component: {fileID: -7657045711198790370}
   m_Layer: 0
   m_Name: 3Broken2Side1
@@ -51,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f84cfae6010425f8663b5fb650c2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSetup: {fileID: 11400000, guid: 335d91dd9791b4ef88164daa9aca0376, type: 2}
+  spawnSetup: {fileID: 11400000, guid: ec4a8f03c7b984fa3bc6a859097f9ea2, type: 2}
   moveTime: 0.1
 --- !u!114 &731030224831188391
 MonoBehaviour:
@@ -96,19 +95,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 1
---- !u!114 &2998548254003619844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5999976295226104363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d5ba545cad444cd1b2f616bd82aef07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  finishLine: {fileID: 7651455046375439851, guid: f93662e197586423dad3969d84d7a62b, type: 3}
 --- !u!114 &-7657045711198790370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5ba545cad444cd1b2f616bd82aef07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishLine: {fileID: 0}
+  finishLine: {fileID: 7651455046375439851, guid: f93662e197586423dad3969d84d7a62b, type: 3}
 --- !u!1001 &324770935875059147
 PrefabInstance:
   m_ObjectHideFlags: 0

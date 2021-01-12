@@ -46,6 +46,6 @@ public class FinishLine : MonoBehaviour
 
     public void SetLevelNumber(string level)
     {
-        levelText.text = $"Level {level}";
+        levelText.text = "Finish";
     }
 }

@@ -152,5 +152,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a27dae916b4435bbeb6663f4cab690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSetup: {fileID: 11400000, guid: b6d05636bdf5246a8b51d02db8572b9f, type: 2}
+  spawnSetup: {fileID: 11400000, guid: fc8de570dc7ea40519643f55616d5b9e, type: 2}
   onCollisionParticle: {fileID: 0}

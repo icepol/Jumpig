@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 5999976295226104360}
   - component: {fileID: 2758113341508711096}
   - component: {fileID: 1162915242951422388}
-  - component: {fileID: 851944199690935480}
-  - component: {fileID: -2123485951437230596}
-  - component: {fileID: 4189291019308398300}
-  - component: {fileID: 3983664152225385313}
+  - component: {fileID: 908894590992161291}
+  - component: {fileID: 6241761588800591149}
+  - component: {fileID: 1405388365352436003}
   m_Layer: 0
-  m_Name: 5Space2Side1
+  m_Name: Static5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f84cfae6010425f8663b5fb650c2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSetup: {fileID: 11400000, guid: 31cad2d7fd2074963839350fe1a8cba1, type: 2}
+  spawnSetup: {fileID: 11400000, guid: 567cc5093b1de443681926e20ecabca9, type: 2}
   moveTime: 0.1
 --- !u!114 &1162915242951422388
 MonoBehaviour:
@@ -73,21 +72,8 @@ MonoBehaviour:
   - {fileID: 2672213583701262774}
   - {fileID: 2153361656927778251}
   - {fileID: 6607661639043491198}
-  spaces: 2
---- !u!114 &851944199690935480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5999976295226104363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636087fb4122746ccb1fcc2b2b70c841, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: 1
---- !u!114 &-2123485951437230596
+  spaces: 0
+--- !u!114 &908894590992161291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +89,7 @@ MonoBehaviour:
   - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
   - {fileID: 6681012494745517332, guid: e646b106d20ca457989bc14eef3b87f0, type: 3}
   collectibleRatio: 0.2
---- !u!114 &4189291019308398300
+--- !u!114 &6241761588800591149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +104,7 @@ MonoBehaviour:
   obstaclePrefabs:
   - {fileID: 2136533362332409534, guid: d07835d3b19844ddba632142af195626, type: 3}
   obstacleRatio: 0.15
---- !u!114 &3983664152225385313
+--- !u!114 &1405388365352436003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

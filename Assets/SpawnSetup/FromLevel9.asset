@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bef83c44c18ea495493444fb3bd2d706, type: 3}
-  m_Name: CornSpawnSetup
+  m_Name: FromLevel9
   m_EditorClassIdentifier: 
   availableFromScore: -1
   availableFromRow: -1
-  availableFromLevel: 3
+  availableFromLevel: 9

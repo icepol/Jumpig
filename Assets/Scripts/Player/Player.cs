@@ -1,3 +1,4 @@
+using System.Collections;
 using pixelook;
 using UnityEngine;
 
@@ -8,12 +9,14 @@ public class Player : MonoBehaviour
     private Rigidbody _rigidbody;
     
     private int _floorLayerMask;
+    private int _finishLineLayerMask;
     private bool _isGameRunning;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _floorLayerMask = 1 << LayerMask.NameToLayer("Floor");
+        _finishLineLayerMask = 1 << LayerMask.NameToLayer("FinishLine");
     }
 
     void Start()
@@ -53,6 +56,7 @@ public class Player : MonoBehaviour
     private void OnPlayerJumpFinished()
     {
         PlaceOnFloor();
+        CheckFinishLine();
     }
 
     private void OnInitFloorFinished()
@@ -89,5 +93,17 @@ public class Player : MonoBehaviour
 
         EventManager.TriggerEvent(Events.PLAYER_DIED);
         EventManager.TriggerEvent(Events.PLAYER_FALLEN);
+    }
+
+    void CheckFinishLine()
+    {
+        if (Physics.Linecast(
+            transform.position,
+            transform.position + Vector3.up * 10,
+            out var hit,
+            _finishLineLayerMask))
+        {
+            GameState.Level++;
+        }
     }
 }

@@ -53,68 +53,10 @@ MonoBehaviour:
   SelectedOrganization: 010000000100000001000000
   SelectedStudio: 010000000100000001000000
   SelectedGame: 010000000200000000000000
-  NewVersion: 6.3.5
-  Changes: '6.3.5
+  NewVersion: 6.3.9
+  Changes: '6.3.9
 
-    - fixed user log in function in editor for unity 2017
-
-
-    6.3.4
-
-    -
-    fixed null exception happening some times on desktop platforms (mac, linux, windows)
-
-
-    6.3.3
-
-    -
-    updated impression events
-
-
-    6.3.2
-
-    - fixed www build errors on unity
-    2017
-
-
-    6.3.1
-
-    - improved user identifer flow for ios (ios)
-
-
-    6.3.0
-
-    -
-    updated user identifier flow to prepare for iOS 14 IDFA changes (ios)
-
-
-    6.2.4
-
-    -
-    fixed progression events with scores (android)
-
-
-    6.2.3
-
-    - editor ui error
-    fix
-
-
-    6.2.2
-
-    - tvos compile fix
-
-
-    6.2.1
-
-    - added better error
-    messages for API calls potentially being removed in the future
-
-
-    6.2.0
-
-    -
-    exposed functions to get AB testing id and variant id'
+    - fixed ironsource impression event compile error'
   SignUpOpen: 0
   StudioName: PiXELOOK
   GameName: Jumpig
@@ -136,7 +78,7 @@ MonoBehaviour:
   ResourceCurrencies: []
   LastCreatedGamePlatform: 1
   Platforms: 080000000b00000011000000
-  CurrentInspectorState: 1
+  CurrentInspectorState: 3
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
@@ -155,7 +97,7 @@ MonoBehaviour:
   macIcon: {fileID: 0}
   windowsPhoneIcon: {fileID: 0}
   UsePlayerSettingsBuildNumber: 0
-  SubmitErrors: 1
+  SubmitErrors: 0
   MaxErrorCount: 10
   SubmitFpsAverage: 1
   SubmitFpsCritical: 1

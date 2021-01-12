@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace pixelook
@@ -6,9 +7,8 @@ namespace pixelook
     public class GamePanel : MonoBehaviour
     {
         [SerializeField] private Text score;
-        
         [SerializeField] private float tapTimeout = 0.2f;
-
+        
         private float _currentTapTimeout;
         private int _tapCount;
         private Vector3 _position;
