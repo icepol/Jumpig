@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
             out var hit,
             _finishLineLayerMask))
         {
+            EventManager.TriggerEvent(Events.FINISH_LINE_PASSED);
             GameState.Level++;
         }
     }

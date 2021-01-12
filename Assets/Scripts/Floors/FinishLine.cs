@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using pixelook;
 using UnityEngine;
 
 public class FinishLine : MonoBehaviour
@@ -7,6 +9,7 @@ public class FinishLine : MonoBehaviour
     [SerializeField] private Transform rightPillar;
     [SerializeField] private Transform flagBackground;
     [SerializeField] private TextMesh levelText;
+    [SerializeField] private ParticleSystem fireworks;
 
     private FloorRow _floorRow;
 
@@ -17,9 +20,21 @@ public class FinishLine : MonoBehaviour
 
     void Start()
     {
+        EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
+        
         SetPositionAndSize();
     }
-    
+
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
+    }
+
+    private void OnFinishLinePassed()
+    {
+        fireworks.gameObject.SetActive(true);
+    }
+
     private void SetPositionAndSize()
     {
         List<FloorElement> sortedFloorElements =

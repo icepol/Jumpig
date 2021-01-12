@@ -7,6 +7,7 @@
         public const string FLOOR_FALL_STARTED = "FloorFallStarted";
         public const string INIT_FLOOR_STARTED = "InitFloorStarted";
         public const string INIT_FLOOR_FINISHED = "InitFloorFinished";
+        public const string FINISH_LINE_PASSED = "FinishLinePassed";
         
         public const string SINGLE_TAP = "SingleTap";
         public const string DOUBLE_TAP = "DoubleTap";
