@@ -22,6 +22,7 @@ namespace pixelook
             EventManager.AddListener(Events.COIN_COLLECTED, OnCoinCollected);
             EventManager.AddListener(Events.FOOD_COLLECTED, OnFoodCollected);
             EventManager.AddListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
+            EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
         }
 
         private void OnDestroy()
@@ -32,6 +33,13 @@ namespace pixelook
             EventManager.RemoveListener(Events.COIN_COLLECTED, OnCoinCollected);
             EventManager.RemoveListener(Events.FOOD_COLLECTED, OnFoodCollected);
             EventManager.RemoveListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
+            EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
+        }
+
+        private void OnFinishLinePassed()
+        {
+            if (levelFinished && Settings.IsSfxEnabled)
+                AudioSource.PlayClipAtPoint(levelFinished, targetTransform.position);
         }
 
         private void OnPlayerJumpStarted()
