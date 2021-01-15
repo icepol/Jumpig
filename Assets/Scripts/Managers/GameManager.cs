@@ -11,12 +11,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-    }
-
-    void Start()
-    {
-        GameAnalytics.Initialize();
-        GameServices.Initialize();
         
         GameState.SpawnedRowsCount = 0;
         
@@ -24,6 +18,12 @@ public class GameManager : MonoBehaviour
         EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
         EventManager.AddListener(Events.LEVEL_CHANGED, OnLevelChanged);
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
+    }
+
+    void Start()
+    {
+        GameAnalytics.Initialize();
+        GameServices.Initialize();
     }
 
     // Update is called once per frame

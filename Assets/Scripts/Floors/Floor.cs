@@ -34,9 +34,10 @@ public class Floor : MonoBehaviour
 
     private void Start()
     {
+        EventManager.TriggerEvent(Events.INIT_FLOOR_STARTED);
+        
         AddSpawnedRows(GetComponentsInChildren<FloorRow>());
         
-        EventManager.TriggerEvent(Events.INIT_FLOOR_STARTED);
         InitializeFloor();
     }
 
