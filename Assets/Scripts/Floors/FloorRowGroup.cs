@@ -1,3 +1,5 @@
+using System;
+using pixelook;
 using UnityEngine;
 
 public class FloorRowGroup : MonoBehaviour, IFloorGroup
@@ -11,7 +13,19 @@ public class FloorRowGroup : MonoBehaviour, IFloorGroup
     
     void Awake()
     {
-        _floorRows = GetComponentsInChildren<FloorRow>();
+        FetchRows();
+        
+        EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnFloorRowFinished);
+    }
+
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener(Events.FLOOR_MOVE_FINISHED, OnFloorRowFinished);
+    }
+
+    private void OnFloorRowFinished()
+    {
+        FetchRows();
     }
 
     public int Size()
@@ -22,5 +36,13 @@ public class FloorRowGroup : MonoBehaviour, IFloorGroup
     public FloorRow[] Rows()
     {
         return _floorRows;
+    }
+
+    private void FetchRows()
+    {
+        _floorRows = GetComponentsInChildren<FloorRow>();
+        
+        if (_floorRows.Length == 0)
+            Destroy(gameObject);
     }
 }
