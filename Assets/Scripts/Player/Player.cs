@@ -5,7 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private ParticleSystem onPlayerCollidedObstacleParticle;
-    
+    [SerializeField] private ParticleSystem onPlayerJumpStartedParticle;
+    [SerializeField] private ParticleSystem onPlayerJumpFinishedParticle;
+
     private Rigidbody _rigidbody;
     
     private int _floorLayerMask;
@@ -51,6 +53,9 @@ public class Player : MonoBehaviour
         }
         
         transform.parent = null;
+
+        if (onPlayerJumpStartedParticle != null)
+            Instantiate(onPlayerJumpStartedParticle, transform.position, Quaternion.identity);
     }
 
     private void OnPlayerJumpFinished()
@@ -80,6 +85,9 @@ public class Player : MonoBehaviour
             GameState.Distance++;
 
             EventManager.TriggerEvent(Events.PLAYER_MOVEMENT_FINISHED);
+            
+            if (onPlayerJumpFinishedParticle != null)
+                Instantiate(onPlayerJumpFinishedParticle, transform.position - Vector3.down * 0.5f, Quaternion.identity);
         }
         else
         {

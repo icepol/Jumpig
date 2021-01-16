@@ -67,6 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f719ec8f59168471bb0e6848193d1161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onPlayerCollidedObstacleParticle: {fileID: 306484354556389829, guid: a81c872b616654ed18184bea2dd2a83f, type: 3}
+  onPlayerJumpStartedParticle: {fileID: 1172734752593349325, guid: f943dc2afccc942578c272dfc40e0b68, type: 3}
+  onPlayerJumpFinishedParticle: {fileID: 0}
 --- !u!114 &5412402894033044169
 MonoBehaviour:
   m_ObjectHideFlags: 0
