@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a27dae916b4435bbeb6663f4cab690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSetup: {fileID: 11400000, guid: 567cc5093b1de443681926e20ecabca9, type: 2}
+  spawnSetup: {fileID: 11400000, guid: b5e3235dc733a4d6e987b3d956f3916b, type: 2}
   onCollisionParticle: {fileID: 0}
   _isDangerous: 0
 --- !u!114 &7489058408509132338
