@@ -104,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstaclePrefabs:
   - {fileID: 2136533362332409534, guid: d07835d3b19844ddba632142af195626, type: 3}
+  - {fileID: 762042803884708043, guid: 61605fc025d8f4e8c91ff01985397121, type: 3}
   obstacleRatio: 0.15
 --- !u!114 &1405388365352436003
 MonoBehaviour:
