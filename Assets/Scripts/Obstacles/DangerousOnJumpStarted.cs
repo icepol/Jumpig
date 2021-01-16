@@ -4,8 +4,10 @@ using UnityEngine;
 public class DangerousOnJumpStarted : MonoBehaviour
 {
     [SerializeField] private bool randomStartDangerous;
+    [SerializeField] private int changeStateJumpsCount = 1;
     
     private Obstacle _obstacle;
+    private int _jumps;
     
     private void Awake()
     {
@@ -27,6 +29,9 @@ public class DangerousOnJumpStarted : MonoBehaviour
 
     private void OnPlayerJumpStarted()
     {
+        if (++_jumps < changeStateJumpsCount) return;
+        
+        _jumps = 0;
         _obstacle.IsDangerous = !_obstacle.IsDangerous;
     }
 }

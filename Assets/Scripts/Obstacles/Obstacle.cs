@@ -7,7 +7,8 @@ public class Obstacle : MonoBehaviour, ICollisionHandler
     [SerializeField] private ParticleSystem onCollisionParticle;
     
     private Animator _animator;
-    public bool _isDangerous;
+    private IObstacleDangerous[] _obstacleDangerous;
+    private bool _isDangerous;
     
     public SpawnSetup SpawnSetup => spawnSetup;
 
@@ -21,12 +22,16 @@ public class Obstacle : MonoBehaviour, ICollisionHandler
             
             if (_animator != null)
                 _animator.SetBool("IsDangerous", _isDangerous);
+            
+            foreach (IObstacleDangerous obstacleDangerous in _obstacleDangerous)
+                obstacleDangerous.SetDangerousState(IsDangerous);
         }
     }
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _obstacleDangerous = GetComponentsInChildren<IObstacleDangerous>();
     }
 
     public void OnTriggerEnter(Collider other)
