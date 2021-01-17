@@ -3,7 +3,7 @@ using Random = UnityEngine.Random;
 
 public class FloorRowBroken : MonoBehaviour
 {
-    [SerializeField] private FloorElementBroken _brokenElementPrefab;
+    [SerializeField] private FloorElement brokenElementPrefab;
     [SerializeField] private int broken = 1;
 
     private FloorRow _floorRow;
@@ -23,8 +23,7 @@ public class FloorRowBroken : MonoBehaviour
             if (!element.activeSelf) continue;
 
             FloorElement floorElement =
-                Instantiate(_brokenElementPrefab, element.transform.position, Quaternion.identity, transform)
-                    .GetComponent<FloorElement>();
+                Instantiate(brokenElementPrefab, element.transform.position, Quaternion.identity, transform);
             
             _floorRow.FloorElements.Add(floorElement);
 

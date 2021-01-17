@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0356cf54e80a4206818a9d036720aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _brokenElementPrefab: {fileID: 3375401147444031891, guid: 658168450776b4812bec8d04ec9154a8, type: 3}
+  brokenElementPrefab: {fileID: 6001864873811563199, guid: 658168450776b4812bec8d04ec9154a8, type: 3}
   broken: 2
 --- !u!114 &-1302785332333854154
 MonoBehaviour:
