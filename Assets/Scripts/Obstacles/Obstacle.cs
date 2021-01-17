@@ -3,15 +3,12 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour, ICollisionHandler
 {
-    [SerializeField] private SpawnSetup spawnSetup;
     [SerializeField] private ParticleSystem onCollisionParticle;
     
     private Animator _animator;
     private IObstacleDangerous[] _obstacleDangerous;
     private bool _isDangerous;
     
-    public SpawnSetup SpawnSetup => spawnSetup;
-
     public bool IsDangerous
     {
         get => _isDangerous;

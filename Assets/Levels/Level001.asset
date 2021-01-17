@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd4fc196de80453bb8f9145450f8ce8, type: 3}
+  m_Name: Level001
+  m_EditorClassIdentifier: 
+  availableFloors:
+  - {fileID: 2758113341508711096, guid: 1829c38136f88427a8404de24959785a, type: 3}
+  - {fileID: 2758113341508711096, guid: 430131cd2830e408683cf33480d7a95e, type: 3}
+  - {fileID: 2758113341508711096, guid: 78d3d327281564efabf7955cddd274f5, type: 3}
+  - {fileID: 2758113341508711096, guid: 4081b04cd1e8a4e599120009a1ba2c72, type: 3}
+  availableCollectibles:
+  - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
+  availableObstacles: []

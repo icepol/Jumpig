@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd4fc196de80453bb8f9145450f8ce8, type: 3}
+  m_Name: Level017
+  m_EditorClassIdentifier: 
+  availableFloors:
+  - {fileID: 2758113341508711096, guid: 1829c38136f88427a8404de24959785a, type: 3}
+  - {fileID: 2758113341508711096, guid: 430131cd2830e408683cf33480d7a95e, type: 3}
+  - {fileID: 2758113341508711096, guid: 78d3d327281564efabf7955cddd274f5, type: 3}
+  - {fileID: 2758113341508711096, guid: 4081b04cd1e8a4e599120009a1ba2c72, type: 3}
+  - {fileID: 2758113341508711096, guid: 9d294046ff38d45d6bc3c64b70d67346, type: 3}
+  - {fileID: 2758113341508711096, guid: b27e5e29a4e414a34b02b6524bb8f143, type: 3}
+  - {fileID: 2758113341508711096, guid: 8a5fbe2def1af4f41ae0b4ac187df515, type: 3}
+  - {fileID: 2758113341508711096, guid: 8891ea0e964134e9d95afde809d61c3e, type: 3}
+  - {fileID: 2758113341508711096, guid: 6bf92208f804e41a29c0eec549c0c574, type: 3}
+  - {fileID: 2758113341508711096, guid: 95ae346d8e0f14e5da2f458c90617d88, type: 3}
+  - {fileID: 2758113341508711096, guid: 5d1b7bcaa6f9248c2904489c101b4f42, type: 3}
+  - {fileID: 2758113341508711096, guid: 4358a6ecc81614867a464c2cf78c29df, type: 3}
+  availableCollectibles:
+  - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
+  - {fileID: 6681012494745517332, guid: e646b106d20ca457989bc14eef3b87f0, type: 3}
+  - {fileID: 2814232834545528837, guid: afb5a31d2a5ec4610af0981604989ec5, type: 3}
+  availableObstacles:
+  - {fileID: 2136533362332409534, guid: d07835d3b19844ddba632142af195626, type: 3}
+  - {fileID: 762042803884708043, guid: 61605fc025d8f4e8c91ff01985397121, type: 3}
+  - {fileID: 5858442098828767921, guid: 1c398c047da74431b9133295a4138da4, type: 3}
+  - {fileID: 5858442098828767921, guid: b471a2a43869743eda0fd362d660b82e, type: 3}

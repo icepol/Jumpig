@@ -1,14 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
+using pixelook;
 using UnityEngine;
 
 public class CollectibleSpawner : MonoBehaviour
 {
-    [SerializeField] private List<Collectible> collectiblePrefabs;
     [SerializeField, Range(0, 1)] private float collectibleRatio = 0;
 
     public void Spawn(FloorRow row)
     {
+        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.rowsCountToAllowCollectible) return;
         if (collectibleRatio <= 0 || Random.Range(0f, 1f) > collectibleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Count)];
@@ -17,13 +16,13 @@ public class CollectibleSpawner : MonoBehaviour
 
         parentElement.IsFreeForAddon = false;
 
-        List<Collectible> availableCollectiblePrefabs =
-            collectiblePrefabs.Where(item => item.SpawnSetup.IsAvailable).ToList();
-        
-        if (availableCollectiblePrefabs.Count == 0) return;
+        Collectible[] availableCollectiblePrefabs =
+            GameManager.Instance.GameSetup.levels[GameState.Level].availableCollectibles;
+
+        if (availableCollectiblePrefabs.Length == 0) return;
 
         Instantiate(
-            availableCollectiblePrefabs[Random.Range(0, availableCollectiblePrefabs.Count)], 
+            availableCollectiblePrefabs[Random.Range(0, availableCollectiblePrefabs.Length)], 
             parentElement.transform.position,
             Quaternion.identity,
             parentElement.transform);

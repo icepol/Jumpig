@@ -5,11 +5,10 @@ using UnityEngine;
 
 public class FloorRow : MonoBehaviour, IFloorGroup
 {
-    [SerializeField] private SpawnSetup spawnSetup;
     [SerializeField] private float moveTime = 0.5f;
 
     public List<FloorElement> FloorElements { get; private set; }
-    public SpawnSetup SpawnSetup => spawnSetup;
+
     public bool IsLast { get; set; }
     
     private int _size = 1;

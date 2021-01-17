@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 public class FloorSpawner : MonoBehaviour, IFloorSpawner
 {
     [SerializeField] private float startSpawningPosition = 1;
-    [SerializeField] private List<GameObject> floorGroups;
 
     private float _nextPosition;
     private IFloorGroup _lastGroup;
@@ -52,12 +51,11 @@ public class FloorSpawner : MonoBehaviour, IFloorSpawner
 
     IFloorGroup NextToSpawn()
     {
-        List<GameObject> availableFloorGroups =
-            floorGroups.Where(item => item.GetComponent<IFloorGroup>().SpawnSetup.IsAvailable).ToList();
-        
+        FloorRow[] availableFloorGroups = GameManager.Instance.GameSetup.levels[GameState.Level].availableFloors;
+
         while (true)
         {
-            IFloorGroup floorGroup = availableFloorGroups[Random.Range(0, availableFloorGroups.Count)]
+            IFloorGroup floorGroup = availableFloorGroups[Random.Range(0, availableFloorGroups.Length)]
                 .GetComponent<IFloorGroup>();
             
             if (_lastGroup == floorGroup) continue;

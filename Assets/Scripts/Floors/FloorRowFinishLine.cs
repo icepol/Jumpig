@@ -7,7 +7,7 @@ public class FloorRowFinishLine : MonoBehaviour
     
     public void Spawn()
     {
-        if (GameState.SpawnedRowsCount % Constants.IncreaseLevelEachRowsCount == 0)
+        if (GameState.SpawnedRowsCount % GameManager.Instance.GameSetup.rowsPerLevel == 0)
             SpawnFinishLine();
     }
 
@@ -15,7 +15,7 @@ public class FloorRowFinishLine : MonoBehaviour
     {
         FinishLine finishLineInstance = Instantiate(finishLine, transform.position, Quaternion.identity, transform);
         finishLineInstance.SetLevelNumber((
-            GameState.SpawnedRowsCount / Constants.IncreaseLevelEachRowsCount + 1
+            GameState.SpawnedRowsCount / GameManager.Instance.GameSetup.rowsPerLevel + 1
             ).ToString());
     }
 }

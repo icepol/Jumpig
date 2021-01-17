@@ -6,10 +6,17 @@ using GameAnalyticsSDK;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameSetup gameSetup;
+    
     private bool _isGameRunning;
+
+    public static GameManager Instance { get; private set; }
+    public GameSetup GameSetup => gameSetup;
     
     private void Awake()
     {
+        Instance = this;
+        
         Application.targetFrameRate = 60;
         
         GameState.SpawnedRowsCount = 0;

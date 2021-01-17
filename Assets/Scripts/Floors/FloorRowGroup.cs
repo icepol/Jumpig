@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class FloorRowGroup : MonoBehaviour, IFloorGroup
 {
-    [SerializeField] private SpawnSetup spawnSetup;
     [SerializeField] private int size = 1;
-
-    public SpawnSetup SpawnSetup => spawnSetup;
 
     private FloorRow[] _floorRows;
     
