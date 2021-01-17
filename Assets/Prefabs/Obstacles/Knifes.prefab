@@ -46,9 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a27dae916b4435bbeb6663f4cab690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSetup: {fileID: 11400000, guid: b5e3235dc733a4d6e987b3d956f3916b, type: 2}
+  spawnSetup: {fileID: 11400000, guid: 567cc5093b1de443681926e20ecabca9, type: 2}
   onCollisionParticle: {fileID: 0}
-  _isDangerous: 0
 --- !u!114 &5318800530842448977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   randomStartDangerous: 1
+  changeStateJumpsCount: 1
 --- !u!95 &1916189969
 Animator:
   serializedVersion: 3
@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -199,7 +199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -261,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -385,7 +385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
