@@ -11,13 +11,16 @@ public class Collectible : MonoBehaviour, ICollisionHandler
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponentInParent<Player>() == null) return;
+
+        GameState.ComboMultiplier++;
         
         Instantiate(collectedEffect, transform.position, Quaternion.identity);
         
         ScoreBalloon scoreBalloonInstance = Instantiate(scoreBalloon, transform.position, Quaternion.identity);
-        scoreBalloonInstance.SetScore(scorePoints);
+        
+        scoreBalloonInstance.SetScore(scorePoints * GameState.ComboMultiplier);
 
-        GameState.Score += scorePoints;
+        GameState.Score += scorePoints * GameState.ComboMultiplier;
         
         if (postCollectEvent != null)
             EventManager.TriggerEvent(postCollectEvent);

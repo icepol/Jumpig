@@ -30,12 +30,15 @@
                 EventManager.TriggerEvent(Events.LEVEL_CHANGED);
             }
         }
+        
+        public static int ComboMultiplier { get; set; }
 
         public static void Reset()
         {
             _score = 0;
             Distance = 0;
             Level = 1;
+            ComboMultiplier = 0;
         }
     }
 }
