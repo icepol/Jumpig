@@ -12,7 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ed62a4558d845689dc185f5ba8e587, type: 3}
   m_Name: GameSetup
   m_EditorClassIdentifier: 
+  rowsCountToAllowCollectible: 15
   rowsPerLevel: 50
+  cameraBackgroundColors:
+  - {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 0}
+  - {r: 0.09603061, g: 0.22593547, b: 0.24528301, a: 0}
+  - {r: 0.15936977, g: 0.254717, b: 0.13336597, a: 0}
+  - {r: 0.17254902, g: 0.24705882, b: 0.011764706, a: 0}
+  - {r: 0.25490198, g: 0.21960784, b: 0.011764706, a: 0}
+  - {r: 0.27450982, g: 0.10980392, b: 0.050980393, a: 0}
+  - {r: 0.26666668, g: 0.14901961, b: 0.14901961, a: 0}
+  - {r: 0.26415092, g: 0.16571732, b: 0.23708168, a: 0}
+  - {r: 0.2735849, g: 0.1716358, b: 0.24554889, a: 0}
+  - {r: 0.14117648, g: 0.23529412, b: 0.25490198, a: 0}
   levels:
   - {fileID: 11400000, guid: 7eede01d2f30545a1a1f9d58944a6517, type: 2}
   - {fileID: 11400000, guid: 8b8db9ae8e1e44a6dad6a33aab05bd51, type: 2}
