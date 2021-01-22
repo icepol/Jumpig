@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Level005
   m_EditorClassIdentifier: 
   availableFloors:
-  - {fileID: 2758113341508711096, guid: 1829c38136f88427a8404de24959785a, type: 3}
-  - {fileID: 2758113341508711096, guid: 430131cd2830e408683cf33480d7a95e, type: 3}
-  - {fileID: 2758113341508711096, guid: 78d3d327281564efabf7955cddd274f5, type: 3}
-  - {fileID: 2758113341508711096, guid: 4081b04cd1e8a4e599120009a1ba2c72, type: 3}
-  - {fileID: 2758113341508711096, guid: 9d294046ff38d45d6bc3c64b70d67346, type: 3}
-  - {fileID: 2758113341508711096, guid: b27e5e29a4e414a34b02b6524bb8f143, type: 3}
-  - {fileID: 2758113341508711096, guid: 8a5fbe2def1af4f41ae0b4ac187df515, type: 3}
+  - {fileID: 8147960931197989885, guid: 34ae3d9a155c34eb29607abe27322525, type: 3}
+  - {fileID: 2967582405920519628, guid: b58b1df9215224dcdbf8f10f2b162925, type: 3}
+  - {fileID: 6361288838680828208, guid: d4b1303ff36454a60a77605fa8d53cb8, type: 3}
+  - {fileID: 700900761656888371, guid: 4832393b2dca44a9ea5dda0b6aae5c82, type: 3}
+  - {fileID: 2989831751891468935, guid: 5846eba8538fa456686ce21e0a3d7b78, type: 3}
+  - {fileID: 7800747448306120767, guid: 3f0fb303099e9478ba8bfc34d62ea803, type: 3}
+  - {fileID: 1996721968818076471, guid: 54d082c4fbfa0486ebec8b25ab1167b6, type: 3}
   availableCollectibles:
   - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
   availableObstacles:

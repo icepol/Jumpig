@@ -51,13 +51,12 @@ public class FloorSpawner : MonoBehaviour, IFloorSpawner
 
     IFloorGroup NextToSpawn()
     {
-        FloorRow[] availableFloorGroups = GameManager.Instance.GameSetup.levels[GameState.Level].availableFloors;
+        IFloorGroup[] availableFloorGroups = GameManager.Instance.GameSetup.levels[GameState.Level].availableFloors;
 
         while (true)
         {
-            IFloorGroup floorGroup = availableFloorGroups[Random.Range(0, availableFloorGroups.Length)]
-                .GetComponent<IFloorGroup>();
-            
+            IFloorGroup floorGroup = availableFloorGroups[Random.Range(0, availableFloorGroups.Length)];
+
             if (_lastGroup == floorGroup) continue;
             
             _lastGroup = floorGroup;

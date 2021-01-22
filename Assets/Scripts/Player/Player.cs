@@ -1,4 +1,3 @@
-using System.Collections;
 using pixelook;
 using UnityEngine;
 
