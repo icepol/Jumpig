@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ed62a4558d845689dc185f5ba8e587, type: 3}
   m_Name: GameSetupDev
   m_EditorClassIdentifier: 
-  rowsCountToAllowCollectible: 15
+  rowsCountToAllowCollectible: 5
   rowsPerLevel: 50
   cameraBackgroundColors:
   - {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 0}

@@ -15,9 +15,8 @@ MonoBehaviour:
   availableFloors:
   - {fileID: 2967582405920519628, guid: b58b1df9215224dcdbf8f10f2b162925, type: 3}
   - {fileID: 6361288838680828208, guid: d4b1303ff36454a60a77605fa8d53cb8, type: 3}
-  - {fileID: 1325977308289830197, guid: 475aea781f5704e1db18b8fed6f3b100, type: 3}
-  - {fileID: 4099858174785876882, guid: f9c8026353b9c42ff98c22d05b6c43b7, type: 3}
-  - {fileID: 2051450663865207946, guid: b9de3ee61b59c4cccbe669943fe4934e, type: 3}
   availableCollectibles:
   - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
+  - {fileID: 6681012494745517332, guid: e646b106d20ca457989bc14eef3b87f0, type: 3}
+  - {fileID: 2814232834545528837, guid: afb5a31d2a5ec4610af0981604989ec5, type: 3}
   availableObstacles: []
