@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 2814232834545528837, guid: afb5a31d2a5ec4610af0981604989ec5, type: 3}
   availableObstacles:
   - {fileID: 2136533362332409534, guid: d07835d3b19844ddba632142af195626, type: 3}
+  - {fileID: 5858442098828767921, guid: b471a2a43869743eda0fd362d660b82e, type: 3}
