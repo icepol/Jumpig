@@ -4,21 +4,21 @@ using UnityEngine;
 public class Obstacle : MonoBehaviour, ICollisionHandler
 {
     [SerializeField] private ParticleSystem onCollisionParticle;
+    [SerializeField] private bool isDangerous;
     
     private Animator _animator;
     private IObstacleDangerous[] _obstacleDangerous;
-    private bool _isDangerous;
-    
+
     public bool IsDangerous
     {
-        get => _isDangerous;
+        get => isDangerous;
         
         set
         {
-            _isDangerous = value;
+            isDangerous = value;
             
             if (_animator != null)
-                _animator.SetBool("IsDangerous", _isDangerous);
+                _animator.SetBool("IsDangerous", isDangerous);
             
             foreach (IObstacleDangerous obstacleDangerous in _obstacleDangerous)
                 obstacleDangerous.SetDangerousState(IsDangerous);
