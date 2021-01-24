@@ -17,7 +17,7 @@ public class CollectibleSpawner : MonoBehaviour
         parentElement.IsFreeForAddon = false;
 
         Collectible[] availableCollectiblePrefabs =
-            GameManager.Instance.GameSetup.levels[GameState.Level].availableCollectibles;
+            GameManager.Instance.GameSetup.levels[GameState.Level - 1].availableCollectibles;
 
         if (availableCollectiblePrefabs.Length == 0) return;
 

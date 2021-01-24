@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSetup
   m_EditorClassIdentifier: 
   rowsCountToAllowCollectible: 15
-  rowsPerLevel: 50
+  rowsPerLevel: 40
   cameraBackgroundColors:
   - {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 0}
   - {r: 0.105882354, g: 0.25490198, b: 0.27450982, a: 0}

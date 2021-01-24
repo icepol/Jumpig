@@ -18,7 +18,7 @@ public class ObstacleSpawner : MonoBehaviour
         parentElement.IsFreeForAddon = false;
 
         Obstacle[] availableCollectiblePrefabs =
-            GameManager.Instance.GameSetup.levels[GameState.Level].availableObstacles;
+            GameManager.Instance.GameSetup.levels[GameState.Level - 1].availableObstacles;
 
         if (availableCollectiblePrefabs.Length == 0) return;
 
