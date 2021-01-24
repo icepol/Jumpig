@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 5359489531238695979}
   - component: {fileID: 5359489531238695957}
   - component: {fileID: 723445520184454309}
+  - component: {fileID: 8257455350164763274}
   m_Layer: 6
   m_Name: FloorElementHiding
   m_TagString: Untagged
@@ -206,3 +207,20 @@ MonoBehaviour:
   hiddenMaterial: {fileID: 2100000, guid: c15cd8e3683504a36a01b4a19b5d82e9, type: 2}
   randomStartIsHidden: 1
   changeStateJumpsCount: 1
+--- !u!114 &8257455350164763274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359489531238696511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca42ff255fa64709810d491b44b4474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotations:
+  - 90
+  - 180
+  - 270
+  rotationVariation: 0.1
