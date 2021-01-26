@@ -20,5 +20,4 @@ MonoBehaviour:
   - {fileID: 2989831751891468935, guid: 5846eba8538fa456686ce21e0a3d7b78, type: 3}
   availableCollectibles:
   - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
-  availableObstacles:
-  - {fileID: 0}
+  availableObstacles: []

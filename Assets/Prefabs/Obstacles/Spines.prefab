@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5318800530842448977}
   - component: {fileID: 1916189969}
   m_Layer: 0
-  m_Name: Knifes
+  m_Name: Spines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a27dae916b4435bbeb6663f4cab690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSetup: {fileID: 11400000, guid: b5e3235dc733a4d6e987b3d956f3916b, type: 2}
   onCollisionParticle: {fileID: 0}
+  isDangerous: 0
 --- !u!114 &5318800530842448977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,12 +108,43 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3138917882000516163}
+  m_Father: {fileID: 762042803884708040}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6743525613342025132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3138917882000516163}
+  m_Layer: 0
+  m_Name: Wrapper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3138917882000516163
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6743525613342025132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
   - {fileID: 762042804807599677}
   - {fileID: 6712884826931334309}
   - {fileID: 7850351770046600146}
   - {fileID: 6890263974153787430}
   - {fileID: 818220544964667317}
-  m_Father: {fileID: 762042803884708040}
+  m_Father: {fileID: 2147878494231173631}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3763791267356827857
@@ -121,11 +152,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2147878494231173631}
+    m_TransformParent: {fileID: 3138917882000516163}
     m_Modifications:
     - target: {fileID: 4515137713006339811, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_Name
-      value: Knife1
+      value: Spine1
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_RootOrder
@@ -133,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: -0.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
@@ -141,7 +172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.25
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalRotation.w
@@ -183,11 +214,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2147878494231173631}
+    m_TransformParent: {fileID: 3138917882000516163}
     m_Modifications:
     - target: {fileID: 4515137713006339811, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_Name
-      value: Knife5
+      value: Spine5
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_RootOrder
@@ -245,11 +276,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2147878494231173631}
+    m_TransformParent: {fileID: 3138917882000516163}
     m_Modifications:
     - target: {fileID: 4515137713006339811, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_Name
-      value: Knife3
+      value: Spine3
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_RootOrder
@@ -257,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: 0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
@@ -265,7 +296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.25
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalRotation.w
@@ -307,11 +338,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2147878494231173631}
+    m_TransformParent: {fileID: 3138917882000516163}
     m_Modifications:
     - target: {fileID: 4515137713006339811, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_Name
-      value: Knife4
+      value: Spine4
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_RootOrder
@@ -319,7 +350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: 0.19999999
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
@@ -327,7 +358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalRotation.w
@@ -369,11 +400,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2147878494231173631}
+    m_TransformParent: {fileID: 3138917882000516163}
     m_Modifications:
     - target: {fileID: 4515137713006339811, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_Name
-      value: Knife2
+      value: Spine2
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_RootOrder
@@ -381,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.25
+      value: -0.20000005
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.y
@@ -389,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4515137713006339820, guid: e39c5ea1a1a0b477181573d969a25f89, type: 3}
       propertyPath: m_LocalRotation.w
