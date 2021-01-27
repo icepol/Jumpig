@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using pixelook;
 using UnityEngine;
 
@@ -9,6 +7,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void Spawn(FloorRow row)
     {
+        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.rowsCountToAllowSpawning) return;
         if (obstacleRatio <= 0 || Random.Range(0f, 1f) > obstacleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Count)];
@@ -18,7 +17,7 @@ public class ObstacleSpawner : MonoBehaviour
         parentElement.IsFreeForAddon = false;
 
         Obstacle[] availableCollectiblePrefabs =
-            GameManager.Instance.GameSetup.levels[GameState.Level - 1].availableObstacles;
+            GameManager.Instance.GameSetup.levels[GameManager.Instance.GameSetup.LevelBySpawnedRows - 1].availableObstacles;
 
         if (availableCollectiblePrefabs.Length == 0) return;
 

@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd4fc196de80453bb8f9145450f8ce8, type: 3}
   m_Name: Level015
   m_EditorClassIdentifier: 
+  numberOfRows: 40
+  collectibleRatio: 0.2
+  obstacleRatio: 0.15
   availableFloors:
   - {fileID: 8147960931197989885, guid: 34ae3d9a155c34eb29607abe27322525, type: 3}
   - {fileID: 6361288838680828208, guid: d4b1303ff36454a60a77605fa8d53cb8, type: 3}

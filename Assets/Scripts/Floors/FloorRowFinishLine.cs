@@ -1,4 +1,3 @@
-using pixelook;
 using UnityEngine;
 
 public class FloorRowFinishLine : MonoBehaviour
@@ -7,15 +6,13 @@ public class FloorRowFinishLine : MonoBehaviour
     
     public void Spawn()
     {
-        if (GameState.SpawnedRowsCount % GameManager.Instance.GameSetup.rowsPerLevel == 0)
+        if (GameManager.Instance.GameSetup.IsLastRowInLevel)
             SpawnFinishLine();
     }
 
     private void SpawnFinishLine()
     {
         FinishLine finishLineInstance = Instantiate(finishLine, transform.position, Quaternion.identity, transform);
-        finishLineInstance.SetLevelNumber((
-            GameState.SpawnedRowsCount / GameManager.Instance.GameSetup.rowsPerLevel + 1
-            ).ToString());
+        finishLineInstance.SetLevelNumber((GameManager.Instance.GameSetup.LevelBySpawnedRows + 1).ToString());
     }
 }

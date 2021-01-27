@@ -7,7 +7,7 @@ public class CollectibleSpawner : MonoBehaviour
 
     public void Spawn(FloorRow row)
     {
-        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.rowsCountToAllowCollectible) return;
+        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.rowsCountToAllowSpawning) return;
         if (collectibleRatio <= 0 || Random.Range(0f, 1f) > collectibleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Count)];
@@ -17,7 +17,7 @@ public class CollectibleSpawner : MonoBehaviour
         parentElement.IsFreeForAddon = false;
 
         Collectible[] availableCollectiblePrefabs =
-            GameManager.Instance.GameSetup.levels[GameState.Level - 1].availableCollectibles;
+            GameManager.Instance.GameSetup.levels[GameManager.Instance.GameSetup.LevelBySpawnedRows -1 ].availableCollectibles;
 
         if (availableCollectiblePrefabs.Length == 0) return;
 

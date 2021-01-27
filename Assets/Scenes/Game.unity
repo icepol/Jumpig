@@ -834,6 +834,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7286974097958792591, guid: 5ba4fc94ea6f140d794141b1cacd8fdb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba4fc94ea6f140d794141b1cacd8fdb, type: 3}
 --- !u!1001 &1775114983
@@ -1160,6 +1164,10 @@ PrefabInstance:
     - target: {fileID: 673059888212579804, guid: e3e85d12baaa74f00895f25e833c671d, type: 3}
       propertyPath: m_Name
       value: SoundsManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 673059888212579804, guid: e3e85d12baaa74f00895f25e833c671d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1673790591032152034, guid: e3e85d12baaa74f00895f25e833c671d, type: 3}
       propertyPath: pickupCoin
