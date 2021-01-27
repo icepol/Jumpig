@@ -51,7 +51,8 @@ public class FloorSpawner : MonoBehaviour, IFloorSpawner
 
     IFloorGroup NextToSpawn()
     {
-        IFloorGroup[] availableFloorGroups = GameManager.Instance.GameSetup.levels[GameState.Level - 1].availableFloors;
+        IFloorGroup[] availableFloorGroups = GameManager.Instance.GameSetup
+            .levels[GameManager.Instance.GameSetup.LevelBySpawnedRows - 1].availableFloors;
 
         while (true)
         {

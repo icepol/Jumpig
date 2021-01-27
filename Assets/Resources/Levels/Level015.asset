@@ -12,16 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd4fc196de80453bb8f9145450f8ce8, type: 3}
   m_Name: Level015
   m_EditorClassIdentifier: 
-  numberOfRows: 40
+  numberOfRows: 60
   collectibleRatio: 0.2
-  obstacleRatio: 0.15
+  obstacleRatio: 0.3
   availableFloors:
-  - {fileID: 8147960931197989885, guid: 34ae3d9a155c34eb29607abe27322525, type: 3}
-  - {fileID: 6361288838680828208, guid: d4b1303ff36454a60a77605fa8d53cb8, type: 3}
-  - {fileID: 2967582405920519628, guid: b58b1df9215224dcdbf8f10f2b162925, type: 3}
+  - {fileID: 8147960931197989885, guid: 3cd0b06d54c43463fad03ffbeafc84f1, type: 3}
   - {fileID: 700900761656888371, guid: 4832393b2dca44a9ea5dda0b6aae5c82, type: 3}
+  - {fileID: 7800747448306120767, guid: 3f0fb303099e9478ba8bfc34d62ea803, type: 3}
+  - {fileID: 2989831751891468935, guid: 5846eba8538fa456686ce21e0a3d7b78, type: 3}
+  - {fileID: 2989831751891468935, guid: 5846eba8538fa456686ce21e0a3d7b78, type: 3}
+  - {fileID: 450778981328733782, guid: 6eed4af8260f84e1a84e45ac4b5a7b2a, type: 3}
+  - {fileID: 6605715375900967228, guid: e91ad22a4a5c74ee3bf8bbfa587f5977, type: 3}
+  - {fileID: 2967582405920519628, guid: b58b1df9215224dcdbf8f10f2b162925, type: 3}
+  - {fileID: 2477737073205753137, guid: 614c63c77914e49bebcbd23bd8581bcf, type: 3}
+  - {fileID: 2967582405920519628, guid: b58b1df9215224dcdbf8f10f2b162925, type: 3}
+  - {fileID: 6361288838680828208, guid: d4b1303ff36454a60a77605fa8d53cb8, type: 3}
+  - {fileID: 2856123159408716758, guid: f06d3a43f67ba4ad9afb748ab9233d67, type: 3}
+  - {fileID: 2883821878113165876, guid: 2f2bbd3fdc22d4d74ad44d21bc76d63c, type: 3}
   availableCollectibles:
   - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
-  - {fileID: 6681012494745517332, guid: e646b106d20ca457989bc14eef3b87f0, type: 3}
   availableObstacles:
+  - {fileID: 2136533362332409534, guid: d07835d3b19844ddba632142af195626, type: 3}
+  - {fileID: 762042803884708043, guid: 61605fc025d8f4e8c91ff01985397121, type: 3}
+  - {fileID: 5858442098828767921, guid: 1c398c047da74431b9133295a4138da4, type: 3}
   - {fileID: 5858442098828767921, guid: b471a2a43869743eda0fd362d660b82e, type: 3}

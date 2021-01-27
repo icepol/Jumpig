@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 731030224831188391}
   - component: {fileID: -3510194838147894002}
   - component: {fileID: 8598265420302254525}
+  - component: {fileID: 4415130380536389558}
   m_Layer: 0
   m_Name: 3Space1
   m_TagString: Untagged
@@ -50,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f84cfae6010425f8663b5fb650c2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnSetup: {fileID: 11400000, guid: ca092535f46b74ddba69153cad96189b, type: 2}
   moveTime: 0.1
 --- !u!114 &1162915242951422388
 MonoBehaviour:
@@ -81,9 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8b07bdbe179474cbbdb11d32d0c2af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectiblePrefabs:
-  - {fileID: 6681012494745517332, guid: c9712b5b29c6d44af8074e40007f4af6, type: 3}
-  - {fileID: 6681012494745517332, guid: e646b106d20ca457989bc14eef3b87f0, type: 3}
   collectibleRatio: 0.2
 --- !u!114 &-3510194838147894002
 MonoBehaviour:
@@ -97,11 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e583ef48765647718afb77b8a3b0e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs:
-  - {fileID: 2136533362332409534, guid: d07835d3b19844ddba632142af195626, type: 3}
-  - {fileID: 762042803884708043, guid: 61605fc025d8f4e8c91ff01985397121, type: 3}
-  - {fileID: 5858442098828767921, guid: 1c398c047da74431b9133295a4138da4, type: 3}
-  - {fileID: 5858442098828767921, guid: b471a2a43869743eda0fd362d660b82e, type: 3}
   obstacleRatio: 0.15
 --- !u!114 &8598265420302254525
 MonoBehaviour:
@@ -116,6 +108,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishLine: {fileID: 7651455046375439851, guid: f93662e197586423dad3969d84d7a62b, type: 3}
+--- !u!114 &4415130380536389558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5999976295226104363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636087fb4122746ccb1fcc2b2b70c841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 1
 --- !u!1001 &324770935875059147
 PrefabInstance:
   m_ObjectHideFlags: 0

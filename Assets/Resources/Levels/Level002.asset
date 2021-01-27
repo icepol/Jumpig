@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfRows: 40
   collectibleRatio: 0.2
-  obstacleRatio: 0.15
+  obstacleRatio: 0.2
   availableFloors:
   - {fileID: 700900761656888371, guid: 4832393b2dca44a9ea5dda0b6aae5c82, type: 3}
   - {fileID: 2989831751891468935, guid: 5846eba8538fa456686ce21e0a3d7b78, type: 3}
