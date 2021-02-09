@@ -26,11 +26,11 @@ MonoBehaviour:
   UserMessagesFailed: 0
   CustomArea: 
   gameKey:
-  - 7b3f982922ab47ac3dcbb765fb8c3540
+  - 32b0869f161159e54691f19b2a81670d
   - 83ba06c75df4c10b9f5c73723065fe0c
   - bb7acdc141df67e1b3ed6b7d39a87051
   secretKey:
-  - 065a36389da10f29bd4ed47dc4459c8514279290
+  - 393f9b8126ece91276e715ea491f717f51c7e665
   - c6d270e8dab1265bdc221f6464d26ec1cf8b8b2a
   - 625c9749aef393ea87352f7db86987b3351ac4ba
   Build:
@@ -38,25 +38,36 @@ MonoBehaviour:
   - 0.1
   - 0.1
   SelectedPlatformOrganization:
-  - pixelook
+  - Voodoo
   - pixelook
   - 
   SelectedPlatformStudio:
-  - pixelook
+  - Voodoo
   - pixelook
   - 
   SelectedPlatformGame:
-  - Jumpig
+  - Jumpig Adventure - iOS (Pavel Koci Studio)
   - Jumpig Android
   - 
-  SelectedPlatformGameID: ccee0100cbee0100ffffffff
-  SelectedOrganization: 010000000100000001000000
+  SelectedPlatformGameID: 08010200cbee0100ffffffff
+  SelectedOrganization: 020000000100000001000000
   SelectedStudio: 010000000100000001000000
-  SelectedGame: 010000000200000000000000
-  NewVersion: 6.3.9
-  Changes: '6.3.9
+  SelectedGame: 020000000500000000000000
+  NewVersion: 6.3.10
+  Changes: '6.3.10
 
-    - fixed ironsource impression event compile error'
+    - fix to mopub impression events, require min. mopub v5.14.0
+
+    -
+    REMEMBER to update to this version of the SDK if you use MoPub impression events
+    and you have min. v5.14.0 of MoPub SDK inatalled or else the SDK will not send
+    MoPub impression event for you any more
+
+
+    6.3.9
+
+    - fixed ironsource impression
+    event compile error'
   SignUpOpen: 0
   StudioName: PiXELOOK
   GameName: Jumpig
@@ -78,7 +89,7 @@ MonoBehaviour:
   ResourceCurrencies: []
   LastCreatedGamePlatform: 1
   Platforms: 080000000b00000011000000
-  CurrentInspectorState: 3
+  CurrentInspectorState: 1
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
