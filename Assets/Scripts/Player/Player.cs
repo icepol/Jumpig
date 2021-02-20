@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem onPlayerJumpFinishedParticle;
 
     private Rigidbody _rigidbody;
+    private FloorMovingWrapper _floorMovingWrapper;
     
     private int _floorLayerMask;
     private int _finishLineLayerMask;
@@ -18,6 +19,8 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _floorLayerMask = 1 << LayerMask.NameToLayer("Floor");
         _finishLineLayerMask = 1 << LayerMask.NameToLayer("FinishLine");
+
+        _floorMovingWrapper = FindObjectOfType<FloorMovingWrapper>();
     }
 
     void Start()
@@ -51,7 +54,7 @@ public class Player : MonoBehaviour
             _isGameRunning = true;
         }
         
-        transform.parent = null;
+        transform.parent = _floorMovingWrapper.transform;
 
         if (onPlayerJumpStartedParticle != null)
             Instantiate(onPlayerJumpStartedParticle, transform.position, Quaternion.identity);
@@ -79,6 +82,10 @@ public class Player : MonoBehaviour
             transform.parent = hit.transform;
 
             if (!_isGameRunning) return;
+
+            FloorElement floorElement = hit.collider.GetComponent<FloorElement>();
+            if (floorElement)
+                floorElement.OnPlayerCollision();
             
             GameState.Score += 5;
             GameState.Distance++;

@@ -7,7 +7,7 @@ public class ObstacleSpawner : MonoBehaviour
 
     public void Spawn(FloorRow row)
     {
-        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.rowsCountToAllowSpawning) return;
+        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.floorMinRowsCountToSpawnObstacles) return;
         if (obstacleRatio <= 0 || Random.Range(0f, 1f) > obstacleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Count)];

@@ -1,55 +1,55 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using pixelook;
 using UnityEngine;
-using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 public class FloorSpawner : MonoBehaviour, IFloorSpawner
 {
     [SerializeField] private float startSpawningPosition = 1;
+    [SerializeField] private FloorMovingWrapper movingWrapper; 
 
     private float _nextPosition;
     private IFloorGroup _lastGroup;
+    private Floor _floor;
+    private FloorMovingWrapper _floorMovingWrapper;
 
     private void Awake()
     {
         _nextPosition = startSpawningPosition;
+
+        _floor = GetComponent<Floor>();
+        _floorMovingWrapper = GetComponentInChildren<FloorMovingWrapper>();
     }
 
     private void Start()
     {
-        EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
+        EventManager.AddListener(Events.FLOOR_ROW_REMOVED, OnFloorRowRemoved);
     }
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
+        EventManager.RemoveListener(Events.FLOOR_ROW_REMOVED, OnFloorRowRemoved);
     }
 
-    private void OnFloorMoveFinished()
+    private void OnFloorRowRemoved()
     {
-        // decrease next position as floor moved
-        _nextPosition--;
+        Spawn();
     }
 
-    public FloorRow[] Spawn()
+    private FloorRow[] SpawnRow()
     {
-        IFloorGroup floorGroup = NextToSpawn();
+        IFloorGroup floorGroupToSpawn = NextToSpawn();
 
-        IFloorGroup instance = (IFloorGroup)Instantiate(
-            (Object)floorGroup,
-            new Vector3(0, 0, _nextPosition),
-            Quaternion.identity,
-            transform);
+        GameObject instance =
+            Instantiate(((MonoBehaviour) floorGroupToSpawn).gameObject, movingWrapper.transform, false);
+        
+        instance.transform.localPosition = new Vector3(0, 0, _nextPosition);
 
-        _nextPosition += instance.Size();
+        IFloorGroup floorGroup = instance.GetComponent<IFloorGroup>();
+        _nextPosition += floorGroup.Size();
 
-        return instance.Rows();
+        return floorGroup.Rows();
     }
 
-    IFloorGroup NextToSpawn()
+    private IFloorGroup NextToSpawn()
     {
         IFloorGroup[] availableFloorGroups = GameManager.Instance.GameSetup
             .levels[GameManager.Instance.GameSetup.LevelBySpawnedRows - 1].availableFloors;
@@ -62,6 +62,14 @@ public class FloorSpawner : MonoBehaviour, IFloorSpawner
             
             _lastGroup = floorGroup;
             return floorGroup;
+        }
+    }
+    
+    public void Spawn()
+    {
+        while (_floor.RowsCount < GameManager.Instance.GameSetup.floorVisibleRowsCount)
+        {
+            _floor.AddRows(SpawnRow());
         }
     }
 }

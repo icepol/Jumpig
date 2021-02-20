@@ -4,7 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameSetup", menuName = "Assets/Game Setup")]
 public class GameSetup : ScriptableObject
 {
-    public int rowsCountToAllowSpawning = 15;
+    public int floorVisibleRowsCount = 30;
+    
+    public int floorMinRowsCountToSpawnObstacles = 5;
+    public int floorMinRowsCountToSpawnCollectibles = 5;
+    
+    public float rowDelayBeforeShaking = 2;
+    public float rowDelayBeforeFalling = 1;
 
     public Color[] cameraBackgroundColors;
     

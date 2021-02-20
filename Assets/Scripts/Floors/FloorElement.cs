@@ -6,6 +6,7 @@ public class FloorElement : MonoBehaviour
     private DelayAnimation _delayAnimation;
     private Rigidbody _rigidbody;
     private BoxCollider _boxCollider;
+    private FloorRow _floorRow;
 
     private bool _isFalling;
     
@@ -16,10 +17,16 @@ public class FloorElement : MonoBehaviour
         _delayAnimation = GetComponent<DelayAnimation>();
         _rigidbody = GetComponent<Rigidbody>();
         _boxCollider = GetComponent<BoxCollider>();
+        _floorRow = GetComponentInParent<FloorRow>();
         
         _delayAnimation.enabled = false;
 
         IsFreeForAddon = true;
+    }
+
+    public void OnPlayerCollision()
+    {
+        _floorRow.OnPlayerCollision();
     }
 
     public void StartShaking()

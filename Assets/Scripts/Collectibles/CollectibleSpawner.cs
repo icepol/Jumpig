@@ -7,7 +7,7 @@ public class CollectibleSpawner : MonoBehaviour
 
     public void Spawn(FloorRow row)
     {
-        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.rowsCountToAllowSpawning) return;
+        if (GameState.SpawnedRowsCount < GameManager.Instance.GameSetup.floorMinRowsCountToSpawnCollectibles) return;
         if (collectibleRatio <= 0 || Random.Range(0f, 1f) > collectibleRatio) return;
 
         FloorElement parentElement = row.FloorElements[Random.Range(0, row.FloorElements.Count)];

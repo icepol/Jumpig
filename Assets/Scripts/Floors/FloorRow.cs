@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using pixelook;
@@ -5,27 +6,20 @@ using UnityEngine;
 
 public class FloorRow : MonoBehaviour, IFloorGroup
 {
-    [SerializeField] private float moveTime = 0.5f;
-
     public List<FloorElement> FloorElements { get; private set; }
 
-    public bool IsLast { get; set; }
-    
     private int _size = 1;
 
+    private Floor _floor;
     private CollectibleSpawner _collectibleSpawner;
     private ObstacleSpawner _obstacleSpawner;
     private FloorRowFinishLine _floorRowFinishLine;
 
-    private bool _isMovingForward;
-    private Vector3 _oldPosition;
-    private Vector3 _newPosition;
-    private float _currentTime;
-
     public void Awake()
     {
         FloorElements = GetComponentsInChildren<FloorElement>().ToList();
-        
+
+        _floor = GetComponentInParent<Floor>();
         _collectibleSpawner = GetComponent<CollectibleSpawner>();
         _obstacleSpawner = GetComponent<ObstacleSpawner>();
         _floorRowFinishLine = GetComponent<FloorRowFinishLine>();
@@ -44,46 +38,28 @@ public class FloorRow : MonoBehaviour, IFloorGroup
         if (_floorRowFinishLine != null)
             _floorRowFinishLine.Spawn();
     }
-    
-    public void Update()
+
+    IEnumerator WaitShakeAndFall()
     {
-        if (!_isMovingForward) return;
-        
-        transform.position = Vector3.Lerp(_oldPosition, _newPosition, _currentTime / moveTime);
-
-        _currentTime += Time.deltaTime;
-
-        if (transform.position != _newPosition) return;
-        
-        _isMovingForward = false;
-        
-        if (IsLast)
-            EventManager.TriggerEvent(Events.FLOOR_MOVE_FINISHED);
-    }
-
-    public void StartShaking()
-    {
+        yield return new WaitForSeconds(GameManager.Instance.GameSetup.rowDelayBeforeShaking);
+            
         foreach (var floorElement in FloorElements)
         {
             floorElement.StartShaking();
         }
-    }
 
-    public void StartFalling()
-    {
+        yield return new WaitForSeconds(GameManager.Instance.GameSetup.rowDelayBeforeFalling);
+        
         foreach (var floorElement in FloorElements)
         {
             floorElement.StartFalling();
         }
-    }
-
-    public void StartMovingForward()
-    {
-        _oldPosition = transform.position;
-        _newPosition = _oldPosition + Vector3.back;
-
-        _currentTime = 0;
-        _isMovingForward = true;
+        
+        yield return new WaitForSeconds(1.5f);
+        
+        _floor.RemoveRow();
+        
+        Destroy(gameObject);
     }
 
     public int Size()
@@ -94,5 +70,10 @@ public class FloorRow : MonoBehaviour, IFloorGroup
     public FloorRow[] Rows()
     {
         return new[] {this};
+    }
+
+    public void OnPlayerCollision()
+    {
+        StartCoroutine(WaitShakeAndFall());
     }
 }

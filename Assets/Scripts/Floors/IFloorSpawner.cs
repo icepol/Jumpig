@@ -1,4 +1,4 @@
 public interface IFloorSpawner
 {
-    FloorRow[] Spawn();
+    void Spawn();
 }

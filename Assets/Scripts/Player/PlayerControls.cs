@@ -15,14 +15,11 @@ public class PlayerControls : MonoBehaviour
         EventManager.AddListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.AddListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
-        EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
+        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
         EventManager.AddListener(Events.SINGLE_TAP, OnSingleTap);
         EventManager.AddListener(Events.DOUBLE_TAP, OnDoubleTap);
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
-    }
-
-    private void Start()
-    {
+        
         DisableController();
     }
 
@@ -31,10 +28,15 @@ public class PlayerControls : MonoBehaviour
         EventManager.RemoveListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.RemoveListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
-        EventManager.RemoveListener(Events.FLOOR_MOVE_FINISHED, OnFloorMoveFinished);
+        EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
         EventManager.RemoveListener(Events.SINGLE_TAP, OnSingleTap);
         EventManager.RemoveListener(Events.DOUBLE_TAP, OnDoubleTap);
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
+    }
+
+    private void OnPlayerMoveFinished()
+    {
+        EnableController();
     }
 
     private void OnPlayerDied()
@@ -44,11 +46,6 @@ public class PlayerControls : MonoBehaviour
         DisableController();
     }
 
-    private void OnFloorMoveFinished()
-    {
-        EnableController();
-    }
-    
     private void OnPlayerJumpStarted()
     {
         DisableController();

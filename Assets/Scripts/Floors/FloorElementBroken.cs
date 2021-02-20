@@ -11,7 +11,7 @@ public class FloorElementBroken : MonoBehaviour
     
     void Awake()
     {
-        EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnPlayerMoveFinished);
+        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
     private void Start()
@@ -24,7 +24,7 @@ public class FloorElementBroken : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnPlayerMoveFinished);
+        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
     private void OnPlayerMoveFinished()

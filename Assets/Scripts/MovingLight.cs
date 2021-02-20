@@ -10,13 +10,13 @@ public class MovingLight : MonoBehaviour
         _animator = GetComponent<Animator>();
         
         EventManager.AddListener(Events.INIT_FLOOR_STARTED, OnInitFloorStarted);
-        EventManager.AddListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
+        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
     private void OnDestroy()
     {
         EventManager.RemoveListener(Events.INIT_FLOOR_STARTED, OnInitFloorStarted);
-        EventManager.RemoveListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
+        EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
     private void OnInitFloorStarted()
@@ -24,7 +24,7 @@ public class MovingLight : MonoBehaviour
         _animator.SetTrigger("Move");
     }
 
-    private void OnFloorMoveStarted()
+    private void OnPlayerMoveFinished()
     {
         _animator.SetTrigger("Move");
     }

@@ -40,21 +40,21 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
         if (!_isMoving || _isPlayerDead) return;
         
         _currentMovementDuration += Time.deltaTime;
-        transform.position = Vector3.Lerp(_oldPosition, _newPosition, _currentMovementDuration / movementDuration);
+        transform.localPosition = Vector3.Lerp(_oldPosition, _newPosition, _currentMovementDuration / movementDuration);
 
-        if (_currentMovementDuration >= movementDuration)
-        {
-            _isMoving = false;
-            EventManager.TriggerEvent(Events.PLAYER_JUMP_FINISHED);
-        }
+        if (!(_currentMovementDuration >= movementDuration)) return;
+        
+        _isMoving = false;
+        EventManager.TriggerEvent(Events.PLAYER_JUMP_FINISHED);
     }
 
     public void MoveTo(Vector3 position)
     {
         EventManager.TriggerEvent(Events.PLAYER_JUMP_STARTED);
 
-        _oldPosition = transform.position;
+        _oldPosition = transform.localPosition;
         _newPosition = _oldPosition + position;
+        
         _currentMovementDuration = 0;
         _isMoving = true;
         
