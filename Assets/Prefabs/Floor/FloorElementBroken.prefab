@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2287966579522502}
   - component: {fileID: 738688121244840442}
   - component: {fileID: 3375401147444031891}
-  - component: {fileID: 7543100685535738947}
+  - component: {fileID: -5089628458251434985}
   m_Layer: 6
   m_Name: FloorElementBroken
   m_TagString: Untagged
@@ -87,7 +87,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2781069268114044285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7ad23082571bb4d6ab274fb102151945, type: 2}
   m_CullingMode: 0
@@ -124,23 +124,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeForJump: 0.8
---- !u!114 &7543100685535738947
+--- !u!114 &-5089628458251434985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2781069268114044285}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ca42ff255fa64709810d491b44b4474, type: 3}
+  m_Script: {fileID: 11500000, guid: 6655f0b9fc63c4a49b02b13368c9d0f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotations:
-  - 90
-  - 180
-  - 270
-  rotationVariation: 0.1
+  position: {x: 0, y: 0.01, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2781069268905099315
 GameObject:
   m_ObjectHideFlags: 0

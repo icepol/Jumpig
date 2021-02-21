@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FloorElement : MonoBehaviour
 {
-    private DelayAnimation _delayAnimation;
+    private Animator _animator;
     private Rigidbody _rigidbody;
     private BoxCollider _boxCollider;
     private FloorRow _floorRow;
@@ -14,12 +14,10 @@ public class FloorElement : MonoBehaviour
 
     private void Awake()
     {
-        _delayAnimation = GetComponent<DelayAnimation>();
+        _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         _boxCollider = GetComponent<BoxCollider>();
         _floorRow = GetComponentInParent<FloorRow>();
-        
-        _delayAnimation.enabled = false;
 
         IsFreeForAddon = true;
     }
@@ -31,7 +29,7 @@ public class FloorElement : MonoBehaviour
 
     public void StartShaking()
     {
-        _delayAnimation.enabled = true;
+        _animator.SetTrigger("IsShaking");
     }
 
     public void StartFalling()

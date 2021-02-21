@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 5359489531238695957}
   - component: {fileID: 723445520184454309}
   - component: {fileID: 8257455350164763274}
+  - component: {fileID: 7549863869266839142}
   m_Layer: 6
   m_Name: FloorElementHiding
   m_TagString: Untagged
@@ -167,7 +168,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5359489531238696511}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7ad23082571bb4d6ab274fb102151945, type: 2}
   m_CullingMode: 0
@@ -224,3 +225,17 @@ MonoBehaviour:
   - 180
   - 270
   rotationVariation: 0.1
+--- !u!114 &7549863869266839142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359489531238696511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6655f0b9fc63c4a49b02b13368c9d0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0.01, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}

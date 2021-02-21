@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: -1659370230436102579}
   - component: {fileID: 8166597273418832079}
   - component: {fileID: 8871507397872325363}
+  - component: {fileID: 1562543044898512824}
+  - component: {fileID: 5582941029261216650}
   m_Layer: 6
   m_Name: FloorElement
   m_TagString: Untagged
@@ -85,7 +87,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6324711754190689908}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7ad23082571bb4d6ab274fb102151945, type: 2}
   m_CullingMode: 0
@@ -109,6 +111,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.95, y: 0.5, z: 0.95}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1562543044898512824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324711754190689908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6655f0b9fc63c4a49b02b13368c9d0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0.01, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5582941029261216650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324711754190689908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6655f0b9fc63c4a49b02b13368c9d0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0.01, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6324711755514602298
 GameObject:
   m_ObjectHideFlags: 0

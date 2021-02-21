@@ -1,25 +1,20 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace pixelook
 {
     public class DelayAnimation : MonoBehaviour
     {
         private Animator _animator;
-
+        
         void Start()
         {
             _animator = GetComponent<Animator>();
-            _animator.enabled = false;
 
-            StartCoroutine(WaitAndAnimate());
-        }
-
-        IEnumerator WaitAndAnimate()
-        {
-            yield return new WaitForSeconds(Random.Range(0f, 0.5f));
-
-            _animator.enabled = true;
+            _animator.Play(
+                _animator.GetCurrentAnimatorStateInfo(0).shortNameHash,
+                0,
+                Random.Range(0f, 1f));
         }
     }
 }
