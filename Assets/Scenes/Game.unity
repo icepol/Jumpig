@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smooth: 0.25
+  maxSpeed: 1
 --- !u!95 &963194232
 Animator:
   serializedVersion: 3
@@ -2085,6 +2086,6 @@ PrefabInstance:
     - target: {fileID: 8251027910041813511, guid: f99482ae37f944a469c65e3f1ebce81c, type: 3}
       propertyPath: gameSetup
       value: 
-      objectReference: {fileID: 11400000, guid: df7137ad33be141d38833576d4fbae5f, type: 2}
+      objectReference: {fileID: 11400000, guid: 048ecf984e45b44b6b6ff5e79b7f88de, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f99482ae37f944a469c65e3f1ebce81c, type: 3}

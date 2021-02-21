@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     private void OnPlayerCollidedObstacle()
     {
         if (onPlayerCollidedObstacleParticle != null)
-            Instantiate(onPlayerCollidedObstacleParticle, transform.position, Quaternion.identity);
+            Instantiate(onPlayerCollidedObstacleParticle, transform.position, Quaternion.identity, _floorMovingWrapper.transform);
         
         Destroy(gameObject);
     }
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
         transform.parent = _floorMovingWrapper.transform;
 
         if (onPlayerJumpStartedParticle != null)
-            Instantiate(onPlayerJumpStartedParticle, transform.position, Quaternion.identity);
+            Instantiate(onPlayerJumpStartedParticle, transform.position, Quaternion.identity, _floorMovingWrapper.transform);
     }
 
     private void OnPlayerJumpFinished()
