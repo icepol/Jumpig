@@ -3,17 +3,15 @@ using UnityEngine;
 
 public class FloorMovingWrapper : MonoBehaviour
 {
-    private bool _isGameRunning;
-    private bool _isFloorMoving;
-    
-    private Vector3 _sourcePosition;
-    private Vector3 _targetPosition;
+    [SerializeField] private float minSpeed = 0.01f;
+    [SerializeField] private float maxSpeed = 1f;
     
     private Player _player;
     private Vector3 _playerOriginPosition;
 
-    private float _moveTime = 1f;
-    private float _currentMoveTime;
+    private bool _isGameRunning;
+    private Vector3 _targetPosition;
+    private Vector3 _currentVelocity = Vector3.zero;
 
     private void Awake()
     {
@@ -44,33 +42,23 @@ public class FloorMovingWrapper : MonoBehaviour
     
     private void OnPlayerMoveFinished()
     {
-        _sourcePosition = transform.position;
-        _targetPosition = _sourcePosition + Vector3.back * (_player.transform.position.z - _playerOriginPosition.z); 
-        
-        _currentMoveTime = 0;
-
-        if (_isFloorMoving) return;
-        
-        _isFloorMoving = true;
-        EventManager.TriggerEvent(Events.FLOOR_MOVE_STARTED);
+        _targetPosition = transform.position + Vector3.back * (_player.transform.position.z - _playerOriginPosition.z);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isGameRunning && _isFloorMoving)
+        if (_isGameRunning)
             MoveFloor();
     }
 
     private void MoveFloor()
     {
-        _currentMoveTime += Time.deltaTime;
+        float speed = minSpeed + (transform.position.z - _targetPosition.z) * 0.015f;
         
-        transform.position = Vector3.Lerp(_sourcePosition, _targetPosition, _currentMoveTime / _moveTime);
-
-        if (!(_currentMoveTime >= _moveTime)) return;
-        
-        _isFloorMoving = false;
-        EventManager.TriggerEvent(Events.FLOOR_MOVE_FINISHED);
+        transform.position = Vector3.MoveTowards(
+            transform.position, 
+            _targetPosition, 
+            Mathf.Clamp(speed, minSpeed, maxSpeed));
     }
 }

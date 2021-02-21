@@ -21,7 +21,6 @@ namespace pixelook
             EventManager.AddListener(Events.PLAYER_COLLIDED_OBSTACLE, OnPlayerCollidedObstacle);
             EventManager.AddListener(Events.COIN_COLLECTED, OnCoinCollected);
             EventManager.AddListener(Events.FOOD_COLLECTED, OnFoodCollected);
-            EventManager.AddListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
             EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
         }
 
@@ -32,7 +31,6 @@ namespace pixelook
             EventManager.RemoveListener(Events.PLAYER_COLLIDED_OBSTACLE, OnPlayerCollidedObstacle);
             EventManager.RemoveListener(Events.COIN_COLLECTED, OnCoinCollected);
             EventManager.RemoveListener(Events.FOOD_COLLECTED, OnFoodCollected);
-            EventManager.RemoveListener(Events.FLOOR_MOVE_STARTED, OnFloorMoveStarted);
             EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
         }
 

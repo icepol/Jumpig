@@ -12,15 +12,15 @@ public class FloorRowGroup : MonoBehaviour, IFloorGroup
     {
         FetchRows();
         
-        EventManager.AddListener(Events.FLOOR_MOVE_FINISHED, OnFloorRowFinished);
+        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
     private void OnDestroy()
     {
-        EventManager.RemoveListener(Events.FLOOR_MOVE_FINISHED, OnFloorRowFinished);
+        EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
-    private void OnFloorRowFinished()
+    private void OnPlayerMoveFinished()
     {
         FetchRows();
     }

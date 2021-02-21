@@ -3,8 +3,6 @@
     public static class Events
     {
         public const string FLOOR_ROW_REMOVED = "FloorRowRemoved";
-        public const string FLOOR_MOVE_FINISHED = "FloorMoveFinished";
-        public const string FLOOR_MOVE_STARTED = "FloorMoveStarted";
         public const string FLOOR_FALL_STARTED = "FloorFallStarted";
         public const string INIT_FLOOR_STARTED = "InitFloorStarted";
         public const string INIT_FLOOR_FINISHED = "InitFloorFinished";
