@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
+    [SerializeField] private float smooth = 0.25f;
+    
     private Player _player;
+    private Vector3 _currentVelocity;
 
     private void Awake()
     {
@@ -12,10 +15,12 @@ public class FollowPlayer : MonoBehaviour
     void Update()
     {
         if (_player == null) return;
-        
-        transform.position = new Vector3(
-            _player.transform.position.x, 
-            transform.position.y, 
+
+        Vector3 targetPosition = new Vector3(
+            _player.transform.position.x,
+            transform.position.y,
             transform.position.z);
+        
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, smooth);
     }
 }

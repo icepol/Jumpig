@@ -45,12 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7e04812238c4d60a79290d53445b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAndSpawnDelay: 0.2
-  initSpawnCount: 30
-  initSpawnDelay: 0
-  shakeDelay: 2
-  removePlatformsDelay: 1
-  moveRowsDelay: 0
 --- !u!114 &6428541654489674548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d685aa2f1e464b9891f68dd8306ab34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSpeed: 0.01
+  maxSpeed: 1
 --- !u!1001 &2781124830313127222
 PrefabInstance:
   m_ObjectHideFlags: 0
