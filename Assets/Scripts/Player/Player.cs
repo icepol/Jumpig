@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             GameState.Score += 5;
             GameState.Distance++;
 
-            EventManager.TriggerEvent(Events.PLAYER_MOVEMENT_FINISHED);
+            EventManager.TriggerEvent(Events.PLAYER_MOVEMENT_FINISHED, transform.position);
             
             if (onPlayerJumpFinishedParticle != null)
                 Instantiate(onPlayerJumpFinishedParticle, transform.position - Vector3.down * 0.5f, Quaternion.identity);

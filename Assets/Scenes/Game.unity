@@ -1880,14 +1880,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3818827993602637003, guid: d4917d4cf73784a13b777875d4565d55, type: 3}
-      propertyPath: maxSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3818827993602637003, guid: d4917d4cf73784a13b777875d4565d55, type: 3}
-      propertyPath: smoothTime
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 6428541654489674538, guid: d4917d4cf73784a13b777875d4565d55, type: 3}
       propertyPath: m_Name
       value: Floor

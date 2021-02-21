@@ -24,7 +24,7 @@ public class MovingLight : MonoBehaviour
         _animator.SetTrigger("Move");
     }
 
-    private void OnPlayerMoveFinished()
+    private void OnPlayerMoveFinished(Vector3 position)
     {
         _animator.SetTrigger("Move");
     }

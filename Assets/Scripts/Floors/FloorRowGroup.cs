@@ -20,7 +20,7 @@ public class FloorRowGroup : MonoBehaviour, IFloorGroup
         EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
-    private void OnPlayerMoveFinished()
+    private void OnPlayerMoveFinished(Vector3 position)
     {
         FetchRows();
     }

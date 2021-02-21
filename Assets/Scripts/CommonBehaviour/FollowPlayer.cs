@@ -3,6 +3,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     [SerializeField] private float smooth = 0.25f;
+    [SerializeField] private float maxSpeed = 1f;
     
     private Player _player;
     private Vector3 _currentVelocity;
@@ -21,6 +22,6 @@ public class FollowPlayer : MonoBehaviour
             transform.position.y,
             transform.position.z);
         
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, smooth);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentVelocity, smooth, maxSpeed);
     }
 }

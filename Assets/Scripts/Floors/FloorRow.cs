@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
     public List<FloorElement> FloorElements { get; private set; }
 
     private int _size = 1;
+    private Coroutine _waitAndFallCoroutine;
 
     private Floor _floor;
     private CollectibleSpawner _collectibleSpawner;
@@ -27,6 +29,8 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
     public void Start()
     {
+        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
+        
         GameState.SpawnedRowsCount += 1;
 
         if (_collectibleSpawner != null)
@@ -39,6 +43,21 @@ public class FloorRow : MonoBehaviour, IFloorGroup
             _floorRowFinishLine.Spawn();
     }
 
+    private void OnDestroy()
+    {
+        EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
+    }
+
+    private void OnPlayerMovementFinished(Vector3 position)
+    {
+        if (transform.position.z >= position.z) return;
+        
+        if (_waitAndFallCoroutine != null)
+            StopCoroutine(_waitAndFallCoroutine);
+        
+        StartCoroutine(StartFalling());
+    }
+
     IEnumerator WaitShakeAndFall()
     {
         yield return new WaitForSeconds(GameManager.Instance.GameSetup.rowDelayBeforeShaking);
@@ -49,7 +68,12 @@ public class FloorRow : MonoBehaviour, IFloorGroup
         }
 
         yield return new WaitForSeconds(GameManager.Instance.GameSetup.rowDelayBeforeFalling);
-        
+
+        yield return StartCoroutine(StartFalling());
+    }
+
+    IEnumerator StartFalling()
+    {
         foreach (var floorElement in FloorElements)
         {
             floorElement.StartFalling();
@@ -74,6 +98,6 @@ public class FloorRow : MonoBehaviour, IFloorGroup
 
     public void OnPlayerCollision()
     {
-        StartCoroutine(WaitShakeAndFall());
+        _waitAndFallCoroutine = StartCoroutine(WaitShakeAndFall());
     }
 }

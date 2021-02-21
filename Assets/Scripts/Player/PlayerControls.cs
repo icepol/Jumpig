@@ -34,7 +34,7 @@ public class PlayerControls : MonoBehaviour
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
-    private void OnPlayerMoveFinished()
+    private void OnPlayerMoveFinished(Vector3 position)
     {
         EnableController();
     }

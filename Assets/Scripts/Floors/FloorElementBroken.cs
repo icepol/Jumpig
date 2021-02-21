@@ -27,7 +27,7 @@ public class FloorElementBroken : MonoBehaviour
         EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
-    private void OnPlayerMoveFinished()
+    private void OnPlayerMoveFinished(Vector3 position)
     {
         Player player = GetComponentInChildren<Player>();
         if (player)
