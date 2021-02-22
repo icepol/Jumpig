@@ -1,3 +1,4 @@
+using System;
 using pixelook;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,18 +10,23 @@ public class MenuPanel : MonoBehaviour
     
     private Animator _animator;
 
-    void Start()
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
     {
         EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
+    }
 
-        _animator = GetComponent<Animator>();
-        
+    private void Start()
+    {
         UpdateButton(soundsButton, Settings.IsSfxEnabled);
         UpdateButton(musicButton, Settings.IsMusicEnabled);
     }
 
-    // Update is called once per frame
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
     }

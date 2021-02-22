@@ -1,3 +1,4 @@
+using System;
 using pixelook;
 using UnityEngine;
 
@@ -18,17 +19,20 @@ public class FloorElementMoving : MonoBehaviour
         _floorElement = GetComponentInChildren<FloorElement>();
     }
 
+    private void OnEnable()
+    {
+        EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
+        EventManager.AddListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
+    }
+
     void Start()
     {
         // put to init position
         _floorElement.transform.position = waypoints[0].position;
         _nextWaypointIndex = 1;
-        
-        EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
-        EventManager.AddListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.RemoveListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);

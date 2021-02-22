@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         _floorMovingWrapper = FindObjectOfType<FloorMovingWrapper>();
     }
 
-    void Start()
+    void OnEnable()
     {
         EventManager.AddListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         EventManager.AddListener(Events.PLAYER_COLLIDED_OBSTACLE, OnPlayerCollidedObstacle);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);

@@ -6,17 +6,20 @@ public class LevelText : MonoBehaviour
 {
     private Text _text;
     private Animator _animator;
-    
-    void Start()
+
+    private void Awake()
     {
         _text = GetComponent<Text>();
         _animator = GetComponent<Animator>();
-        
+    }
+
+    private void OnEnable()
+    {
         EventManager.AddListener(Events.LEVEL_CHANGED, OnLevelChanged);
     }
 
     // Update is called once per frame
-    void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.LEVEL_CHANGED, OnLevelChanged);
     }

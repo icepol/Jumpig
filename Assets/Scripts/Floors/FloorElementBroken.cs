@@ -9,7 +9,7 @@ public class FloorElementBroken : MonoBehaviour
     private DelayAnimation _delayAnimation;
     private FloorElement _floorElement;
     
-    void Awake()
+    void OnEnable()
     {
         EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
@@ -22,9 +22,9 @@ public class FloorElementBroken : MonoBehaviour
         _floorElement = GetComponent<FloorElement>();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
+        EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
     private void OnPlayerMoveFinished(Vector3 position)

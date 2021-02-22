@@ -27,10 +27,13 @@ public class FloorRow : MonoBehaviour, IFloorGroup
         _floorRowFinishLine = GetComponent<FloorRowFinishLine>();
     }
 
-    public void Start()
+    private void OnEnable()
     {
         EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
-        
+    }
+
+    public void Start()
+    {
         GameState.SpawnedRowsCount += 1;
 
         if (_collectibleSpawner != null)
@@ -43,7 +46,7 @@ public class FloorRow : MonoBehaviour, IFloorGroup
             _floorRowFinishLine.Spawn();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMovementFinished);
     }

@@ -1,3 +1,4 @@
+using System;
 using pixelook;
 using UnityEngine;
 
@@ -16,7 +17,10 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        
+    }
+
+    private void OnEnable()
+    {
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
@@ -25,7 +29,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerMovement
         MoveStep();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
     }

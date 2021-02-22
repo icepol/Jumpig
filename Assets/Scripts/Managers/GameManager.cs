@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using pixelook;
 using UnityEngine;
@@ -20,21 +21,24 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         
         GameState.SpawnedRowsCount = 0;
-        
+    }
+
+    private void OnEnable()
+    {
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
         EventManager.AddListener(Events.LEVEL_CHANGED, OnLevelChanged);
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
-    void Start()
+    private void Start()
     {
         GameAnalytics.Initialize();
         GameServices.Initialize();
     }
 
     // Update is called once per frame
-    void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);

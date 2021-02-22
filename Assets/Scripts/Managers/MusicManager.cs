@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace pixelook
 {
@@ -18,7 +19,10 @@ namespace pixelook
         {
             audioSource = GetComponent<AudioSource>();
             _volume = audioSource.volume;
+        }
 
+        private void OnEnable()
+        {
             EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
             EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
             EventManager.AddListener(Events.MUSIC_SETTINGS_CHANGED, OnMusicSettingsChanged);
@@ -45,7 +49,7 @@ namespace pixelook
             _currentFadeOutDuration += Time.deltaTime;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
             EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);

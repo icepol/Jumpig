@@ -14,7 +14,7 @@ namespace pixelook
         [SerializeField] private AudioClip platformMove;
         [SerializeField] private AudioClip levelFinished;
 
-        private void Start()
+        private void OnEnable()
         {
             EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
             EventManager.AddListener(Events.PLAYER_FALLEN, OnPlayerFallen);
@@ -24,14 +24,14 @@ namespace pixelook
             EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
             EventManager.RemoveListener(Events.PLAYER_FALLEN, OnPlayerFallen);
             EventManager.RemoveListener(Events.PLAYER_COLLIDED_OBSTACLE, OnPlayerCollidedObstacle);
             EventManager.RemoveListener(Events.COIN_COLLECTED, OnCoinCollected);
             EventManager.RemoveListener(Events.FOOD_COLLECTED, OnFoodCollected);
-            EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
+            EventManager.RemoveListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
         }
 
         private void OnFinishLinePassed()

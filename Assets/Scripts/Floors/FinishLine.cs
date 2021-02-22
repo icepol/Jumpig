@@ -16,15 +16,18 @@ public class FinishLine : MonoBehaviour
     {
         _floorRow = GetComponentInParent<FloorRow>();
     }
+    
+    void OnEnable()
+    {
+        EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
+    }
 
     void Start()
     {
-        EventManager.AddListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
-        
         SetPositionAndSize();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.FINISH_LINE_PASSED, OnFinishLinePassed);
     }

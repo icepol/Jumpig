@@ -11,11 +11,14 @@ public class FloorRowGroup : MonoBehaviour, IFloorGroup
     void Awake()
     {
         FetchRows();
-        
+    }
+
+    private void OnEnable()
+    {
         EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }

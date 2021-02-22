@@ -1,5 +1,7 @@
+using System;
 using pixelook;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DangerousOnJumpFinished : MonoBehaviour
 {
@@ -14,15 +16,18 @@ public class DangerousOnJumpFinished : MonoBehaviour
         _obstacle = GetComponent<Obstacle>();
     }
 
-    void Start()
+    private void OnEnable()
     {
         EventManager.AddListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
+    }
 
+    void Start()
+    {
         if (randomStartDangerous)
             _obstacle.IsDangerous = Random.Range(0f, 1f) > 0.5f;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
     }

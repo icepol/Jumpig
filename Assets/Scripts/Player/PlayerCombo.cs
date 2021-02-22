@@ -5,13 +5,13 @@ public class PlayerCombo : MonoBehaviour
 {
     private int _currentCombo;
     
-    void Start()
+    void OnEnable()
     {
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.AddListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
         EventManager.RemoveListener(Events.PLAYER_JUMP_FINISHED, OnPlayerJumpFinished);

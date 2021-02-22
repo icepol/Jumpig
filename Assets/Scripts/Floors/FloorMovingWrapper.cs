@@ -9,14 +9,14 @@ public class FloorMovingWrapper : MonoBehaviour
     private bool _isGameRunning;
     private Vector3 _targetPosition;
 
-    private void Awake()
+    private void OnEnable()
     {
         EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
         EventManager.AddListener(Events.PLAYER_MOVEMENT_FINISHED, OnPlayerMoveFinished);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);

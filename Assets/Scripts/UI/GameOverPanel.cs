@@ -1,3 +1,4 @@
+using System;
 using pixelook;
 using UnityEngine;
 
@@ -9,12 +10,16 @@ public class GameOverPanel : MonoBehaviour
     {
         // move off the screen
         _position = transform.position;
-        transform.position = new Vector3(10000, 10000, 0);
         
+        transform.position = new Vector3(10000, 10000, 0);
+    }
+
+    private void OnEnable()
+    {
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
     }

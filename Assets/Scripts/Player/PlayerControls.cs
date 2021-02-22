@@ -1,3 +1,4 @@
+using System;
 using pixelook;
 using UnityEngine;
 
@@ -12,6 +13,11 @@ public class PlayerControls : MonoBehaviour
     {
         _playerMovement = GetComponent<IPlayerMovement>();
         
+        DisableController();
+    }
+
+    private void OnEnable()
+    {
         EventManager.AddListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.AddListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
@@ -19,11 +25,9 @@ public class PlayerControls : MonoBehaviour
         EventManager.AddListener(Events.SINGLE_TAP, OnSingleTap);
         EventManager.AddListener(Events.DOUBLE_TAP, OnDoubleTap);
         EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
-        
-        DisableController();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.INIT_FLOOR_FINISHED, OnInitFloorFinished);
         EventManager.RemoveListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);

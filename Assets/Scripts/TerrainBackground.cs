@@ -1,3 +1,4 @@
+using System;
 using pixelook;
 using UnityEngine;
 
@@ -10,14 +11,17 @@ public class TerrainBackground : MonoBehaviour
         _terrainCamera = GetComponentInChildren<Camera>();
     }
 
-    void Start()
+    private void OnEnable()
     {
-        _terrainCamera.backgroundColor = GameManager.Instance.GameSetup.cameraBackgroundColors[0];
-        
         EventManager.AddListener(Events.LEVEL_CHANGED, OnLevelChanged);
     }
 
-    private void OnDestroy()
+    void Start()
+    {
+        _terrainCamera.backgroundColor = GameManager.Instance.GameSetup.cameraBackgroundColors[0];
+    }
+
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.LEVEL_CHANGED, OnLevelChanged);
     }

@@ -11,13 +11,13 @@ namespace pixelook
             _animator = GetComponent<Animator>();
         }
 
-        void Start()
+        void OnEnable()
         {
             EventManager.AddListener(Events.PLAYER_DIED, OnPlayerDied);
             EventManager.AddListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
             EventManager.RemoveListener(Events.FLOOR_FALL_STARTED, OnFloorFallStarted);

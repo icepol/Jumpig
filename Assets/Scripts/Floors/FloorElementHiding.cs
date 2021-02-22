@@ -1,5 +1,7 @@
+using System;
 using pixelook;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class FloorElementHiding : MonoBehaviour
 {
@@ -33,15 +35,18 @@ public class FloorElementHiding : MonoBehaviour
         _meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
 
-    void Start()
+    private void OnEnable()
     {
         EventManager.AddListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
-        
+    }
+
+    void Start()
+    {
         if (randomStartIsHidden)
             IsHidden = Random.Range(0f, 1f) > 0.5f;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.PLAYER_JUMP_STARTED, OnPlayerJumpStarted);
     }

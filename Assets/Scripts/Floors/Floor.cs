@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using pixelook;
 using UnityEngine;
@@ -13,10 +14,12 @@ public class Floor : MonoBehaviour
     {
         _floorSpawner = GetComponent<IFloorSpawner>();
     }
-
+    
     private void Start()
     {
         EventManager.TriggerEvent(Events.INIT_FLOOR_STARTED);
+        
+        AddRows(GetComponentsInChildren<FloorRow>());
         
         _floorSpawner.Spawn();
         

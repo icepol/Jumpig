@@ -11,13 +11,13 @@ public class HelpPanel : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    void Start()
+    private void OnEnable()
     {
         EventManager.AddListener(Events.GAME_STARTED, OnGameStarted);
     }
 
     // Update is called once per frame
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
     }
