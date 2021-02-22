@@ -91,9 +91,10 @@ public class Player : MonoBehaviour
             GameState.Distance++;
 
             EventManager.TriggerEvent(Events.PLAYER_MOVEMENT_FINISHED, transform.position);
-            
+
             if (onPlayerJumpFinishedParticle != null)
-                Instantiate(onPlayerJumpFinishedParticle, transform.position - Vector3.down * 0.5f, Quaternion.identity);
+                Instantiate(onPlayerJumpFinishedParticle, transform.position + Vector3.back * 0.10f,
+                    Quaternion.identity, _floorMovingWrapper.transform);
         }
         else
         {
