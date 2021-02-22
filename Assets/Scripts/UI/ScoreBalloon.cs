@@ -13,7 +13,7 @@ namespace pixelook
         public void SetScore(int score)
         {
             string text = GameState.ComboMultiplier > 1 
-                ? $"<size=48>combo</size>\n<b>+{score}x{GameState.ComboMultiplier}</b>" 
+                ? $"<size=48>combo</size>\n<b>+{score / GameState.ComboMultiplier}x{GameState.ComboMultiplier}</b>" 
                 : $"<b>+{score}</b>";
             
             foreach (TextMesh textMesh in GetComponentsInChildren<TextMesh>())
