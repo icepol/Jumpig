@@ -7,6 +7,8 @@ namespace pixelook
     public class GamePanel : MonoBehaviour
     {
         [SerializeField] private Text score;
+        [SerializeField] private Text coins;
+        
         [SerializeField] private float tapTimeout = 0.2f;
         
         private float _currentTapTimeout;
@@ -15,17 +17,18 @@ namespace pixelook
 
         void Update()
         {
-            UpdateScore();
+            UpdatePanel();
 
             HandleKeyboard();
             CheckTimeout();
         }
 
-        private void UpdateScore()
+        private void UpdatePanel()
         {
             score.text = GameState.Score.ToString();
+            coins.text = $"x{GameState.Coins}";
         }
-        
+
         void CheckTimeout()
         {
             if (_tapCount == 0) return; // nothing to check

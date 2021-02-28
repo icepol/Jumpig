@@ -4,6 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameSetup", menuName = "Assets/Game Setup")]
 public class GameSetup : ScriptableObject
 {
+    public int selectedSkinIndex = 0;
+    public SkinSetup[] skins;
+    
     public int floorVisibleRowsCount = 30;
     
     public int floorMinRowsCountToSpawnObstacles = 5;

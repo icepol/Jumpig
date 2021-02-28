@@ -10,6 +10,8 @@
         
         public const string SINGLE_TAP = "SingleTap";
         public const string DOUBLE_TAP = "DoubleTap";
+        public const string SKIN_LEFT_BUTTON_CLICK = "SkinLeftButtonClick";
+        public const string SKIN_RIGHT_BUTTON_CLICK = "SkinRightButtonClick";
 
         // level progression events
         public const string GAME_STARTED = "GameStarted";
@@ -22,6 +24,7 @@
         public const string PLAYER_DIED = "PlayerDied";
         public const string PLAYER_COLLIDED_OBSTACLE = "PlayerCollidedObstacle";
         public const string PLAYER_FALLEN = "PlayerFallen";
+        public const string PLAYER_SKIN_CHANGED = "PlayerSkinChanged";
         
         public const string COIN_COLLECTED = "CoinCollected";
         public const string FOOD_COLLECTED = "FoodCollected";

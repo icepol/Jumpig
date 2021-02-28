@@ -1,4 +1,3 @@
-using System;
 using pixelook;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,6 +67,16 @@ public class MenuPanel : MonoBehaviour
     public void OnPrivacyPolicyButtonClick()
     {
         Application.OpenURL(Constants.PrivacyPolicyURL);
+    }
+
+    public void OnSkinLeftButtonClick()
+    {
+        EventManager.TriggerEvent(Events.SKIN_LEFT_BUTTON_CLICK);
+    }
+    
+    public void OnSkinRightButtonClick()
+    {
+        EventManager.TriggerEvent(Events.SKIN_RIGHT_BUTTON_CLICK);
     }
     
     void UpdateButton(Button button, bool isEnabled) {

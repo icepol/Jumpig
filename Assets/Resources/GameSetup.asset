@@ -12,7 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ed62a4558d845689dc185f5ba8e587, type: 3}
   m_Name: GameSetup
   m_EditorClassIdentifier: 
-  rowsCountToAllowSpawning: 5
+  selectedSkinIndex: 0
+  skins:
+  - {fileID: 11400000, guid: 9d8c0ca092a784cb796c5b6b5941114b, type: 2}
+  - {fileID: 11400000, guid: 922bc8e707add4d4490ff978181e68f1, type: 2}
+  - {fileID: 11400000, guid: 69b28f53e3afa4e8fb05ba9f8c8b9dd1, type: 2}
+  - {fileID: 11400000, guid: 56ae1b67935b04c00adeb6b9f27c67bc, type: 2}
+  - {fileID: 11400000, guid: 364ae8696d3344da69ce332450b6e37c, type: 2}
+  floorVisibleRowsCount: 30
+  floorMinRowsCountToSpawnObstacles: 5
+  floorMinRowsCountToSpawnCollectibles: 5
+  rowDelayBeforeShaking: 2
+  rowDelayBeforeFalling: 1
   cameraBackgroundColors:
   - {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 0}
   - {r: 0.105882354, g: 0.25490198, b: 0.27450982, a: 0}
