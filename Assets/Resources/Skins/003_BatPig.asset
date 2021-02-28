@@ -15,3 +15,5 @@ MonoBehaviour:
   coinsForUnlock: 15
   isUnlocked: 0
   model: {fileID: 919132149155446097, guid: eb2cf7ad371eb405bb1e3addabd74919, type: 3}
+  achievementIdAndroid: 
+  achievementIdIos: skin_batpig

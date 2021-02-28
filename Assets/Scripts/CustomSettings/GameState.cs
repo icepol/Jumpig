@@ -3,6 +3,7 @@
     public static class GameState
     {
         private static int _score;
+        private static int _coins;
 
         private static int _level = 1;
 
@@ -17,7 +18,15 @@
             }
         }
         
-        public static int Coins { get; set; }
+        public static int Coins { 
+            get => _coins;
+
+            set
+            {
+                _coins = value;
+                EventManager.TriggerEvent(Events.COINS_CHANGED);
+            }
+        }
 
         public static int Distance { get; set; }
 

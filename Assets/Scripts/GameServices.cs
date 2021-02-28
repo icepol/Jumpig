@@ -2,21 +2,11 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using GooglePlayGames;
 
-public struct UserScore {
-    public string userName;
-    public float value;
-
-    public UserScore(float value, string userName) {
-        this.value = value;
-        this.userName = userName;
-    }
-}
-
 public class GameServices : MonoBehaviour {
 
     static bool isInitialized;
+    static bool isAuthenticated;
     static bool showAuthentication = true;
-    static bool isAuthenticated = false;
 
     public static void Initialize() {
         if (isInitialized)
@@ -45,21 +35,29 @@ public class GameServices : MonoBehaviour {
 
     public static void ReportScore(string boardId, int score) {
         if (Application.isEditor) {
-            Debug.Log("GameServices: Report score " + score + " to board " + boardId);
+            Debug.Log($"GameServices: Report score {score} to board {boardId}");
             return;
         }
 
         if (isAuthenticated) {
             Social.ReportScore(
-                score, boardId, OnReportScore
+                score, boardId, success => { }
             );
         }
     }
+    
+    public static void UnlockAchievement(string achievementId) {
+        if (Application.isEditor) {
+            Debug.Log($"GameServices: UnlockAchievement {achievementId}");
+            return;
+        }
 
-    private static void OnUserAuthenticated(bool obj) {
-        isAuthenticated = true;
+        Social.ReportProgress(achievementId, 100f, (bool success) => {
+            Debug.Log($"GameServices: UnlockAchievement {achievementId} success: {success}");
+        });
     }
 
-    private static void OnReportScore(bool obj) {
+    private static void OnUserAuthenticated(bool success) {
+        isAuthenticated = true;
     }
 }

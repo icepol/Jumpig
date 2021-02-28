@@ -17,6 +17,7 @@
         public const string GAME_STARTED = "GameStarted";
         public const string LEVEL_CHANGED = "LevelChanged";
         public const string SCORE_CHANGED = "ScoreChanged";
+        public const string COINS_CHANGED = "CoinsChanged";
 
         public const string PLAYER_JUMP_FINISHED = "PlayerJumpFinished";
         public const string PLAYER_JUMP_STARTED = "PlayerJumpStarted";

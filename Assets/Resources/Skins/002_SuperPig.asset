@@ -15,3 +15,5 @@ MonoBehaviour:
   coinsForUnlock: 5
   isUnlocked: 0
   model: {fileID: 919132149155446097, guid: 66566d01811ab4cd7b9c3ba780fad574, type: 3}
+  achievementIdAndroid: 
+  achievementIdIos: skin_superpig

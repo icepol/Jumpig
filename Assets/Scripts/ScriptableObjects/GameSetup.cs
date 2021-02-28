@@ -4,19 +4,28 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameSetup", menuName = "Assets/Game Setup")]
 public class GameSetup : ScriptableObject
 {
+    [Header("Skin Settings")]
     public int selectedSkinIndex = 0;
+    public int unlockedToIndex = 0;
+    public bool areUnlockedAll = false;
+    
     public SkinSetup[] skins;
     
+    [Header("Floor Settings")]
     public int floorVisibleRowsCount = 30;
     
+    [Header("Spawn Settings")]
     public int floorMinRowsCountToSpawnObstacles = 5;
     public int floorMinRowsCountToSpawnCollectibles = 5;
     
+    [Header("Row Behaviour Settings")]
     public float rowDelayBeforeShaking = 2;
     public float rowDelayBeforeFalling = 1;
 
+    [Header("Background Settings")]
     public Color[] cameraBackgroundColors;
     
+    [Header("Levels Settings")]
     public LevelSetup[] levels;
 
     public bool IsLastRowInLevel

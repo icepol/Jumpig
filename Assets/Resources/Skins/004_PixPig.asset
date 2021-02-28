@@ -15,3 +15,5 @@ MonoBehaviour:
   coinsForUnlock: 30
   isUnlocked: 0
   model: {fileID: 919132149155446097, guid: 65019e08fc7434015994bcd95459b8de, type: 3}
+  achievementIdAndroid: 
+  achievementIdIos: skin_pixpig
