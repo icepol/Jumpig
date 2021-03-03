@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f33ec95f768014376aad791a34533b06, type: 3}
-  m_Name: 003_BatPig
+  m_Name: 003_Batpig
   m_EditorClassIdentifier: 
   coinsForUnlock: 15
   isUnlocked: 0

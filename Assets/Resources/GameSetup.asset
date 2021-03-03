@@ -12,13 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ed62a4558d845689dc185f5ba8e587, type: 3}
   m_Name: GameSetup
   m_EditorClassIdentifier: 
-  selectedSkinIndex: 0
+  selectedSkinIndex: 6
+  unlockedToIndex: 0
+  areUnlockedAll: 0
   skins:
   - {fileID: 11400000, guid: 9d8c0ca092a784cb796c5b6b5941114b, type: 2}
   - {fileID: 11400000, guid: 922bc8e707add4d4490ff978181e68f1, type: 2}
   - {fileID: 11400000, guid: 69b28f53e3afa4e8fb05ba9f8c8b9dd1, type: 2}
   - {fileID: 11400000, guid: 56ae1b67935b04c00adeb6b9f27c67bc, type: 2}
   - {fileID: 11400000, guid: 364ae8696d3344da69ce332450b6e37c, type: 2}
+  - {fileID: 11400000, guid: 8d7dd71d3accd4e27ba4c90fb02c2abf, type: 2}
+  - {fileID: 11400000, guid: 0a48d75e5790f44598aa3a5297954734, type: 2}
+  - {fileID: 11400000, guid: 05f57381adddb485cb259b565499c766, type: 2}
+  - {fileID: 11400000, guid: ec3664512c6814e9bafc28a4449b2bfd, type: 2}
   floorVisibleRowsCount: 30
   floorMinRowsCountToSpawnObstacles: 5
   floorMinRowsCountToSpawnCollectibles: 5

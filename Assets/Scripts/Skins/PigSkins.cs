@@ -75,7 +75,7 @@ public class PigSkins : MonoBehaviour
 
     private void MoveSkinsToPositions()
     {
-        if (GameManager.Instance.GameSetup.skins[_selectedSkin].isUnlocked)
+        if (GameManager.Instance.GameSetup.skins[_selectedSkin].isUnlocked || GameManager.Instance.GameSetup.areUnlockedAll)
         {
             GameManager.Instance.GameSetup.selectedSkinIndex = _selectedSkin;
             EventManager.TriggerEvent(Events.PLAYER_SKIN_CHANGED);
