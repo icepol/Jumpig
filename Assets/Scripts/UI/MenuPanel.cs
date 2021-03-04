@@ -8,6 +8,8 @@ public class MenuPanel : MonoBehaviour
     [SerializeField] private Button musicButton;
 
     [SerializeField] private GameObject skinsPanel;
+    [SerializeField] private Button unlockAllSkinsButton;
+    [SerializeField] private Button restorePurchasesButton;
 
     private bool _isSettingsPanelVisible;
     
@@ -27,6 +29,13 @@ public class MenuPanel : MonoBehaviour
     {
         UpdateButton(soundsButton, Settings.IsSfxEnabled);
         UpdateButton(musicButton, Settings.IsMusicEnabled);
+        UpdateButton(unlockAllSkinsButton, !GameManager.Instance.GameSetup.areUnlockedAll);
+        UpdateButton(restorePurchasesButton, !GameManager.Instance.GameSetup.areUnlockedAll);
+
+        if (!GameManager.Instance.GameSetup.areUnlockedAll) return;
+        
+        unlockAllSkinsButton.GetComponent<Button>().enabled = false;
+        restorePurchasesButton.GetComponent<Button>().enabled = false;
     }
 
     private void OnDisable()
@@ -75,7 +84,7 @@ public class MenuPanel : MonoBehaviour
     {
         Application.OpenURL(Constants.PrivacyPolicyURL);
     }
-
+    
     public void OnSkinLeftButtonClick()
     {
         EventManager.TriggerEvent(Events.SKIN_LEFT_BUTTON_CLICK);
@@ -85,7 +94,7 @@ public class MenuPanel : MonoBehaviour
     {
         EventManager.TriggerEvent(Events.SKIN_RIGHT_BUTTON_CLICK);
     }
-    
+
     void UpdateButton(Button button, bool isEnabled) {
         foreach (Text text in button.GetComponentsInChildren<Text>()) {
             Color color = text.color;

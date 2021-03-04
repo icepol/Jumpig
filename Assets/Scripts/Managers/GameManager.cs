@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using pixelook;
 using UnityEngine;
@@ -92,7 +91,12 @@ public class GameManager : MonoBehaviour
     IEnumerator WaitAndRestart()
     {
         yield return new WaitForSeconds(2.5f);
+        
+        Restart();
+    }
 
+    public void Restart()
+    {
         SceneManager.LoadScene("Game");
     }
 }

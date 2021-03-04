@@ -8,6 +8,9 @@ TextureImporter:
   - first:
       213: -4789670105439411607
     second: Coin
+  - first:
+      213: 7061801754131594114
+    second: Square
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -162,7 +165,7 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,6 +173,27 @@ TextureImporter:
       bones: []
       spriteID: 962e9f57a6ca78db0800000000000000
       internalID: -4789670105439411607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Square
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1848
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b7e35c74f800260800000000000000
+      internalID: 7061801754131594114
       vertices: []
       indices: 
       edges: []

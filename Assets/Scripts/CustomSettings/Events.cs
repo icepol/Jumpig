@@ -36,5 +36,6 @@
         
         // settings events
         public const string MUSIC_SETTINGS_CHANGED = "MusicSettingsChanged";
+        public const string PURCHASE_FINISHED = "PurchaseFinished";
     }
 }
