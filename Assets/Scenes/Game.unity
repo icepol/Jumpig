@@ -314,6 +314,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3917353016340477418, guid: 2f871f02dbc2d4cebabfb8b8f63f6419, type: 3}
   m_PrefabInstance: {fileID: 3917353016384525974}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &339529712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1807129207, guid: 4c5419ad452bd46ee9dd7c6cf6b9e230, type: 3}
+  m_PrefabInstance: {fileID: 6480329419239422676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &692624698
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,6 +1902,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1574740545}
     m_Modifications:
+    - target: {fileID: 6480329418709669460, guid: 4c5419ad452bd46ee9dd7c6cf6b9e230, type: 3}
+      propertyPath: skinsPanel
+      value: 
+      objectReference: {fileID: 339529712}
     - target: {fileID: 6480329418709669545, guid: 4c5419ad452bd46ee9dd7c6cf6b9e230, type: 3}
       propertyPath: m_Name
       value: MenuPanel

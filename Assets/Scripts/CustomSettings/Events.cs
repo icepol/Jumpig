@@ -29,7 +29,7 @@
         
         public const string COIN_COLLECTED = "CoinCollected";
         public const string FOOD_COLLECTED = "FoodCollected";
-
+        
         // camera events
         public const string CAMERA_SHAKE_BIG = "CameraShakeBig";
         public const string CAMERA_SHAKE_SMALL = "CameraShakeSmall";

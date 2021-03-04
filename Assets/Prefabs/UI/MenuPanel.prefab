@@ -1905,6 +1905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundsButton: {fileID: 1553347077}
   musicButton: {fileID: 1482854058874051806}
+  skinsPanel: {fileID: 1807129207}
 --- !u!95 &6480329419239422678
 Animator:
   serializedVersion: 3

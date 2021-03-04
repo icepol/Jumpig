@@ -6,6 +6,10 @@ public class MenuPanel : MonoBehaviour
 {
     [SerializeField] private Button soundsButton;
     [SerializeField] private Button musicButton;
+
+    [SerializeField] private GameObject skinsPanel;
+
+    private bool _isSettingsPanelVisible;
     
     private Animator _animator;
 
@@ -38,6 +42,9 @@ public class MenuPanel : MonoBehaviour
     public void OnSettingsButtonClick()
     {
         _animator.SetTrigger("ToggleSettings");
+        _isSettingsPanelVisible = !_isSettingsPanelVisible;
+        
+        skinsPanel.SetActive(!_isSettingsPanelVisible);
     }
     
     public void OnSoundsButtonClick()
