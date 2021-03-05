@@ -14,11 +14,15 @@ public class Collectible : MonoBehaviour, ICollisionHandler
 
         GameState.ComboMultiplier++;
         
-        Instantiate(collectedEffect, transform.position, Quaternion.identity);
+        if (collectedEffect != null)
+        {
+            GameObject effectInstance = ObjectPoolManager.Instance.GetFromPool(collectedEffect.gameObject);
+            effectInstance.transform.position = transform.position;
+        }
         
-        ScoreBalloon scoreBalloonInstance = Instantiate(scoreBalloon, transform.position, Quaternion.identity);
-        
-        scoreBalloonInstance.SetScore(scorePoints * GameState.ComboMultiplier);
+        GameObject instance = ObjectPoolManager.Instance.GetFromPool(scoreBalloon.gameObject);
+        instance.transform.position = transform.position;
+        instance.GetComponent<ScoreBalloon>().SetScore(scorePoints * GameState.ComboMultiplier);
 
         GameState.Score += scorePoints * GameState.ComboMultiplier;
         

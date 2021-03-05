@@ -34,7 +34,9 @@ public class FinishLine : MonoBehaviour
 
     private void OnFinishLinePassed()
     {
-        fireworks.gameObject.SetActive(true);
+        GameObject instance = ObjectPoolManager.Instance.GetFromPool(fireworks.gameObject);
+        instance.transform.position = fireworks.transform.position;
+        instance.transform.rotation = Quaternion.identity;
     }
 
     private void SetPositionAndSize()

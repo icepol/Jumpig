@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 306484354556389828}
   - component: {fileID: 306484354556389829}
   - component: {fileID: 306484354556389830}
+  - component: {fileID: 4377098078549952205}
   m_Layer: 0
   m_Name: CollectibleYellow
   m_TagString: Untagged
@@ -42,7 +43,7 @@ ParticleSystem:
   serializedVersion: 7
   lengthInSec: 2
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 3
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4863,3 +4864,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &4377098078549952205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306484354556389831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005df90ee48034138a155b8c1a1e2c63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

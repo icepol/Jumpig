@@ -42,7 +42,12 @@ public class Player : MonoBehaviour
     private void OnPlayerCollidedObstacle()
     {
         if (onPlayerCollidedObstacleParticle != null)
-            Instantiate(onPlayerCollidedObstacleParticle, transform.position, Quaternion.identity, _floorMovingWrapper.transform);
+        {
+            GameObject instance = ObjectPoolManager.Instance.GetFromPool(onPlayerCollidedObstacleParticle.gameObject);
+            instance.transform.parent = _floorMovingWrapper.transform;
+            instance.transform.position = transform.position;
+            instance.transform.rotation = Quaternion.identity;
+        }
         
         Destroy(gameObject);
     }
@@ -57,7 +62,12 @@ public class Player : MonoBehaviour
         transform.parent = _floorMovingWrapper.transform;
 
         if (onPlayerJumpStartedParticle != null)
-            Instantiate(onPlayerJumpStartedParticle, transform.position, Quaternion.identity, _floorMovingWrapper.transform);
+        {
+            GameObject instance = ObjectPoolManager.Instance.GetFromPool(onPlayerJumpStartedParticle.gameObject);
+            instance.transform.parent = _floorMovingWrapper.transform;
+            instance.transform.position = transform.position;
+            instance.transform.rotation = Quaternion.identity;
+        }
     }
 
     private void OnPlayerJumpFinished()
@@ -93,8 +103,12 @@ public class Player : MonoBehaviour
             EventManager.TriggerEvent(Events.PLAYER_MOVEMENT_FINISHED, transform.position);
 
             if (onPlayerJumpFinishedParticle != null)
-                Instantiate(onPlayerJumpFinishedParticle, transform.position + Vector3.back * 0.10f,
-                    Quaternion.identity, _floorMovingWrapper.transform);
+            {
+                GameObject instance = ObjectPoolManager.Instance.GetFromPool(onPlayerJumpFinishedParticle.gameObject);
+                instance.transform.parent = _floorMovingWrapper.transform;
+                instance.transform.position = transform.position + Vector3.back * 0.10f;
+                instance.transform.rotation = Quaternion.identity;
+            }
         }
         else
         {

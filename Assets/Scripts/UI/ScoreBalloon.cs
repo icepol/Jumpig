@@ -22,8 +22,8 @@ namespace pixelook
 
         public void Destroy()
         {
-            if (gameObject)
-                Destroy(gameObject);
+            // called from the animation
+            ObjectPoolManager.Instance.ReturnToPool(gameObject);
         }
     }
 }
