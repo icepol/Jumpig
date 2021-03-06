@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using GooglePlayGames;
@@ -55,6 +56,8 @@ public class GameServices : MonoBehaviour {
         Social.ReportProgress(achievementId, 100f, (bool success) => {
             Debug.Log($"GameServices: UnlockAchievement {achievementId} success: {success}");
         });
+        
+        GameAnalytics.NewDesignEvent($"achievement:unlocked:{achievementId}");
     }
 
     private static void OnUserAuthenticated(bool success) {
