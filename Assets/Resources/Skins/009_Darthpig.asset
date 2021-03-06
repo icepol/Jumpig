@@ -17,3 +17,4 @@ MonoBehaviour:
   model: {fileID: 919132149155446097, guid: 2b2d892c53f0c4ca0bb3c916e4713f15, type: 3}
   achievementIdAndroid: 
   achievementIdIos: skin_darthpig
+  isProduction: 1

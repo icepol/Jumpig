@@ -17,3 +17,4 @@ MonoBehaviour:
   model: {fileID: 919132149155446097, guid: 1ab31d6c4b9e34fb2ac3d2570c02216b, type: 3}
   achievementIdAndroid: 
   achievementIdIos: skin_astropig
+  isProduction: 1

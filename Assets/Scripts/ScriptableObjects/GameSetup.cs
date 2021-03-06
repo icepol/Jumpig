@@ -2,11 +2,10 @@ using pixelook;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameSetup", menuName = "Assets/Game Setup")]
-public class GameSetup : ScriptableObject
+public class GameSetup : ScriptableObject, IResetBeforeBuild
 {
     [Header("Skin Settings")]
     public int selectedSkinIndex = 0;
-    public int unlockedToIndex = 0;
     public bool areUnlockedAll = false;
     
     public SkinSetup[] skins;
@@ -27,6 +26,9 @@ public class GameSetup : ScriptableObject
     
     [Header("Levels Settings")]
     public LevelSetup[] levels;
+    
+    [Header("Build setup")]
+    public bool isProduction = false;
 
     public bool IsLastRowInLevel
     {
@@ -62,5 +64,13 @@ public class GameSetup : ScriptableObject
 
             return levelNumber;
         }
+    }
+
+    public void ResetBeforeBuild()
+    {
+        if (!isProduction) return;
+        
+        selectedSkinIndex = 0;
+        areUnlockedAll = false;
     }
 }

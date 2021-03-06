@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: GameSetup
   m_EditorClassIdentifier: 
   selectedSkinIndex: 0
-  unlockedToIndex: 0
   areUnlockedAll: 0
   skins:
   - {fileID: 11400000, guid: 9d8c0ca092a784cb796c5b6b5941114b, type: 2}
@@ -54,3 +53,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad3a40c20a20742ffa26d5acc82a401d, type: 2}
   - {fileID: 11400000, guid: a144561207152402b81610dea88a13be, type: 2}
   - {fileID: 11400000, guid: 9211cf8c0966b45e180599a49f282040, type: 2}
+  isProduction: 1

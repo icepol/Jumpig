@@ -17,3 +17,4 @@ MonoBehaviour:
   model: {fileID: 919132149155446097, guid: eab267d7fdf0d428b8d6b076dfab8070, type: 3}
   achievementIdAndroid: 
   achievementIdIos: skin_swimmer
+  isProduction: 1

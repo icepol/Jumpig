@@ -14,6 +14,9 @@ public class SkinSetup : ScriptableObject
     [Header("Game Services Setup")]
     public string achievementIdAndroid;
     public string achievementIdIos;
+    
+    [Header("Build setup")]
+    public bool isProduction = false;
 
     private void OnEnable()
     {
@@ -39,5 +42,12 @@ public class SkinSetup : ScriptableObject
         // will only log the unlock event
         GameServices.UnlockAchievement(achievementIdIos);
 #endif
+    }
+    
+    public void ResetBeforeBuild()
+    {
+        if (!isProduction) return;
+
+        isUnlocked = false;
     }
 }

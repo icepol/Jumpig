@@ -17,3 +17,4 @@ MonoBehaviour:
   model: {fileID: 919132149155446097, guid: f2bf152926fd843549d0a368fe73fcce, type: 3}
   achievementIdAndroid: 
   achievementIdIos: skin_viping
+  isProduction: 1
