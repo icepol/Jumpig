@@ -2,11 +2,25 @@ using pixelook;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SkinSetup", menuName = "Assets/Skin Setup")]
-public class SkinSetup : ScriptableObject
+public class SkinSetup : LoadSaveScriptableObject
 {
-    [Header("Basic Setup")]
+    private const string FILENAME_PREFIX = "skin_setup_";
+    private const string FILENAME_POSTFIX = ".json";
+
+    [Header("Basic Setup")] public string name;
     public int coinsForUnlock;
-    public bool isUnlocked;
+    [SerializeField] private bool isUnlocked;
+
+    public bool IsUnlocked
+    {
+        get => isUnlocked;
+        set
+        {
+            isUnlocked = value;
+            
+            SaveToFile($"{FILENAME_PREFIX}{name.ToLower()}{FILENAME_POSTFIX}");
+        }
+    }
     
     [Header("Visual Setup")]
     public GameObject model;
@@ -16,7 +30,7 @@ public class SkinSetup : ScriptableObject
     public string achievementIdIos;
     
     [Header("Build setup")]
-    public bool isProduction = false;
+    public bool isProduction;
 
     private void OnEnable()
     {
@@ -30,9 +44,9 @@ public class SkinSetup : ScriptableObject
 
     private void OnCoinsChanged()
     {
-        if (isUnlocked || GameState.Coins != coinsForUnlock) return;
+        if (IsUnlocked || GameState.Coins != coinsForUnlock) return;
 
-        isUnlocked = true;
+        IsUnlocked = true;
         
 #if UNITY_IPHONE
         GameServices.UnlockAchievement(achievementIdIos);
@@ -44,10 +58,15 @@ public class SkinSetup : ScriptableObject
 #endif
     }
     
+    public void LoadFromFile()
+    {
+        LoadFromFile($"{FILENAME_PREFIX}{name.ToLower()}{FILENAME_POSTFIX}");
+    }
+
     public void ResetBeforeBuild()
     {
         if (!isProduction) return;
 
-        isUnlocked = false;
+        IsUnlocked = false;
     }
 }

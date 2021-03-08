@@ -2,12 +2,36 @@ using pixelook;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameSetup", menuName = "Assets/Game Setup")]
-public class GameSetup : ScriptableObject, IResetBeforeBuild
+public class GameSetup : LoadSaveScriptableObject, IResetBeforeBuild
 {
-    [Header("Skin Settings")]
-    public int selectedSkinIndex = 0;
-    public bool areUnlockedAll = false;
+    private const string FILENAME = "game_setup.json";
     
+    [Header("Skin Settings")]
+    public int selectedSkinIndex;
+    public bool areUnlockedAll;
+
+    public int SelectedSkinIndex
+    {
+        get => selectedSkinIndex;
+        set
+        {
+            selectedSkinIndex = value;
+            
+            SaveToFile(FILENAME);
+        }
+    }
+
+    public bool AreUnlockedAll
+    {
+        get => areUnlockedAll;
+        set
+        {
+            areUnlockedAll = value;
+            
+            SaveToFile(FILENAME);
+        }
+    }
+
     public SkinSetup[] skins;
     
     [Header("Floor Settings")]
@@ -28,8 +52,8 @@ public class GameSetup : ScriptableObject, IResetBeforeBuild
     public LevelSetup[] levels;
     
     [Header("Build setup")]
-    public bool isProduction = false;
-
+    public bool isProduction;
+    
     public bool IsLastRowInLevel
     {
         get
@@ -65,12 +89,22 @@ public class GameSetup : ScriptableObject, IResetBeforeBuild
             return levelNumber;
         }
     }
+    
+    public void LoadFromFile()
+    {
+        LoadFromFile(FILENAME);
+
+        foreach (SkinSetup skinSetup in skins)
+        {
+            skinSetup.LoadFromFile();
+        }
+    }
 
     public void ResetBeforeBuild()
     {
         if (!isProduction) return;
         
-        selectedSkinIndex = 0;
-        areUnlockedAll = false;
+        SelectedSkinIndex = 0;
+        AreUnlockedAll = false;
     }
 }

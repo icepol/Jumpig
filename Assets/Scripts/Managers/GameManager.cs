@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         
         GameState.SpawnedRowsCount = 0;
+        
+        GameSetup.LoadFromFile();
     }
 
     private void OnEnable()

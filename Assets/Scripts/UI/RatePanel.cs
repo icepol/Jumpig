@@ -16,6 +16,8 @@ public class RatePanel : MonoBehaviour
     void Start()
     {
         elements.SetActive(false);
+        
+        ratingSetup.LoadFromFile();
     }
 
     private void OnDisable()
@@ -25,7 +27,7 @@ public class RatePanel : MonoBehaviour
 
     private void OnPlayerDied()
     {
-        ratingSetup.finishedGames++;
+        ratingSetup.FinishedGames++;
         
         if (!IsAvailable()) return;
 
@@ -39,13 +41,13 @@ public class RatePanel : MonoBehaviour
         
         Time.timeScale = 0;
         elements.SetActive(true);
-        ratingSetup.attemptsCount++;
+        ratingSetup.AttemptsCount++;
     }
 
     private bool IsAvailable()
     {
-        return !ratingSetup.isRated && ratingSetup.attemptsCount < ratingSetup.maxAttemptsCount &&
-               ratingSetup.finishedGames % ratingSetup.finishedGamesToShow == 0;
+        return !ratingSetup.IsRated && ratingSetup.AttemptsCount < ratingSetup.maxAttemptsCount &&
+               ratingSetup.FinishedGames % ratingSetup.finishedGamesToShow == 0;
     }
 
     public void OnYesButtonClick()
@@ -54,7 +56,7 @@ public class RatePanel : MonoBehaviour
         
         elements.SetActive(false);
         Time.timeScale = 1;
-        ratingSetup.isRated = true;
+        ratingSetup.IsRated = true;
         
         Application.OpenURL(Constants.AppStoreLink);
     }

@@ -26,7 +26,7 @@ public class Skin : MonoBehaviour
 
     public void Setup(SkinSetup skinSetup, float animationOffset)
     {
-        if (skinSetup.isUnlocked || GameManager.Instance.GameSetup.areUnlockedAll)
+        if (skinSetup.IsUnlocked || GameManager.Instance.GameSetup.AreUnlockedAll)
         {
             Instantiate(skinSetup.model, _skinModelWrapper.transform, false);
         

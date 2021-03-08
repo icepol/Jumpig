@@ -32,7 +32,7 @@ public class PlayerSkin : MonoBehaviour
             Destroy(selectedSkin);
 
         selectedSkin =
-            Instantiate(GameManager.Instance.GameSetup.skins[GameManager.Instance.GameSetup.selectedSkinIndex].model,
+            Instantiate(GameManager.Instance.GameSetup.skins[GameManager.Instance.GameSetup.SelectedSkinIndex].model,
                 transform, false);
     }
 }

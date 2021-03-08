@@ -29,10 +29,10 @@ public class MenuPanel : MonoBehaviour
     {
         UpdateButton(soundsButton, Settings.IsSfxEnabled);
         UpdateButton(musicButton, Settings.IsMusicEnabled);
-        UpdateButton(unlockAllSkinsButton, !GameManager.Instance.GameSetup.areUnlockedAll);
-        UpdateButton(restorePurchasesButton, !GameManager.Instance.GameSetup.areUnlockedAll);
+        UpdateButton(unlockAllSkinsButton, !GameManager.Instance.GameSetup.AreUnlockedAll);
+        UpdateButton(restorePurchasesButton, !GameManager.Instance.GameSetup.AreUnlockedAll);
 
-        if (!GameManager.Instance.GameSetup.areUnlockedAll) return;
+        if (!GameManager.Instance.GameSetup.AreUnlockedAll) return;
         
         unlockAllSkinsButton.GetComponent<Button>().enabled = false;
         restorePurchasesButton.GetComponent<Button>().enabled = false;

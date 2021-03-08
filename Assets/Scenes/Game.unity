@@ -1357,6 +1357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RatePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1213958953234676637, guid: 7986f0ee7799d48d99cd207b1d42375b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1213958953234676638, guid: 7986f0ee7799d48d99cd207b1d42375b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

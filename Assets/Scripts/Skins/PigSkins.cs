@@ -19,7 +19,7 @@ public class PigSkins : MonoBehaviour
     private void Start()
     {
         _skinInstances = new List<Skin>();
-        _selectedSkin = GameManager.Instance.GameSetup.selectedSkinIndex;
+        _selectedSkin = GameManager.Instance.GameSetup.SelectedSkinIndex;
         
         ShowSkins();        
     }
@@ -75,9 +75,9 @@ public class PigSkins : MonoBehaviour
 
     private void MoveSkinsToPositions()
     {
-        if (GameManager.Instance.GameSetup.skins[_selectedSkin].isUnlocked || GameManager.Instance.GameSetup.areUnlockedAll)
+        if (GameManager.Instance.GameSetup.skins[_selectedSkin].IsUnlocked || GameManager.Instance.GameSetup.AreUnlockedAll)
         {
-            GameManager.Instance.GameSetup.selectedSkinIndex = _selectedSkin;
+            GameManager.Instance.GameSetup.SelectedSkinIndex = _selectedSkin;
             EventManager.TriggerEvent(Events.PLAYER_SKIN_CHANGED);
         }
         

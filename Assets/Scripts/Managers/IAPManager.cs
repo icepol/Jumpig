@@ -5,7 +5,7 @@ public class IAPManager : MonoBehaviour
 {
     public void OnUnlockAllSkinsPurchaseComplete()
     {
-        GameManager.Instance.GameSetup.areUnlockedAll = true;
+        GameManager.Instance.GameSetup.AreUnlockedAll = true;
 
         // will reload the skins setup
         GameManager.Instance.Restart();
