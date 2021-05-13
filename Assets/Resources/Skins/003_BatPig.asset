@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33ec95f768014376aad791a34533b06, type: 3}
   m_Name: 003_Batpig
   m_EditorClassIdentifier: 
-  name: Batpig
+  skinName: Batpig
   coinsForUnlock: 15
   isUnlocked: 0
   model: {fileID: 919132149155446097, guid: eb2cf7ad371eb405bb1e3addabd74919, type: 3}
-  achievementIdAndroid: 
+  achievementIdAndroid: CgkIutbt_swGEAIQBA
   achievementIdIos: skin_batpig
   isProduction: 1
+  isPersistent: 1

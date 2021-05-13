@@ -7,7 +7,8 @@ public class SkinSetup : LoadSaveScriptableObject
     private const string FILENAME_PREFIX = "skin_setup_";
     private const string FILENAME_POSTFIX = ".json";
 
-    [Header("Basic Setup")] public string name;
+    [Header("Basic Setup")]
+    public string skinName;
     public int coinsForUnlock;
     [SerializeField] private bool isUnlocked;
 
@@ -18,7 +19,7 @@ public class SkinSetup : LoadSaveScriptableObject
         {
             isUnlocked = value;
             
-            SaveToFile($"{FILENAME_PREFIX}{name.ToLower()}{FILENAME_POSTFIX}");
+            SaveToFile($"{FILENAME_PREFIX}{skinName.ToLower()}{FILENAME_POSTFIX}");
         }
     }
     
@@ -31,6 +32,7 @@ public class SkinSetup : LoadSaveScriptableObject
     
     [Header("Build setup")]
     public bool isProduction;
+    public bool isPersistent;
 
     private void OnEnable()
     {
@@ -51,7 +53,7 @@ public class SkinSetup : LoadSaveScriptableObject
 #if UNITY_IPHONE
         GameServices.UnlockAchievement(achievementIdIos);
 #elif UNITY_ANDROID
-        GameServices.UnlockAchievement(achievementId_Android);
+        GameServices.UnlockAchievement(achievementIdAndroid);
 #else
         // will only log the unlock event
         GameServices.UnlockAchievement(achievementIdIos);
@@ -60,7 +62,7 @@ public class SkinSetup : LoadSaveScriptableObject
     
     public void LoadFromFile()
     {
-        LoadFromFile($"{FILENAME_PREFIX}{name.ToLower()}{FILENAME_POSTFIX}");
+        LoadFromFile($"{FILENAME_PREFIX}{skinName.ToLower()}{FILENAME_POSTFIX}");
     }
 
     public void ResetBeforeBuild()

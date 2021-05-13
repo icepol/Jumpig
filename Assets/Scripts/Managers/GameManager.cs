@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
         GameState.SpawnedRowsCount = 0;
         
-        GameSetup.LoadFromFile();
+        LoadFromFile();
     }
 
     private void OnEnable()
@@ -43,6 +43,31 @@ public class GameManager : MonoBehaviour
         EventManager.RemoveListener(Events.GAME_STARTED, OnGameStarted);
         EventManager.RemoveListener(Events.LEVEL_CHANGED, OnLevelChanged);
         EventManager.RemoveListener(Events.PLAYER_DIED, OnPlayerDied);
+    }
+    
+    private void LoadFromFile()
+    {
+        GameSetup loadedGameSetup = ScriptableObject.CreateInstance<GameSetup>();
+        loadedGameSetup.LoadFromFile();
+
+        GameSetup.areUnlockedAll = loadedGameSetup.areUnlockedAll;
+        GameSetup.selectedSkinIndex = loadedGameSetup.selectedSkinIndex;
+
+        SkinSetup loadedSkinSetup = ScriptableObject.CreateInstance<SkinSetup>();
+
+        foreach (SkinSetup skinSetup in GameSetup.skins)
+        {
+            if (!skinSetup.isPersistent) continue;
+            
+            loadedSkinSetup.skinName = skinSetup.skinName;
+            loadedSkinSetup.isPersistent = skinSetup.isPersistent;
+            loadedSkinSetup.LoadFromFile();
+
+            skinSetup.IsUnlocked = loadedSkinSetup.IsUnlocked;
+        }
+        
+        Destroy(loadedSkinSetup);
+        Destroy(loadedGameSetup);
     }
 
     private void OnPlayerJumpStarted()

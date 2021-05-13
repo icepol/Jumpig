@@ -47,7 +47,7 @@ public class FloorMovingWrapper : MonoBehaviour
 
     private void MoveFloor()
     {
-        float speed = minSpeed + (transform.position.z - _targetPosition.z) * 0.015f;
+        float speed = (minSpeed + (transform.position.z - _targetPosition.z)) * Time.deltaTime;
         
         transform.position = Vector3.MoveTowards(
             transform.position, 

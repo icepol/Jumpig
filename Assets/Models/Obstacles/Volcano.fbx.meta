@@ -3,7 +3,17 @@ guid: 8c4e9232296754bcda1d2b92c82f5920
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lava
+    second: {fileID: 2100000, guid: 2c075148b7cfc473386e60702a01ec15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Root
+    second: {fileID: 2100000, guid: e01381b04c1f44fc5b81167ef527dad1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

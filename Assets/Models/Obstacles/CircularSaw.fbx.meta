@@ -3,7 +3,22 @@ guid: 851161c5c8fa14fa788b5f1d30c18ed9
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blade
+    second: {fileID: 2100000, guid: 858d27ccabba245d1aa3a5f7a7b9beb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blood
+    second: {fileID: 2100000, guid: 09617df9fc6c74e3b874a5a0e80825b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Circle
+    second: {fileID: 2100000, guid: e50cc7fe1c5be4d3cb91302b388dafcd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
